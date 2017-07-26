@@ -1,0 +1,11 @@
+{
+    "LOGIN": "Log In",
+    "PASSWORD": "Password",
+    "USERNAME": "Username",
+    "ENGLISH":"English",
+    "ARABIC":"Arabic",
+    "LANG_TITLE":"Language",
+    "LOGIN_ERROR_TITLE":"Login Failed",
+    "LOGIN_ERROR_DESC":"Please enter login credentials",
+    "LOGIN_AUTHORIZATION_DESC":"Please enter valid credentials"
+}

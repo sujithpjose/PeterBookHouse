@@ -1,0 +1,10 @@
+{
+    "LOGIN": "تسجيل الدخول",
+    "PASSWORD": "كلمه السر",
+    "USERNAME": "اسم المستخدم",
+    "ENGLISH":"English",
+    "ARABIC":"عربى",
+    "LANG_TITLE":"عرضت في",
+    "LOGIN_ERROR_TITLE":"فشل تسجيل الدخول",
+    "LOGIN_ERROR_DESC":"يرجى إدخال بيانات اعتماد تسجيل الدخول"
+}

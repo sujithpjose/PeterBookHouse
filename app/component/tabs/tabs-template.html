@@ -1,0 +1,20 @@
+<ion-view view-title="main" hide-back-button="true">
+    <ion-nav-buttons side="primary">
+        <button class="button button-icon icon ion-ios-home-outline" ui-sref="dashboard">
+        </button>
+    </ion-nav-buttons>
+    <ion-tabs class="tabs-striped tabs-icon-top tabs-top">
+        <ion-tab title="Track" icon="ion-map calm" ui-sref="main.track">
+            <ion-nav-view name="track"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Chat" icon="ion-chatboxes" ui-sref="main.chat">
+            <ion-nav-view name="chat"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Buddies" icon="ion-ios-people" ui-sref="main.buddies">
+            <ion-nav-view name="buddies"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Checklist" icon="ion-checkmark" ui-sref="main.checklist">
+            <ion-nav-view name="checklist"></ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+</ion-view>

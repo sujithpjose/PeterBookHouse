@@ -1,0 +1,64 @@
+
+<!--<md-dialog aria-label="Choose Media">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Choose Media</h2>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+       <div layout="row" flex layout-padding >
+           <div layout="column" flex layout-align="center center" layout-padding ng-click="onChooseFromDeviceClick()">
+            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+            Gallery
+           </div>
+           <div layout="column" flex layout-align="center center" layout-padding ng-click="onTakePhotoClick()">
+            <i class="fa fa-camera" aria-hidden="true"></i>
+            Camera
+           </div>
+       </div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" layout-align="end center">
+      <md-button class="md-primary md-raised" ng-click="onCancelClick()">
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>-->
+
+<!--Choose Media
+
+<div>
+       <div class="row">
+           <div class="column column50" ng-click="onChooseFromDeviceClick()">
+            <i class="fa fa-file-image-o"></i>
+            Gallery
+           </div>
+           <div class="column column50" ng-click="onTakePhotoClick()">
+            <i class="fa fa-camera"></i>
+            Camera
+           </div>
+       </div>
+</div>-->
+
+<ion-modal-view>
+    <ion-header-bar>
+      <h3 class="attachmenttitle">Choose Media</h3>
+    </ion-header-bar>
+    <ion-content>
+      <div class="row row-center">
+           <div class="col col-50 col-center text-center" ng-click="onChooseFromDeviceClick()">
+            <i class="icon ion-images attachIconSize"></i>
+            <h3 class="no-top-margin">Gallery</h3>
+           </div>
+           <div class="col col-50 col-center text-center" ng-click="onTakePhotoClick()">
+            <i class="icon ion-camera attachIconSize"></i>
+            <h3 class="no-top-margin">Camera</h3>
+           </div>
+       </div>
+    </ion-content>
+  </ion-modal-view>

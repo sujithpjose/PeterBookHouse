@@ -1,0 +1,83 @@
+<ion-view hide-back-button="true" hide-nav-bar="true">
+
+  <ion-content>
+    <!------------------- Header container  ------------------>
+
+    <div class="bar-container-top">
+      <div class="col text-right no-padding">
+        <span>ABOUT</span>
+        <span>CONTACT</span>
+        <span>LOGIN</span>
+      </div>
+    </div>
+
+    <div class="row responsive-sm row-center bar-container">
+      <div class="col col-25 text-center col-center">
+        <span class="logo">PETER BOOK HOUSE</span>
+      </div>
+      <div class="col text-right">
+        <div class="row  row-center header-search-container">
+          <input type="text" ng-model="report.searchString" placeholder="Search books.." class="header-search-input" />
+          <!-- <a class="header-search-close icon ion-close-circled placeholder-icon icon-close-txt" ng-click="report.searchString = ''; searchClicked()"
+            ng-show="report.searchString.length">
+          </a> -->
+          <button ng-disabled="report.isLoading" class="header-search-btn button button-icon icon ion-ios-search-strong" ng-click="searchClicked()">
+          </button>
+        </div>
+      </div>
+      <div class="col col-20 col-center cart-col no-padding">
+        <button class="button icon-right ion-ios-cart header-cart-btn">
+        Cart
+        </button>
+      </div>
+      <!-- <div class="col col-10 col-center text-center"> <button class="button icon-right ion-person header-cart-btn">
+        Sign in
+        </button>
+      </div> -->
+    </div>
+
+    <!------------------- Header container  ------------------>
+
+    <!------------------- banner ------------------------------>
+
+    <!--style="padding:0 5%"  -->
+    <div class="list card">
+      <div class="item item-image">
+        <img src="app/assets/images/banner.jpg" class="banner-img" />
+      </div>
+    </div>
+
+    <!------------------- banner ------------------------------>
+
+    <!------------------- main content ------------------------------>
+    <div class="row">
+      <div class="col col-center">
+        <h3>TOP CATEGORIES</h3>
+      </div>
+       <div class="col col-center text-right">
+        <button class="button" ng-click="goToGrid(1)">
+        VIEW ALL
+        </button>
+      </div> 
+    </div>
+
+    <div ng-repeat="book in books.newReleasesList track by $index" class="card book-grid">
+      <div class="item item-text-wrap no-padding text-center">
+        <div class="item item-body">
+          <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
+          <p>
+            Christophor Nolan
+          </p>
+
+          <h2> Cinema </h3>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!------------------- main content ------------------------------>
+
+  </ion-content>
+
+</ion-view>

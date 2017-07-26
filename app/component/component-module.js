@@ -1,0 +1,1 @@
+var componentModule = angular.module('component', ['login', 'home', 'grid', 'dashboard']);

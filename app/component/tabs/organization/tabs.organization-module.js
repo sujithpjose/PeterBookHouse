@@ -1,0 +1,1 @@
+var organizationModule = angular.module('organization',[]);
