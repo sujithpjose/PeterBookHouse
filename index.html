@@ -1,1 +1,135 @@
-<h1>PBH Welcome! </h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link rel="stylesheet" href="app/shared/custom-lib/tooltip/angular-tooltips.css" />
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+  <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+
+  <script src="lib/localforage/dist/localforage.js"></script>
+  <script src="lib/localforage-cordovasqlitedriver/dist/localforage-cordovasqlitedriver.js"></script>
+
+  <script src="lib/angular-translate/angular-translate.min.js"></script>
+  <script src="lib/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
+
+
+  <script src="lib/ion-datetime-picker/release/ion-datetime-picker.min.js"></script>
+  <script src="app/shared/custom-lib/tooltip/angular-tooltips.js"></script>
+
+
+  <!-- your app's css -->
+  <link href="assets/shared/style.css" rel="stylesheet">
+  <link href="assets/component/login/login-style.css" rel="stylesheet">
+  <link href="assets/component/dashboard/dashboard-style.css" rel="stylesheet">
+  <link href="assets/component/home/home-style.css" rel="stylesheet">
+  <link href="assets/component/detail-grid/detail-grid-style.css" rel="stylesheet">
+  <!-- your app's css -->
+
+  <!-- *************** Gulp Js *********** -->
+  <!--<link href="app/assets/lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="app/assets/style.css" rel="stylesheet">
+    <script src="app/assets/lib/ionic/js/ionic.bundle.js"></script>
+    <script src="cordova.js"></script>
+    <script src="app/lib.js"></script>
+    <script src="app/app.js"></script>-->
+  <!-- *************** Gulp Js *********** -->
+
+</head>
+
+<body ng-app="bookShop" class="platform-browser platform-cordova platform-webview">
+  <ion-pane>
+    <!-- The nav bar that will be updated as we navigate -->
+    <ion-nav-bar class="bar bar-header bar-custom bar-no-border">
+      <ion-nav-back-button class="button button-icon icon ion-ios-arrow-back nav-icon">
+        <!--<i class="button button-icon icon ion-chevron-left nav-icon"></i>-->
+      </ion-nav-back-button>
+      <!--<ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left nav-icon"></i> Back</ion-nav-back-button>-->
+    </ion-nav-bar>
+    <!-- where the initial view template will be rendered -->
+    <ion-nav-view name="root"></ion-nav-view>
+  </ion-pane>
+</body>
+
+
+<!-- your app's js -->
+<script src="app/app-module.js"></script>
+<!-- shared-module -->
+<script src="app/shared/shared-module.js"></script>
+<script src="app/component/component-module.js"></script>
+<!-- shared-constants -->
+<script src="app/shared/shared-constants.js"></script>
+<script src="app/shared/img-constants.js"></script>
+<!-- shared-constants -->
+<script src="app/shared/shared-values.js"></script>
+<!-- service/ factory -->
+<script src="app/shared/service/service-module.js"></script>
+<script src="app/shared/service/data-service.js"></script>
+<script src="app/shared/service/generic-service.js"></script>
+<script src="app/shared/service/db-service.js"></script>
+<script src="app/shared/service/delegate-factory.js"></script>
+<script src="app/shared/service/connectivityMonitor-service.js"></script>
+<script src="app/shared/service/localforage-service.js"></script>
+<script src="app/shared/service/authorization-service.js"></script>
+<!--directive-->
+<script src="app/shared/directive/can-swipe.js"></script>
+<script src="app/shared/directive/limit-to.js"></script>
+<!-- config -->
+<script src="app/app-config.js"></script>
+
+<!------------------------- login -------------------------->
+<script src="app/component/login/login-module.js"></script>
+<script src="app/component/login/login-service.js"></script>
+<script src="app/component/login/login-controller.js"></script>
+<!------------------------- login -------------------------->
+
+<!-------------------------- home ---------------------------->
+<script src="app/component/home/home-module.js"></script>
+<script src="app/component/home/home-controller.js"></script>
+<!--------------------------- home --------------------------->
+
+<!-------------------------- detail-grid ---------------------------->
+<script src="app/component/detail-grid/detail-grid-module.js"></script>
+<script src="app/component/detail-grid/detail-grid-controller.js"></script>
+<!--------------------------- detail-grid --------------------------->
+
+<!-- Attachment Module -->
+<script src="app/component/attachment/attachment-module.js"></script>
+<script src="app/component/attachment/attachment-constants.js"></script>
+<script src="app/component/attachment/add-attachment/add-attachment-module.js"></script>
+<script src="app/component/attachment/add-attachment/add-attachment-controller.js"></script>
+
+<script src="app/component/attachment/view-attachment/view-attachment-module.js"></script>
+<script src="app/component/attachment/view-attachment/view-attachment-controller.js"></script>
+<script src="app/component/attachment/view-attachment/download-service.js"></script>
+
+<!-- dashboard -->
+<script src="app/component/dashboard/dashboard-module.js"></script>
+<script src="app/component/dashboard/dashboard-controller.js"></script>
+<!-- your app's js -->
+
+</html>
