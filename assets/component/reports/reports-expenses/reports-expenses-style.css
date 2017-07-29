@@ -1,0 +1,12 @@
+.expenseLine {
+    padding: 10px 10px 10px 0;
+    margin-left: 15px;
+    border-bottom: 1px solid #DFE6F3;
+}
+.expenseLine .row {
+   padding: 0;
+}
+
+.list-last-item {
+    border-bottom: 0;
+}

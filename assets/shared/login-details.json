@@ -1,0 +1,88 @@
+{
+  "returnCode": "0",
+  "returnMsg": "EBS User Successfully Logged In.",
+  "responsiblitiesList": [
+    {
+      "responsibilityId": 20639,
+      "responsibilityKey": "PAYABLES_MANAGER",
+      "responsibilityName": "Payables Manager"
+    },
+    {
+      "responsibilityId": 50578,
+      "responsibilityKey": "PURCHASING_OPERATIONS",
+      "responsibilityName": "Purchasing, Vision Operations (USA)"
+    },
+    {
+      "responsibilityId": 20707,
+      "responsibilityKey": "PURCHASING_SUPER_USER",
+      "responsibilityName": "Purchasing Super User"
+    },
+    {
+      "responsibilityId": 50554,
+      "responsibilityKey": "PAYABLES_OPERATIONS",
+      "responsibilityName": "Payables, Vision Operations (USA)"
+    },
+    {
+      "responsibilityId": 54021,
+      "responsibilityKey": "OIE_EXPENSE_REPORTS_OPERATIONS",
+      "responsibilityName": "iExpenses"
+    },
+    {
+      "responsibilityId": 54041,
+      "responsibilityKey": "OIE_EXPENSE_REPORTS_SERVICES",
+      "responsibilityName": "iExpenses, Vision Services (USA)"
+    },
+    {
+      "responsibilityId": 56684,
+      "responsibilityKey": "AMEOPSADM",
+      "responsibilityName": "Approvals Management Administrator"
+    },
+    {
+      "responsibilityId": 23700,
+      "responsibilityKey": "OIE_EXPENSE_SETUP",
+      "responsibilityName": "Internet Expenses Setup and Administration"
+    }
+  ],
+  "loginDetailsTab": [
+    {
+      "personId": 31423,
+      "employeeNumber": "2114",
+      "fullName": "Anoop Ramachandran",
+      "title": "HU_PROF",
+      "businessGroupId": 204,
+      "emailAddress": "Anooprc@rapidvaluesolutions.com",
+      "workTelephone": null,
+      "officeNumber": null,
+      "jobId": 34936,
+      "jobName": "BA02",
+      "positionId": 57473,
+      "positionName": null,
+      "imageId": 4606,
+      "image": "/9j/4AAQSkZJRgABAQAAAQABAA",
+      "supervisorId": 31419
+    }
+  ],
+  "delegatedUsersList": [
+    {
+      "empId": 31427,
+      "empName": "krishna das",
+      "employeeUserName": "KRISHNA"
+    }
+  ],
+  "permittedUsersList": [
+    {
+      "empId": 31427,
+      "empName": "Anoop Ramachandran",
+      "employeeUserName": "ANOOPRV"
+    }
+  ],
+  "orgId": "204",
+  "orgName": "Vision Operations",
+  "costCenterId": "210",
+  "costCenterName": "US Organization",
+  "currencyCode": "USD",
+  "currencyName": "US dollar",
+  "mileageUom": null,
+  "locationId": 10001,
+  "locationName": "All Other Locations"
+}

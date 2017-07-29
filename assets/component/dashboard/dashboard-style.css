@@ -1,0 +1,201 @@
+.dashboard-container{
+    background: #398cd5; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left, #398cd5 , #00cee0); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #398cd5,#00cee0); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #398cd5, #00cee0); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right,#398cd5 , #00cee0); /* Standard syntax (must be last) */
+    height: 84px;
+}
+.dashboard-profile-img{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-size: 100% 100%;
+}
+
+.dashboard-profile-circle {
+    background: #369cd6;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;  
+    display: inline-block;
+    line-height: 55px;
+    color: white;
+    font-size: 20px;
+}
+
+.dashboard-header-container{
+    background: white;
+    border-radius:5px; 
+    margin: 10px;
+    margin-top: -55pt;
+}
+
+.dashboard-header-container .row.first-row{
+   height: 75pt;
+}
+
+.dashboard-header-container .row + .row.second-row{
+    border-top: 1px solid #c5d1db;
+    height: 60pt;
+    padding-bottom: 0;
+}
+
+.col-border-left {
+    border-left:1px solid #c5d1db;
+}
+
+.dashboard-profile-name{
+    color: #46555b;
+    font-size: 16px;
+}
+.dashboard-job-title{
+    color: rgba(70, 85, 91, 0.6);
+    font-size: 13px;
+    /*margin-top: 8px;*/
+}
+
+.dashboard-center-container{
+    background: white;
+    border-radius: 5px;
+    margin-right: 10px;
+    /*padding: 10px 0;*/
+}
+.dashboard-tile-container{
+    background: white;
+    border-radius:5px; 
+    margin: 10px;
+}
+.service-list-item{
+    height: 70px !important;
+    min-height: 0 !important;
+}
+.service-title-container{
+    font-size: 10pt;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.service-icon-container{
+    font-size: 10px;
+    text-align: center;
+}
+.service-icon{
+    min-height: 50px;
+}
+.service-icon img{
+    width: 43px;
+    height: 43px;
+    margin-bottom: 8px;
+}
+.graph-container{
+    font-size: 10px;
+}
+.other-service-container{
+    font-size: 10px;
+    height: 70px;
+}
+.otherservice .service-title-container{
+    margin:0 !important; 
+}
+.otherservice .other-service-container {
+    border-bottom: 1px solid #c5d1db;       
+}
+
+.service-list-icon{
+    height: 28px;
+    width: 24px;
+}
+.service-list-item md-list-item.md-3-line, md-list-item.md-3-line > .md-no-style {
+    height: 70px !important;
+    min-height: 0 !important;
+}
+.other-service-item-title{
+    font-size: 15px !important;
+    color: #46555b;
+    /*margin-bottom:3px; */
+}
+.other-service-item-desc{
+    font-size: 12px !important;
+    color: #90999d;
+}
+.other-service-container md-list-item md-divider{
+    margin-left: 55px;
+}
+.graph-container .swiper-container{
+    height: 240px;
+}
+.graph-tile-container{
+    min-height: 220px;
+}
+.header-logoutBtn{
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: 8px;
+}
+.header-settingsBtn{
+    width: 22pt;
+    height: 22pt;
+    margin-top: 8px;
+}
+.other-service-divider{
+    /*margin-left: 10px;*/
+    padding-left: 0px;
+    /*border-bottom: 1px solid lightgrey;*/
+}
+.arrow-icon{
+    width: 6px;
+    height: 9px;
+}
+.center-align{
+    padding-top:20%;
+}
+
+.annual-leave-bg{
+    /*background: #FD344A;
+    vertical-align: middle;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;*/
+
+    background: #31b7dc;
+    color:#FFF;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #31b7dc;
+    font-size: 11px;
+}
+
+.leave-icon-text{
+    position: relative;
+    top: 5px;
+}
+
+.text-gunmetal {
+  color:   #46555b;
+}
+
+.status-text {
+    color: #a2bcc9;
+    font-size: 9pt;
+}
+
+.status-col .row {
+    padding: 0;
+    /*display: block;*/
+}
+
+.center-tileBtn{
+    width: auto;
+    height: 38px;
+    background-size: 100%;
+}
+
+.dashboard-center-container span {
+    color: #46555b;
+    font-size: 12pt;
+}
+.row.other-service-container{
+    padding:10px; 
+}

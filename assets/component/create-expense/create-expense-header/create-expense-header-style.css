@@ -1,0 +1,11 @@
+.modal-search-sub-header {
+    height: 50px;
+    background: white;
+}
+
+.modal-ion-content-margin {
+    margin-top: 60px;
+}
+.receipt-input-disable input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.cloned-text-input), textarea[readonly]:not(.cloned-text-input), select[readonly]{
+    background-color: white;
+}

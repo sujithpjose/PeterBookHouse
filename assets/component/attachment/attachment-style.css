@@ -1,0 +1,88 @@
+.attachmentDel{
+    color: #F68686;
+}
+.attachHeader{
+    background-color: #F7F7F7;
+    height: 47px;
+}
+.attachAddMore{
+    color: #8FC168
+}
+
+.attachAddMore .icon{
+    font-size: 17px;
+}
+.attachrightPadding{
+    padding-right: 5px;
+}
+.attachBottom{
+        border-bottom: 1px solid #dcd6d6;
+}
+
+.attachment-textarea {
+height: 100px; 
+width: 100%;
+}
+.attachmenttitle{
+    color:black;
+}
+.attachIconSize{
+    font-size:50px;
+    color: #1694e4;
+}
+.deleteAttachment{
+    font-size:22px;
+}
+.column-border{
+    border: 1px solid #dcd6d6;
+}
+.image-padding{
+    padding:15px 0px;
+}
+.media-picker-dimension{
+  height: 200px;
+}
+
+.custom-class-attachmentView .popup-head {
+  display: none ;
+}
+.custom-class-attachmentView .popup{
+   width: 90% ; 
+}
+
+.attachment-container {
+    padding-left: 15px;
+}
+
+.attachment-row {
+    height: 70px;
+    border-bottom: 1px solid #DFE6F3;
+}
+
+.icon-close {
+    width: 24px;
+    height: auto;
+    background-size: 100%;
+}
+
+.attachment-container {
+    background: white;
+    padding: 10px;
+    height: 60px;
+}
+
+.attachment-container .row {
+    border-bottom: 1px solid #DFE6F3;
+}
+
+.attachment-container.last-row .row {
+    border-bottom: 0;
+}
+
+.attachment-badge {
+    max-width: 100px;
+}
+
+.delete {
+    font-size: 20px;
+}
