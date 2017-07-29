@@ -1,0 +1,595 @@
+/* style CSS  */
+
+.match-parent {
+    width: 100%;
+    height: 100%;
+}
+
+/* start padding style */
+.no-padding {
+    padding: 0px;
+}
+.no-margin{
+    margin: 0px;
+}
+.no-top-margin{
+    margin-top:0px;
+}
+.bottom-5-margin{
+    margin-bottom:5px;
+}
+
+.left-no-padding {
+    padding-left: 0;
+}
+.right-5-padding{
+    padding-right: 5px;
+}
+
+.right-no-padding {
+    padding-right: 0;
+}
+.top-no-padding {
+    padding-top: 0;
+}
+
+.bottom-no-padding {
+    padding-bottom: 0;
+}
+.top-5-padding {
+    padding-top: 5px;
+}
+
+.bottom-5-padding {
+    padding-bottom: 5px;
+}
+.top-10-padding {
+    padding-top: 10px;
+}
+
+.bottom-10-padding {
+    padding-bottom: 10px;
+}
+.top-20-padding {
+    padding-top: 20px;
+}
+
+.bottom-20-padding {
+    padding-bottom: 20px;
+}
+.left-3-padding{
+    padding-left: 3px;
+}
+
+.left-15-padding {
+    padding-left: 15px;
+}
+.left-10-padding {
+    padding-left: 10px;
+}
+/* end padding style */
+
+.no-border {
+    border: 0;
+}
+
+/* start margin styles */
+
+.top-20-margin{
+ margin-top:20px;
+}
+.right-5-margin {
+    margin-right: 5px;
+}
+.right-10-margin{
+    margin-right: 10px;
+}
+.left-5-margin {
+    margin-left: 5px;
+}
+.left-10-margin {
+    margin-left: 10px;
+}
+/* end margin styles */
+
+/*Custom bar styles*/
+.bar-custom {
+    background: #990000; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left, #990000 , #C32E27); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #990000,#C32E27); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #990000, #C32E27); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right,#990000 , #C32E27); /* Standard syntax (must be last) */
+}
+.bar-no-border{
+    border-bottom: none;
+    -moz-border-bottom: none;
+    -webkit-border-bottom: none;
+}
+/*Custom bar styles*/
+
+/* Start overrided styles */
+
+/* to change ion spinner background */
+.loading-container .loading{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* header bar text color */
+.bar .title {
+    color: white;
+    font-weight: bold;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .child-view.has-header {
+    top:0;
+}
+
+.child-view.has-header {
+    top:0;
+}
+.pane{
+    background: #E9EDF2;
+}
+.custom-pane.pane {
+    background: #EFEFF3;
+}
+
+/*Popup Button Border Color*/
+.popup-buttons .button{
+    border-color: #C32E27;
+}
+
+/* End overrided styles */
+
+/*start text styles*/
+.text-purple {
+    color: #44288C;
+}
+.text-light {
+    color: #8E8E93;
+}
+.text-dark {
+    color: #6E6E70;
+}
+.text-label{
+    color: #606060;
+}
+.text-blue{
+   color: #1694e4;
+}
+.text-green{
+   color: #38C66A;
+}
+.text-bold {
+    font-weight: bold;
+}
+.text-black{
+    color: #000000;
+}
+.text-white{
+    color:#FFFFFF;
+}
+
+.text-input-value {
+     color: #000000;
+     font-size: 15px;
+     font-weight: normal;
+}
+.text-19 {
+    font-size: 19px;
+}
+.text-17 {
+    font-size: 17px;
+}
+.text-16{
+    font-size: 16px;
+}
+.text-15 {
+    font-size: 15px;
+}
+.text-14 {
+    font-size: 14px;
+}
+.text-13 {
+    font-size: 13px;
+}
+.text-12 {
+    font-size: 12px;
+}
+.text-11 {
+    font-size: 11px;
+}
+/*end text styles*/
+
+.nav-icon{
+    color: white
+}
+.nav-icon:hover{
+   color: white 
+}
+.align-right{
+    text-align: right;
+}
+.platform-ios .sub-header{
+ margin-top: 20px;
+}
+.platform-ios .ios-content-margin{
+ /*margin-top: 20px;*/
+  margin-top: 0px;
+}
+.spinner svg {
+  width: 50px;
+  height: 50px;
+  stroke: #C32E27;
+  fill: #C32E27;
+}
+/*ion-content background color*/
+.container-background{
+    background: white;
+    margin: 5px;
+}
+.text-wrap{
+ text-overflow: ellipsis;
+ overflow: hidden;
+ white-space: nowrap;
+}
+
+/*Card layout*/
+.cardview{
+    margin: 10px 5px;
+    border-radius: 3px;
+}
+
+.cardview-text-label {
+    color: #606060;
+    font-size: 14px;
+}
+/*Card layout*/
+
+
+/*Custom form layout container styles*/
+.form-container{
+    background: white;
+    padding-left: 15px;  
+}
+
+.form-container .row {
+    border-bottom: 1px solid #DFE6F3;
+    height: 60px;
+    padding-left:0;
+}
+
+.form-container .row + .row{
+    margin-top: 5px;
+}
+
+.form-container .col{
+    padding-left: 0;
+}
+
+.form-container{
+    padding-right: 25px;
+}
+/*Custom form layout container styles*/
+
+/* Card Button Styles*/
+.cardview-button{
+    float: right;
+    padding-right: 15px;
+    text-align: left; 
+}
+
+.cardview-button .button .icon:before,.cardview-button .button.icon:before, .cardview-button .button.icon-left:before,.cardview-button .button.icon-right:before { 
+    padding: 0 0 1px 0;
+    font-size: 13px;
+    line-height: 41px;  
+}
+
+.cardview-button.button{
+    color: #494c51;/*charcoalGrey*/
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+.cardview-button.button:hover, .cardview-button.button:active, .cardview-button.button:activated{
+    color: #494c51;/*charcoalGrey*/
+    border:0;
+    background: #fff;
+    font-weight: 500;
+}
+
+.button.button-light.activated{
+    color: #494c51;/*charcoalGrey*/
+    border:0;
+    background: #fff;
+}
+
+.cardview-button-blue {
+    background-color: #1694e4;
+    margin: 0;
+    padding: 0;
+}
+
+.cardview-button-blue .button {
+    color:#fff;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+}
+
+.cardview-button-red {
+    background-color: #990000;
+    margin: 0;
+    padding: 0;
+}
+
+.cardview-button-red .button {
+    color:#fff;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+}
+
+.cardview-button-grey {
+    background-color: #5A5A5A;
+    margin: 0;
+    padding: 0;
+}
+
+.cardview-button-grey .button {
+    color:#fff;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+}
+
+/* Card Button Styles*/
+
+.font-12{
+    font-size: 12pt;
+}
+.font-13{
+    font-size: 13pt;
+}
+.font-large{
+    font-size: large;
+}
+.font-xlarge{
+    font-size: x-large;
+}
+.padding-top-bottom{
+    padding: 10px 0px;
+}
+.font-light{
+    font-weight: lighter;
+}
+
+/*.card .item:last-child {
+  border-bottom-width:1px; 
+}*/
+
+
+/*Chip Components*/
+
+.chip-blue , .chip-blue:hover {
+min-height: 20px;
+height: 30px;
+line-height: 20px;
+border-radius: 15px;
+background: #1694e4;
+color: #fff;
+font-size: 13px;
+padding:0;
+border: 1px solid #1694e4;
+font-weight: bold;
+}
+
+.chip-blue.activated {
+    background: #fff;
+    color: #1694e4;
+    border: 1px solid #1694e4;
+}
+
+.chip-dark-pink , .chip-dark-pink:hover {
+min-height: 20px;
+height: 30px;
+line-height: 20px;
+border-radius: 15px;
+background: #F4464F;
+color: #fff;
+font-size: 13px;
+padding:5px;
+border: 1px solid #F4464F;
+}
+
+.chip-green , .chip-green:hover {
+min-height: 20px;
+height: 30px;
+line-height: 20px;
+border-radius: 15px;
+background: #20D291;
+color: #fff;
+font-size: 13px;
+padding:5px;
+border: 1px solid #20D291;
+}
+
+.bg-blue {
+    background-color: #494c51;/*charcoalGrey*/;
+}
+.bg-white {
+    background-color: #ffffff;
+}
+
+.chip-pink, .chip-pink:hover{
+min-height: 20px;
+height: 30px;
+line-height: 20px;
+border-radius: 15px;
+background: #FF2D60;
+color: #fff;
+font-size: 13px;
+padding: 5px;
+border: 1px solid #FF2D60;
+}
+.chip-orange, .chip-orange:hover{
+min-height: 20px;
+height: 30px;
+line-height: 20px;
+border-radius: 15px;
+background: #F59C16;
+color: #fff;
+font-size: 13px;
+padding: 5px;
+border: 1px solid #F59C16;
+}
+/*Chip Components*/
+
+.form-container .item{
+    padding: 0;
+    border: 0;
+}
+
+.form-container .item-input {
+    min-height: 40px;
+    padding-left: 5px;
+}
+
+.form-container .item-input input {
+    padding-right: 0;
+}
+
+.form-container .item-select select {
+    max-width: 90%;
+    padding-right: 20px;
+}
+
+.form-container .item-select:after {
+    right: 0;   
+}
+
+.form-container .last-row {
+    border-bottom:0; 
+}
+
+.display-inline {
+    display: inline;
+}
+
+.v-center {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+}
+.font-weight-500{
+    font-weight: 500;
+}
+/*ios nav bar fix */
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > *{
+margin-top: 10px;
+margin-bottom: 5px;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader){
+    height: 60px;
+}
+
+
+/*col styles*/
+
+.col-15 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 15%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 15%;
+    -ms-flex: 0 0 15%;
+    flex: 0 0 15%;
+    max-width: 15%;
+}
+
+.col-85 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 85%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 85%;
+    -ms-flex: 0 0 85%;
+    flex: 0 0 85%;
+    max-width: 85%;
+}
+
+.padding-left-5 {
+    padding-left: 5px;
+}
+.validation-txt{
+    color: #909195;
+    text-align: center;
+    display: block;
+    font-size: 13px;
+}
+
+.background-bg {
+    background: #EFEFF3;
+}
+.display-block{
+    display: block;
+}
+.add-icon{
+    width: 14px;
+    height: auto;
+    background-size: 50% 50%;
+    content: url(images/add-circle-icon.png);
+}
+.edit-icon{
+    width: 14px;
+    height: auto;
+    background-size: 50% 50%;
+    content: url(images/edit-pen-icon.png);
+}
+.add-new-icon{
+    width: 14px;
+    height: auto;
+    background-size: 50% 50%;
+    content: url(images/add-book-icon.png);
+}
+.uparrow-icon{
+    width: 14px;
+    height: auto;
+    background-size: 50% 50%;
+    content: url(images/up-arrow-icon.png)
+}
+.downarrow-icon{
+    width: 14px;
+    height: auto;
+    background-size: 50% 50%;
+    content: url(images/down-arrow-icon.png)
+}
+.delete-icon{
+    width: 14px;
+    height: auto;
+    background-size: 50% 50%;
+    content: url(images/delete-icon.png)
+}
+.card-header-icon-div{
+    height: 35px;
+    width: auto;
+    text-align: center;
+    line-height: 35px;
+}
+.bottom-border{
+     border-bottom: 1px solid #DFE6F3;
+    
+}
+
+.btn-red {
+    background-color: #990000;
+    color: #fff;
+}
+
+.text-cobalt-blue {
+    color: #194790;
+}
+
+/*date picker overriding*/
+
+/*.ion-datetime-picker .calendar .day.selected, .ion-datetime-picker .calendar .day.selected:hover, .ion-datetime-picker .calendar .day.selected.activated {
+    background-color: #C32E27;
+}*/
