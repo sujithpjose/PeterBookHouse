@@ -63,9 +63,11 @@
 
 <body ng-app="bookShop">
   <ion-pane>
-    <!-- where the initial view template will be rendered -->
-    <div ui-view="header"></div>
-    <div class="custom-content" ui-view="content"></div>
+
+    <div ui-view>
+      <!-- where the initial view template will be rendered -->
+    </div>
+  
   </ion-pane>
 </body>
 
@@ -100,6 +102,11 @@
 <script src="app/component/login/login-service.js"></script>
 <script src="app/component/login/login-controller.js"></script>
 <!------------------------- login -------------------------->
+
+<!-------------------------- home-container ---------------------------->
+<script src="app/component/home-container/home-container-module.js"></script>
+<script src="app/component/home-container/home-container-controller.js"></script>
+<!--------------------------- home-container  --------------------------->
 
 <!-------------------------- home ---------------------------->
 <script src="app/component/home/home-module.js"></script>

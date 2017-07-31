@@ -1,5 +1,7 @@
+<ion-view hide-back-button="true" hide-nav-bar="true">
 
-<!------------------- Header container  ------------------>
+  <ion-content scroll="false">
+    <!------------------- Header container  ------------------>
 
     <div class="bar-container-top">
       <div class="col text-right no-padding">
@@ -34,4 +36,11 @@
       </div> -->
     </div>
 
+
     <!------------------- Header container  ------------------>
+
+    <div class="custom-content" ui-view="content"></div>
+
+  </ion-content>
+
+</ion-view>

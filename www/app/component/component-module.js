@@ -1,1 +1,1 @@
-var componentModule = angular.module('component', ['login', 'home', 'grid', 'dashboard']);
+var componentModule = angular.module('component', ['login','homeContainer', 'home', 'grid', 'dashboard']);

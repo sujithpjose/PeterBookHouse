@@ -1,5 +1,5 @@
-homeModule.
-  controller('HomeController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'loginService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, loginService) {
+homeContainerModule.
+  controller('HomeContainerController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'loginService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, loginService) {
     var self = $scope;
 
     self.books = {};
@@ -20,7 +20,7 @@ homeModule.
     };
 
     self.goToGrid = function (id) {
-      $state.go('home.grid', { id: id });
+      $state.go('grid', { id: id });
     };
 
     var setScopeValuesOnSuccess = function (response) {

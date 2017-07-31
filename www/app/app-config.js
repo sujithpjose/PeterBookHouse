@@ -1,5 +1,5 @@
 app.config(['$urlRouterProvider', '$ionicConfigProvider', '$translateProvider', '$translatePartialLoaderProvider', function ($urlRouterProvider, $ionicConfigProvider, $translateProvider, $translatePartialLoaderProvider) {
-  $urlRouterProvider.otherwise('/home');
+  // $urlRouterProvider.otherwise('/home/list');
   $ionicConfigProvider.views.swipeBackEnabled(false);
   //remove back button text in ios
   $ionicConfigProvider.backButton.previousTitleText(false).text('');
@@ -12,7 +12,7 @@ app.config(['$urlRouterProvider', '$ionicConfigProvider', '$translateProvider', 
   });
   $translateProvider.preferredLanguage('en_US');
 
-}]).run(['$http', 'sharedConstants', '$log', '$ionicHistory', '$rootScope', 'localforageService', '$ionicPickerI18n', function ($http, sharedConstants, $log, $ionicHistory, $rootScope, localforageService, $ionicPickerI18n) {
+}]).run(['$http', 'sharedConstants', '$log', '$ionicHistory', '$rootScope', 'localforageService', '$ionicPickerI18n', '$state', function ($http, sharedConstants, $log, $ionicHistory, $rootScope, localforageService, $ionicPickerI18n,$state) {
   $log.debug('hrmsApp.config.run:');
 
   $rootScope.$on('$ionicView.beforeEnter', function () {
@@ -62,6 +62,7 @@ app.config(['$urlRouterProvider', '$ionicConfigProvider', '$translateProvider', 
     setRequestHeader();
     //set up localforage driver
     setLocalForageDriver();
+    $state.go('home.list');
   };
 
   //initialize the setups for the app
