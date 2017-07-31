@@ -63,15 +63,9 @@
 
 <body ng-app="bookShop">
   <ion-pane>
-    <!-- The nav bar that will be updated as we navigate -->
-    <ion-nav-bar class="bar bar-header bar-custom bar-no-border">
-      <ion-nav-back-button class="button button-icon icon ion-ios-arrow-back nav-icon">
-        <!--<i class="button button-icon icon ion-chevron-left nav-icon"></i>-->
-      </ion-nav-back-button>
-      <!--<ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left nav-icon"></i> Back</ion-nav-back-button>-->
-    </ion-nav-bar>
     <!-- where the initial view template will be rendered -->
-    <ion-nav-view name="root"></ion-nav-view>
+    <div ui-view="header"></div>
+    <div class="custom-content" ui-view="content"></div>
   </ion-pane>
 </body>
 

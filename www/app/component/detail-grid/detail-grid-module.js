@@ -4,7 +4,11 @@ homeModule.config(['$stateProvider', function ($stateProvider) {
         .state('grid', {
             url: '/grid',
             views: {
-                'root': {
+                'header': {
+                    templateUrl: 'app/component/home/home-header-template.html',
+                    controller: 'HomeController'
+                },
+                'content': {
                     templateUrl: 'app/component/detail-grid/detail-grid-template.html',
                     controller: 'GridController'
                 }
