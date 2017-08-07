@@ -1,31 +1,23 @@
-<!-- <ion-view hide-back-button="true" hide-nav-bar="true">
+<!------------------- main content ------------------------------>
 
-  <ion-content> -->
-    
+<div class="flex-container match-parent">
+  <nav class="card cardview nav left-nav">
+    <ul class="left-nav-ul">
+      <li>
+        <a href="#">Thriller</a>
+        <!-- <i class="ion-ios-star"></i>   -->
+      </li>
+      <li><a ng-click="updateGrid()">Sci-fi</a></li>
+      <li><a>Novel</a></li>
+      <li><a>Malayalam</a></li>
+      <li><a>Movies</a></li>
+      <li><a>Art</a></li>
+      <li><a>Educational</a></li>
+    </ul>
+  </nav>
 
-    <!------------------- banner ------------------------------>
-
-    <!-- <div class="list card">
-      <div class="item item-image">
-        <img src="app/assets/images/banner.jpg" class="banner-img" />
-      </div>
-    </div> -->
-
-    <!------------------- banner ------------------------------>
-
-    <!------------------- main content ------------------------------>
-    <div class="row">
-      <div class="col col-center">
-        <h3>{{gridModal.title}}</h3>
-      </div>
-      <div class="col col-center text-right">
-        <button class="button">
-        VIEW ALL
-        </button>
-      </div>
-    </div>
-
-    <div ng-repeat="book in books.newReleasesList track by $index" class="card book-grid">
+  <article class="article">
+    <div ng-repeat="book in books.newReleasesList track by $index" class="book-detail-grid" ng-click="toDetails(item)">
       <div class="item item-text-wrap no-padding text-center">
         <div class="item item-body">
           <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
@@ -33,15 +25,13 @@
             Christophor Nolan
           </p>
 
-          <h2> Cinema </h3>
+          <h2> Cinema </h2>
 
         </div>
       </div>
     </div>
+  </article>
+</div>
 
 
-    <!------------------- main content ------------------------------>
-
-  <!-- </ion-content>
-
-</ion-view> -->
+<!------------------- main content ------------------------------>

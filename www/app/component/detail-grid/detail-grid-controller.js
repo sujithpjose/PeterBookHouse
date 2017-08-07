@@ -18,10 +18,22 @@ gridModule.
       self.imgPath = imgConstants.dashboardPath;
       self.profilePath = imgConstants.sharedPath;
       self.sharedPath = imgConstants.imgPath;
-      self.gridModal.title = 'HEADING'+$stateParams.id;
-
-
+      self.gridModal.title = 'HEADING' + $stateParams.id;
     };
+
+    self.toDetails = function (item) {
+      $state.go('home.details');
+    };
+
+    self.updateGrid = function () {
+      // self.books.newReleasesList = [
+      //   { 'book': 'Book1' },
+      //   { 'book': 'Book2' },
+      //   { 'book': 'Book3' },
+      //   { 'book': 'Book4' },
+      // ];
+    };
+
     //init method to call while controller loading
     init();
 

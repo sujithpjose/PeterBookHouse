@@ -25,8 +25,8 @@
         </button>
   </div>
 </div>
-<div>
-  <div ng-repeat="book in books.newReleasesList track by $index" class="card book-grid">
+<div class="grid-container">
+  <div ng-repeat="book in books.newReleasesList track by $index" class="book-grid">
     <div class="item item-text-wrap no-padding text-center">
       <div class="item item-body">
         <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
