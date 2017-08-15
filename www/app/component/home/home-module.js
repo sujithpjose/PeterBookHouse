@@ -13,6 +13,5 @@ homeModule.config(['$stateProvider', function ($stateProvider) {
                     controller: 'HomeController'
                 }
             }
-             , cache: false
         });
 }]);

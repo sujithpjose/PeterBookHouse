@@ -37,18 +37,29 @@ input[type="text"] {
     height: 34px;
     border: 0;
     border-radius: 0;
+}
 
+.button-icon.button.activated {
+     background: #FDCB00;
 }
 
 .header-cart-btn {
     width: 100px;
-     background: #2C3D52;; 
+     background: #2C3D52;
     height: 34px;
     border: 0;
     border-radius: 0;
     color: white;
     border: 1px solid #FDCB00;
 
+}
+
+.header-cart-btn.button:hover {
+color: white;
+}
+
+.header-cart-btn.button.activated {
+background: #2C3D52;
 }
 
 .bar-container-top {
@@ -60,6 +71,13 @@ input[type="text"] {
     color: white;
     padding: 0 5px;
     font-size: 10px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.bar-container-top span:hover {
+    color: #FDCB00;
+    transform: scale(1.1);
 }
 
 .header-search-btn.button {
@@ -80,7 +98,7 @@ line-height: 35px;
 }
 
 .grid-container {
-    padding-left: 10px;
+   /* text-align: left; */
 }
 
 .book-grid{ 
@@ -114,5 +132,6 @@ line-height: 35px;
 .custom-content{
     height: 100%;
     overflow-y: scroll;
+    padding: 10px;
 }
 

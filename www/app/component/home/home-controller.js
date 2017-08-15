@@ -75,6 +75,20 @@ homeModule.
       }
     };
 
+    $scope.swiperOptions = {
+      /* Whatever options */
+      effect: 'slide',
+      initialSlide: 0,
+      /* Initialize a scope variable with the swiper */
+      onInit: function (swiper) {
+        $scope.swiper = swiper;
+        // Now you can do whatever you want with the swiper
+      },
+      onSlideChangeEnd: function (swiper) {
+        console.log('The active index is ' + swiper.activeIndex);
+      }
+    };
+
     //init method to call while controller loading
     // init();
 

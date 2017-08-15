@@ -16,6 +16,6 @@ homeModule.config(['$stateProvider', function ($stateProvider) {
             , params: {
                 id: ''
             }
-            , cache: false
+            // , cache: false
         });
 }]);

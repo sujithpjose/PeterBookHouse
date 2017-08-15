@@ -1,5 +1,5 @@
 
-var app = angular.module('bookShop', ['ionic', 'component', 'shared', 'ngCordova', 'ion-datetime-picker', 'pascalprecht.translate', 'canSwipe']);
+var app = angular.module('bookShop', ['ionic', 'component', 'shared', 'ngCordova', 'ion-datetime-picker', 'pascalprecht.translate', 'canSwipe', 'ui.bootstrap']);
 
 app.run(function ($rootScope,$ionicPlatform, $cordovaSQLite, dbService,connectivityMonitor,$log) {
     $log.debug('app.run:');

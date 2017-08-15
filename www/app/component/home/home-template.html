@@ -1,4 +1,4 @@
- <!-- <ion-view hide-back-button="true" hide-nav-bar="true"> -->
+<!-- <ion-view hide-back-button="true" hide-nav-bar="true"> -->
 
 
 
@@ -16,30 +16,40 @@
 
 <!------------------- main content ------------------------------>
 <div class="row">
-  <div class="col col-center">
+  <div class="col text-left">
     <h3>TOP CATEGORIES</h3>
   </div>
-  <div class="col col-center text-right">
-    <button class="button" ng-click="goToGrid(1)">
+  <div class="col text-right">
+    <button class="button button-stable" ng-click="goToGrid(1)">
         VIEW ALL
         </button>
   </div>
 </div>
-<div class="grid-container">
-  <div ng-repeat="book in books.newReleasesList track by $index" class="book-grid">
-    <div class="item item-text-wrap no-padding text-center">
-      <div class="item item-body">
-        <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
-        <p>
-          Christophor Nolan
-        </p>
 
-        <h2> Cinema </h2>
+<ion-slides slider="swiper" options="swiperOptions">
+  <ion-slide-page>
+    <div class="grid-container">
+      <div ng-repeat="book in books.newReleasesList track by $index" class="book-grid">
+        <div class="item item-text-wrap no-padding text-center">
+          <div class="item item-body">
+            <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
+            <p>
+              Christophor Nolan
+            </p>
 
+            <h2> Cinema </h2>
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </ion-slide-page>
+ 
+</ion-slides>
+
+
+
+
 
 
 <!------------------- main content ------------------------------>
