@@ -1,6 +1,44 @@
-/* .grid-container {
-  width: 100%;
-  height: 100%;
-  margin: 15px;
-  background: white;
-} */
+.plans-select-list .list {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.plans-top {
+  background: #2D3D54;
+  color: white;
+}
+
+.plans-header {
+  margin-top: 15px;
+  background: #DEDEDE;
+  text-align: center;
+  color: #2D3D54;
+}
+
+.plans-select-list .item-radio .item-content {
+  color: #8E8E93;
+}
+
+.plans-footer {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.plans-footer-btn {
+  width: 30%;
+     background: #2C3D52;
+    height: 34px;
+    border: 0;
+    border-radius: 0;
+    color: white;
+    border: 1px solid #FDCB00;
+    font-size: 13px;
+}
+
+.plans-footer-btn .button:hover {
+color: white;
+}
+
+.plans-footer-btn .button.activated {
+background: #2C3D52;
+}

@@ -1,20 +1,50 @@
 <!------------------- main content ------------------------------>
-<div class="row grid-container">
-    <div class="col col-33">
+<div class="row">
+    <div class="col">
         <div class="item item-text-wrap no-padding text-center">
             <div class="item item-body">
-                <img class="full-image" ng-src="http://loremflickr.com/320/240?random=7" />
+                <img class="full-image" ng-src="http://loremflickr.com/320/240?random=15" />
+                <p>
+                    Christophor Nolan
+                </p>
+
+                <h2> Cinema </h2>
             </div>
         </div>
     </div>
     <div class="col">
-        <div class="row row-center">
-            test row
+        <div class="item plans-top">
+            <span> Rented 123 times </span>
         </div>
-        <div class="row row-center">
-            test row 2
+        <div class="item plans-header">
+            <span>  Your Plans </span>
+        </div>
+
+        <ion-list class="plans-select-list">
+            <ion-radio ng-model="choice" ng-value="'A'">Plan 1 </ion-radio>
+            <ion-radio ng-model="choice" ng-value="'B'">Plan 2 </ion-radio>
+            <ion-radio ng-model="choice" ng-value="'C'">Plan 3 </ion-radio>
+            <ion-radio ng-model="choice" ng-value="'D'">Plan 4 </ion-radio>
+            <ion-radio ng-model="choice" ng-value="'E'">Plan 5 </ion-radio>
+            <ion-radio ng-model="choice" ng-value="'F'">Plan 6 </ion-radio>
+            <ion-radio ng-model="choice" ng-value="'G'">Plan 7 </ion-radio>
+            <ion-radio ng-model="choice" ng-value="'H'">Plan 8 </ion-radio>
+
+        </ion-list>
+
+        <div class="plans-footer">
+            <div>
+                <button class="button plans-footer-btn">
+                BOOK NOW
+            </button>
+            <button class="button plans-footer-btn">
+                ADD TO CART
+            </button>
+            </div>
         </div>
     </div>
 </div>
+
+
 
 <!------------------- main content ------------------------------>
