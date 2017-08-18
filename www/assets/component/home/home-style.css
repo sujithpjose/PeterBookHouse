@@ -1,6 +1,7 @@
 .bar-container {
     background: #2C3D52;
     color: white;
+    padding-right: 10px;
     /* height: 100px; */
 }
 
@@ -64,6 +65,7 @@ background: #2C3D52;
 
 .bar-container-top {
     background: #263346;
+    padding-right: 8px;
 }
 
 .bar-container-top span {
@@ -97,14 +99,20 @@ line-height: 35px;
     text-align: center;
 }
 
+.header-row {
+    padding-left: 15px;
+}
+
 .grid-container {
-   /* text-align: left; */
+   text-align: center;
+   margin-bottom: 5px;
 }
 
 .book-grid{ 
    display: inline-block;
    width: 24%;
-   margin: 5px 0 0 5px;
+   margin: 5px 0 5px 5px;
+   height: 300px;
 }
 
 /* For mobile phones: */
@@ -130,8 +138,20 @@ line-height: 35px;
 }
 
 .custom-content{
-    height: 100%;
+    height: calc(100% - 202px);
     overflow-y: scroll;
-    padding: 10px;
+    padding: 0px;
+    top: 0;
+}
+
+@media only screen and (min-width: 540px) {
+    /* For tablets: */
+    .custom-content {height: calc(100% - 82px);}
+
+}
+
+.grid-container h2, .grid-container p {
+    overflow: hidden;
+    white-space: nowrap;
 }
 

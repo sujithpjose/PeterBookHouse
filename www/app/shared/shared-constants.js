@@ -21,8 +21,8 @@ sharedModule.constant('sharedConstants', {
     'dateFormat': 'dd MMM yyyy',
     'leaveBalanceDateFormat' :'dd MMM yy',
     'javaConnectorUrl':{
-        'base':'http://213.130.119.10:8080',
-        'path':'/udcservices/'
+        'base':'http://admin.peterbookhouse.com/',
+        'path':'api/'
     },
     'mcsUrl':{
         'base':'https://rapidvaluedev-rvsmcsdomain.mobileenv.us2.oraclecloud.com:443',

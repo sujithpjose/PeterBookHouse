@@ -15,18 +15,37 @@
 <!------------------- banner ------------------------------>
 
 <!------------------- main content ------------------------------>
-<div class="row">
+
+<!-- Favorites -->
+<div class="row header-row">
   <div class="col text-left">
-    <h3>TOP CATEGORIES</h3>
+    <h3>Favorites</h3>
   </div>
   <div class="col text-right">
-    <button class="button button-stable" ng-click="goToGrid(1)">
+    <button class="button button-stable" ng-click="goToGrid()">
         VIEW ALL
         </button>
   </div>
 </div>
 
-<ion-slides slider="swiper" options="swiperOptions">
+<div class="grid-container">
+  <div ng-repeat="book in books.newReleasesList track by $index" class="book-grid" ng-click="toDetails(book)">
+    <div class="item item-text-wrap no-padding text-center">
+      <div class="item item-body">
+        <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
+       
+        <h2 class="text-wrap"> {{ book.name}} </h2>
+        <p class="text-wrap">
+          {{ book.author}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Favorites -->
+
+
+<!-- <ion-slides slider="swiper" options="swiperOptions">
   <ion-slide-page>
     <div class="grid-container">
       <div ng-repeat="book in books.newReleasesList track by $index" class="book-grid">
@@ -45,7 +64,7 @@
     </div>
   </ion-slide-page>
  
-</ion-slides>
+</ion-slides> -->
 
 
 

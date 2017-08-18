@@ -17,22 +17,46 @@ homeModule.
       self.imgPath = imgConstants.dashboardPath;
       self.profilePath = imgConstants.sharedPath;
       self.sharedPath = imgConstants.imgPath;
+      populateFavourites();
+    };
+
+    function populateFavourites() {
+      genericServices.showSpinner();
+
+      var config = angular.copy(sharedValues.apiConfig.books_pagesize);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [12]);
+      //set generatedUrl to config variable
+      config.url = generatedUrl;
+
+      delegateFactory.fetchData(config, onSuccess, onError);
     };
 
     self.goToGrid = function (id) {
       $state.go('home.grid', { id: id });
     };
 
+    self.toDetails = function (item) {
+      $state.go('home.details');
+    };
+
     var setScopeValuesOnSuccess = function (response) {
       var params = {};
       switch (response.config.key) {
+        case 'books_pagesize':
+          var result = response.data;
+          if (result.meta.status === 'success') {
+            self.books.newReleasesList = result.data.data;
+          } else {
+            //error
+          }
+          break;
         default:
       }
     };
 
     var setScopeValuesOnError = function (response) {
       switch (response.config.key) {
-        case 'profileInfo':
+        case 'getBooks':
           break;
 
         default:
@@ -57,12 +81,7 @@ homeModule.
     //--------------------------------- Alert Callback ---------------------------- 
     function onAlertSuccess(response, params) {
       switch (params.action) {
-        case 'logout':
-          $ionicHistory.nextViewOptions({
-            disableBack: true,
-            historyRoot: true
-          });
-          $state.go('login');
+        case 'getBooks':
           break;
 
         default:
@@ -90,7 +109,7 @@ homeModule.
     };
 
     //init method to call while controller loading
-    // init();
+    init();
 
   }]);
 

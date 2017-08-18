@@ -3,16 +3,11 @@
 <div class="flex-container match-parent">
   <nav class="card cardview nav left-nav">
     <ul class="left-nav-ul">
-      <li>
-        <a href="#">Thriller</a>
-        <!-- <i class="ion-ios-star"></i>   -->
+
+      <li ng-repeat="item in books.categoryList">
+        <a href="#">{{item.name}}</a>
       </li>
-      <li><a ng-click="updateGrid()">Sci-fi</a></li>
-      <li><a>Novel</a></li>
-      <li><a>Malayalam</a></li>
-      <li><a>Movies</a></li>
-      <li><a>Art</a></li>
-      <li><a>Educational</a></li>
+
     </ul>
   </nav>
 
