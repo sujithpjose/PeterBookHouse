@@ -27,6 +27,11 @@ gridModule.
       delegateFactory.fetchData(config, onSuccess, onError);
     };
 
+    self.$on('search', function (event, args) {
+      self.message = args.message;
+      console.log('IN Grid' + self.message);
+    });
+
     self.toDetails = function (item) {
       $state.go('home.details');
     };

@@ -1,17 +1,8 @@
 homeContainerModule.
   controller('HomeContainerController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'loginService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, loginService) {
     var self = $scope;
-
-    self.books = {};
-    self.books.newReleasesList = [
-      { 'book': 'Book1' },
-      { 'book': 'Book2' },
-      { 'book': 'Book3' },
-      { 'book': 'Book4' },
-      { 'book': 'Book5' },
-      { 'book': 'Book6' },
-      { 'book': 'Book7' }
-    ];
+    $rootScope.data = {};
+    $rootScope.data.searchString = '';
 
     var init = function () {
       self.imgPath = imgConstants.dashboardPath;
@@ -19,8 +10,8 @@ homeContainerModule.
       self.sharedPath = imgConstants.imgPath;
     };
 
-    self.goToGrid = function (id) {
-      $state.go('grid', { id: id });
+    self.doSearch = function () {
+      self.$broadcast('search', { message: 'doSearch' });
     };
 
     var setScopeValuesOnSuccess = function (response) {

@@ -17,11 +17,11 @@
       </div>
       <div class="col text-right">
         <div class="row  row-center header-search-container">
-          <input type="text" ng-model="report.searchString" placeholder="Search books.." class="header-search-input" />
+          <input type="text" ng-model="data.searchString" placeholder="Search books.." class="header-search-input" />
           <!-- <a class="header-search-close icon ion-close-circled placeholder-icon icon-close-txt" ng-click="report.searchString = ''; searchClicked()"
             ng-show="report.searchString.length">
           </a> -->
-          <button ng-disabled="report.isLoading" class="header-search-btn button button-icon icon ion-ios-search-strong" ng-click="searchClicked()">
+          <button ng-disabled="report.isLoading" class="header-search-btn button button-icon icon ion-ios-search-strong" ng-click="doSearch()">
           </button>
         </div>
       </div>

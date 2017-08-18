@@ -104,7 +104,8 @@ line-height: 35px;
 }
 
 .grid-container {
-   text-align: center;
+   text-align: left;
+   padding-left:15px; 
    margin-bottom: 5px;
 }
 

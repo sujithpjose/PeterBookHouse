@@ -3,15 +3,12 @@ homeModule.
     var self = $scope;
 
     self.books = {};
-    self.books.newReleasesList = [
-      { 'book': 'Book1' },
-      { 'book': 'Book2' },
-      { 'book': 'Book3' },
-      { 'book': 'Book4' },
-      { 'book': 'Book5' },
-      { 'book': 'Book6' },
-      { 'book': 'Book7' }
-    ];
+    self.books.newReleasesList = [];
+
+    self.$on('search', function (event, args) {
+      console.log('IN Home' + args.message);
+      populateSearchResults();
+    });
 
     var init = function () {
       self.imgPath = imgConstants.dashboardPath;
@@ -31,11 +28,24 @@ homeModule.
       delegateFactory.fetchData(config, onSuccess, onError);
     };
 
+    function populateSearchResults() {
+      genericServices.showSpinner();
+
+      var config = angular.copy(sharedValues.apiConfig.books_search);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [$rootScope.data.searchString]);
+      //set generatedUrl to config variable
+      config.url = generatedUrl;
+
+      delegateFactory.fetchData(config, onSuccess, onError);
+    };
+
     self.goToGrid = function (id) {
+      $rootScope.data.searchString = '';
       $state.go('home.grid', { id: id });
     };
 
     self.toDetails = function (item) {
+      $rootScope.data.searchString = '';
       $state.go('home.details');
     };
 
@@ -43,6 +53,14 @@ homeModule.
       var params = {};
       switch (response.config.key) {
         case 'books_pagesize':
+          var result = response.data;
+          if (result.meta.status === 'success') {
+            self.books.newReleasesList = result.data.data;
+          } else {
+            //error
+          }
+          break;
+        case 'books_search':
           var result = response.data;
           if (result.meta.status === 'success') {
             self.books.newReleasesList = result.data.data;
