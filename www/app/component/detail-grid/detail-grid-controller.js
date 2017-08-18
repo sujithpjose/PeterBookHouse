@@ -4,15 +4,7 @@ gridModule.
     self.gridModal = {};
 
     self.books = {};
-    self.books.newReleasesList = [
-      { 'book': 'Book1' },
-      { 'book': 'Book2' },
-      { 'book': 'Book3' },
-      { 'book': 'Book4' },
-      { 'book': 'Book5' },
-      { 'book': 'Book6' },
-      { 'book': 'Book7' }
-    ];
+    self.books.newReleasesList = [];
 
     var init = function () {
       self.profilePath = imgConstants.sharedPath;
@@ -27,6 +19,28 @@ gridModule.
       delegateFactory.fetchData(config, onSuccess, onError);
     };
 
+    function populateSearchResults() {
+      genericServices.showSpinner();
+
+      var config = angular.copy(sharedValues.apiConfig.books_search);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [$rootScope.data.searchString]);
+      //set generatedUrl to config variable
+      config.url = generatedUrl;
+
+      delegateFactory.fetchData(config, onSuccess, onError);
+    };
+
+    function populateCategoriesList(name) {
+      genericServices.showSpinner();
+
+      var config = angular.copy(sharedValues.apiConfig.books_category);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [name]);
+      //set generatedUrl to config variable
+      config.url = generatedUrl;
+      
+      delegateFactory.fetchData(config, onSuccess, onError);
+    };
+
     self.$on('search', function (event, args) {
       self.message = args.message;
       console.log('IN Grid' + self.message);
@@ -36,19 +50,14 @@ gridModule.
       $state.go('home.details');
     };
 
-    self.updateGrid = function () {
-      // self.books.newReleasesList = [
-      //   { 'book': 'Book1' },
-      //   { 'book': 'Book2' },
-      //   { 'book': 'Book3' },
-      //   { 'book': 'Book4' },
-      // ];
+    self.fetchCategory = function (name) {
+      populateCategoriesList(name);
     };
 
     var setScopeValuesOnSuccess = function (response) {
       var params = {};
       switch (response.config.key) {
-        case 'getBooks':
+        case 'books_category':
           var result = response.data;
           if (result.meta.status === 'success') {
             self.books.newReleasesList = result.data.data;
@@ -60,6 +69,7 @@ gridModule.
           var result = response.data;
           if (result.meta.status === 'success') {
             self.books.categoryList = result.data;
+            populateCategoriesList(self.books.categoryList[0].name);
           } else {
             //error
           }

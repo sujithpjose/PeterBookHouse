@@ -85,3 +85,8 @@ footer {background: #aaa;color:white;}
     /* For desktop: */
     .book-detail-grid {width: 23.5%;}
 }
+
+.article h2, .article p {
+    overflow: hidden;
+    white-space: nowrap;
+}

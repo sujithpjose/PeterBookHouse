@@ -4,7 +4,7 @@
   <nav class="card cardview nav left-nav">
     <ul class="left-nav-ul">
 
-      <li ng-repeat="item in books.categoryList">
+      <li ng-click="fetchCategory(item.name)" ng-repeat="item in books.categoryList">
         <a href="#">{{item.name}}</a>
       </li>
 
@@ -16,17 +16,16 @@
       <div class="item item-text-wrap no-padding text-center">
         <div class="item item-body">
           <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
-          <p>
-            Christophor Nolan
+          <h2 class="text-wrap"> {{ book.name}} </h2>
+          <p class="text-wrap">
+            {{ book.author}}
           </p>
-
-          <h2> Cinema </h2>
 
         </div>
       </div>
     </div>
   </article>
-  
+
 </div>
 
 
