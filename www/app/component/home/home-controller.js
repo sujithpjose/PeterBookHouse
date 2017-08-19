@@ -1,9 +1,13 @@
 homeModule.
   controller('HomeController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'loginService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, loginService) {
     var self = $scope;
+    var pageSize = 4;
 
     self.books = {};
-    self.books.newReleasesList = [];
+    self.books.favouritesList = [];
+    self.books.homeList1 = [];
+    self.books.homeList2 = [];
+    self.books.homeList3 = [];
 
     self.$on('search', function (event, args) {
       console.log('IN Home' + args.message);
@@ -11,18 +15,67 @@ homeModule.
     });
 
     var init = function () {
-      self.imgPath = imgConstants.dashboardPath;
-      self.profilePath = imgConstants.sharedPath;
-      self.sharedPath = imgConstants.imgPath;
+      self.imgPath = sharedConstants.assetsBaseUrl;
+      
       populateFavourites();
+      populateHomeList1();
+      populateHomeList2();
+      populateHomeList3();
+    };
+
+    function populateFictionList() {
+      genericServices.showSpinner();
+
+      var config = angular.copy(sharedValues.apiConfig.getbooks);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [8, 'Fiction', '']);
+      //set generatedUrl to config variable
+      config.url = generatedUrl;
+
+      delegateFactory.fetchData(config, onSuccess, onError);
     };
 
     function populateFavourites() {
       genericServices.showSpinner();
 
-      var config = angular.copy(sharedValues.apiConfig.books_pagesize);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [12]);
+      var config = angular.copy(sharedValues.apiConfig.getbooks);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, '', '']);
       //set generatedUrl to config variable
+      config.url = generatedUrl;
+
+      delegateFactory.fetchData(config, onSuccess, onError);
+    };
+
+    function populateHomeList1() {
+      genericServices.showSpinner();
+
+      var config = angular.copy(sharedValues.apiConfig.getbooks);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.one, '']);
+      //set generatedUrl to config variable
+      config.key = sharedConstants.homeList.one;
+      config.url = generatedUrl;
+
+      delegateFactory.fetchData(config, onSuccess, onError);
+    };
+
+    function populateHomeList2() {
+      genericServices.showSpinner();
+
+      var config = angular.copy(sharedValues.apiConfig.getbooks);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.two, '']);
+      //set generatedUrl to config variable
+      config.key = sharedConstants.homeList.two;
+      config.url = generatedUrl;
+
+      delegateFactory.fetchData(config, onSuccess, onError);
+    };
+
+    function populateHomeList3() {
+      genericServices.showSpinner();
+
+      var config = angular.copy(sharedValues.apiConfig.getbooks);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.three, '']);
+      //set generatedUrl to config variable
+      config.key = sharedConstants.homeList.three;
       config.url = generatedUrl;
 
       delegateFactory.fetchData(config, onSuccess, onError);
@@ -39,9 +92,9 @@ homeModule.
       delegateFactory.fetchData(config, onSuccess, onError);
     };
 
-    self.goToGrid = function (id) {
+    self.goToGrid = function (name) {
       $rootScope.data.searchString = '';
-      $state.go('home.grid', { id: id });
+      $state.go('home.grid', { id: name });
     };
 
     self.toDetails = function (item) {
@@ -52,12 +105,41 @@ homeModule.
     var setScopeValuesOnSuccess = function (response) {
       var params = {};
       switch (response.config.key) {
-        case 'books_pagesize':
+
+        case 'getbooks':
           var result = response.data;
           if (result.meta.status === 'success') {
-            self.books.newReleasesList = result.data.data;
+            self.books.favouritesList = result.data.data;
           } else {
             //error
+            self.books.favouritesList = [];
+          }
+          break;
+        case sharedConstants.homeList.one:
+          var result = response.data;
+          if (result.meta.status === 'success') {
+            self.books.homeList1 = result.data.data;
+          } else {
+            //error
+            self.books.homeList1 = [];
+          }
+          break;
+        case sharedConstants.homeList.two:
+          var result = response.data;
+          if (result.meta.status === 'success') {
+            self.books.homeList2 = result.data.data;
+          } else {
+            //error
+            self.books.homeList2 = [];
+          }
+          break;
+        case sharedConstants.homeList.three:
+          var result = response.data;
+          if (result.meta.status === 'success') {
+            self.books.homeList3 = result.data.data;
+          } else {
+            //error
+            self.books.homeList3 = [];
           }
           break;
         case 'books_search':
@@ -66,6 +148,7 @@ homeModule.
             self.books.newReleasesList = result.data.data;
           } else {
             //error
+            self.books.newReleasesList = [];
           }
           break;
         default:

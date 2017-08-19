@@ -4,15 +4,20 @@
   <nav class="card cardview nav left-nav">
     <ul class="left-nav-ul">
 
-      <li ng-click="fetchCategory(item.name)" ng-repeat="item in books.categoryList" >
-        <a href="#">{{item.name}}</a>
+      <li ng-click="fetchCategory(item.name)" ng-repeat="item in books.category">
+        <a ng-class="{'selected': item.activated == 'Y'}" href="#">{{item.name}}</a>
       </li>
 
     </ul>
   </nav>
 
   <article class="article">
-    <div ng-repeat="book in books.newReleasesList track by $index" class="book-detail-grid" ng-click="toDetails(item)">
+    <div ng-show="books.categoryList.length == 0" class="row row-center match-parent">
+      <div class="col col-center text-center">
+        <p> No Results Found </p>
+      </div>
+    </div>
+    <div ng-repeat="book in books.categoryList track by $index" class="book-detail-grid" ng-click="toDetails(item)">
       <div class="item item-text-wrap no-padding text-center">
         <div class="item item-body">
           <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
@@ -24,7 +29,22 @@
         </div>
       </div>
     </div>
-  </article>
+    <div ng-show="gridModal.hasPagination" class="row">
+      <div class="col text-right">
+        <ul class="pagination">
+          <li class="page-item disabled" ng-click="doPagination('Previous')">
+            <a tabindex="-1">Previous</a>
+          </li>
+          <li ng-repeat="i in paginationList" class="page-item" ng-click="doPagination(i)"><a >{{i}}</a></li>
+
+          <li class="page-item" ng-click="doPagination('Next')">
+            <a >Next</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+</article>
 
 </div>
 

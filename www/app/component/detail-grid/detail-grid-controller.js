@@ -1,10 +1,22 @@
 gridModule.
   controller('GridController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'loginService', '$stateParams', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, loginService, $stateParams) {
     var self = $scope;
-    self.gridModal = {};
+    var pageSize = 8;
+    self.gridModal = {
+      hasPagination: true,
+      currentPage: 1
+    };
+
+
 
     self.books = {};
-    self.books.newReleasesList = [];
+    self.books.category = [];
+    self.books.categoryList = [];
+
+    self.$on('search', function (event, args) {
+      self.message = args.message;
+      console.log('IN Grid' + self.message);
+    });
 
     var init = function () {
       self.profilePath = imgConstants.sharedPath;
@@ -32,19 +44,28 @@ gridModule.
 
     function populateCategoriesList(name) {
       genericServices.showSpinner();
+      toggleStyle(name);
 
-      var config = angular.copy(sharedValues.apiConfig.books_category);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [name]);
+      var config = angular.copy(sharedValues.apiConfig.getbooks);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, name, '']);
       //set generatedUrl to config variable
       config.url = generatedUrl;
-      
+
       delegateFactory.fetchData(config, onSuccess, onError);
     };
 
-    self.$on('search', function (event, args) {
-      self.message = args.message;
-      console.log('IN Grid' + self.message);
-    });
+    function toggleStyle(name) {
+      var length = self.books.category.length;
+
+      for (var i = 0; i < length; i++) {
+        if (name == self.books.category[i].name) {
+          self.books.category[i].activated = 'Y';
+        } else {
+          self.books.category[i].activated = 'N';
+        }
+      }
+
+    };
 
     self.toDetails = function (item) {
       $state.go('home.details');
@@ -54,22 +75,50 @@ gridModule.
       populateCategoriesList(name);
     };
 
+    function setupPagination(param) {
+      self.paginationList = [];
+      var length = param.last_page;
+      if (length > 1) {
+        self.gridModal.hasPagination = true;
+        for (var i = 0; i < length; i++) {
+          self.paginationList.push(i + 1);
+        }
+      } else {
+        //no need for pagination
+        self.gridModal.hasPagination = false;
+      }
+
+    };
+
+    self.doPagination = function (param) {
+      switch (param) {
+        case 'Previous':
+          break;
+        case 'Next':
+          break;
+        default:
+      }
+
+    };
+
     var setScopeValuesOnSuccess = function (response) {
       var params = {};
       switch (response.config.key) {
-        case 'books_category':
+        case 'getbooks':
           var result = response.data;
           if (result.meta.status === 'success') {
-            self.books.newReleasesList = result.data.data;
+            self.books.categoryList = result.data.data;
+            setupPagination(result.data);
           } else {
             //error
+            self.books.categoryList = [];
           }
           break;
         case 'getcategories':
           var result = response.data;
           if (result.meta.status === 'success') {
-            self.books.categoryList = result.data;
-            populateCategoriesList(self.books.categoryList[0].name);
+            self.books.category = result.data;
+            populateCategoriesList($stateParams.id);
           } else {
             //error
           }

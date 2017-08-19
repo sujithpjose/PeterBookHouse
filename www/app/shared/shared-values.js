@@ -2,7 +2,14 @@ sharedModule.value('sharedValues', {
 
     'title': 'Oracle HRMS',
     'apiConfig': {
-         
+        'getbooks': {
+            'method': 'GET',
+            'url': 'getbooks/?pagesize={?}&category={?}&search={?}',
+            'doSave': 'N',
+            'key': 'getbooks',
+            'methodName': 'getbooks'
+        }, 
+
         'books_pagesize': {
             'method': 'GET',
             'url': 'getbooks/?pagesize={?}',

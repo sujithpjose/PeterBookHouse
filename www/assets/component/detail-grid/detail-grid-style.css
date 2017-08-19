@@ -90,3 +90,39 @@ footer {background: #aaa;color:white;}
     overflow: hidden;
     white-space: nowrap;
 }
+
+.left-nav-ul li a.selected {
+    color: #2C3D52;
+}
+
+.col.pagination-col {
+    border: 1px solid blue;
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+}
+.pagination {
+    float: right;
+}
+
+.page-item {
+    float: left;
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+}
+
+.page-item a {
+    text-decoration: none;
+}
+
+.page-item:hover, .page-item:hover a {
+    background: #ddd;
+    color: #a2a2a2;
+}
+
+.page-item.disabled,.page-item.disabled a {
+    background: #ffffff;
+    color: #a2a2a2;
+}
+

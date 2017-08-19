@@ -17,34 +17,165 @@
 <!------------------- main content ------------------------------>
 
 <!-- Favorites -->
-<div class="row header-row">
-  <div class="col text-left">
-    <h3>Favorites</h3>
-  </div>
-  <div class="col text-right">
-    <button class="button button-stable" ng-click="goToGrid()">
+<div ng-if="false">
+  <div class="row header-row">
+    <div class="col text-left">
+      <h3>Favorites</h3>
+    </div>
+    <div class="col text-right">
+      <button class="button button-stable" ng-click="goToGrid()">
         VIEW ALL
         </button>
+    </div>
   </div>
-</div>
 
-<div class="text-left">
-<div class="grid-container">
-  <div ng-repeat="book in books.newReleasesList track by $index" class="book-grid" ng-click="toDetails(book)">
-    <div class="item item-text-wrap no-padding text-center">
-      <div class="item item-body">
-        <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
-       
-        <h2 class="text-wrap"> {{ book.name}} </h2>
-        <p class="text-wrap">
-          {{ book.author}}
-        </p>
+  <!-- no data -->
+  <div ng-show="books.favouritesList.length == 0" class="row row-center">
+    <div class="col col-center text-center">
+      <p> No Results Found </p>
+    </div>
+  </div>
+  <!-- no data -->
+
+  <div class="grid-container">
+    <div ng-repeat="book in books.favouritesList track by $index" class="book-grid" ng-click="toDetails(book)">
+      <div class="item item-text-wrap no-padding text-center">
+        <div class="item item-body">
+          <!-- <img class="full-image" ng-src="{{imgPath+book.image_url}}" /> -->
+          <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
+
+          <h2 class="text-wrap"> {{ book.name}} </h2>
+          <p class="text-wrap">
+            {{ book.author}}
+          </p>
+        </div>
       </div>
     </div>
   </div>
-  </div>
+
 </div>
 <!-- Favorites -->
+
+
+<!-- HomeList1 -->
+<div>
+  <div class="row header-row">
+    <div class="col text-left">
+      <h3>Fiction</h3>
+    </div>
+    <div class="col text-right">
+      <button class="button button-stable" ng-click="goToGrid('Fiction')">
+          VIEW ALL
+          </button>
+    </div>
+  </div>
+
+  <!-- no data -->
+  <div ng-show="books.homeList1.length == 0" class="row row-center">
+    <div class="col col-center text-center">
+      <p> No Results Found </p>
+    </div>
+  </div>
+  <!-- no data -->
+
+  <div class="grid-container">
+    <div ng-repeat="book in books.homeList1 track by $index" class="book-grid" ng-click="toDetails(book)">
+      <div class="item item-text-wrap no-padding text-center">
+        <div class="item item-body">
+          <!-- <img class="full-image" ng-src="{{imgPath+book.image_url}}" /> -->
+          <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
+
+          <h2 class="text-wrap"> {{ book.name}} </h2>
+          <p class="text-wrap">
+            {{ book.author}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- HomeList1 -->
+
+<!-- HomeList2 -->
+<div>
+  <div class="row header-row">
+    <div class="col text-left">
+      <h3>Short Stories</h3>
+    </div>
+    <div class="col text-right">
+      <button class="button button-stable" ng-click="goToGrid('Short Stories')">
+            VIEW ALL
+            </button>
+    </div>
+  </div>
+
+  <!-- no data -->
+  <div ng-show="books.homeList2.length == 0" class="row row-center">
+    <div class="col col-center text-center">
+      <p> No Results Found </p>
+    </div>
+  </div>
+  <!-- no data -->
+
+  <div class="grid-container">
+    <div ng-repeat="book in books.homeList2 track by $index" class="book-grid" ng-click="toDetails(book)">
+      <div class="item item-text-wrap no-padding text-center">
+        <div class="item item-body">
+         <!-- <img class="full-image" ng-src="{{imgPath+book.image_url}}" /> -->
+         <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
+
+          <h2 class="text-wrap"> {{ book.name}} </h2>
+          <p class="text-wrap">
+            {{ book.author}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- HomeList2 -->
+
+<!-- HomeList3 -->
+<div>
+  <div class="row header-row">
+    <div class="col text-left">
+      <h3>Fiction/Classics</h3>
+    </div>
+    <div class="col text-right">
+      <button class="button button-stable" ng-click="goToGrid('Fiction/Classics')">
+            VIEW ALL
+            </button>
+    </div>
+  </div>
+
+  <!-- no data -->
+  <div ng-show="books.homeList3.length == 0" class="row row-center">
+    <div class="col col-center text-center">
+      <p> No Results Found </p>
+    </div>
+  </div>
+  <!-- no data -->
+
+  <div class="grid-container">
+    <div ng-repeat="book in books.homeList3 track by $index" class="book-grid" ng-click="toDetails(book)">
+      <div class="item item-text-wrap no-padding text-center">
+        <div class="item item-body">
+          <!-- <img class="full-image" ng-src="{{imgPath+book.image_url}}" /> -->
+          <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
+
+          <h2 class="text-wrap"> {{ book.name}} </h2>
+          <p class="text-wrap">
+            {{ book.author}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- HomeList3 -->
 
 
 <!-- <ion-slides slider="swiper" options="swiperOptions">
