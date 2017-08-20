@@ -9,7 +9,7 @@
 }
 
 .plans-header {
-  margin-top: 15px;
+  margin-top: 0px;
   background: #DEDEDE;
   text-align: center;
   color: #2D3D54;
@@ -41,4 +41,8 @@ color: white;
 
 .plans-footer-btn .button.activated {
 background: #2C3D52;
+}
+
+.detail-title {
+  margin: 10px 0;
 }

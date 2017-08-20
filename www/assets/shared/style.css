@@ -593,3 +593,7 @@ margin-bottom: 5px;
 /*.ion-datetime-picker .calendar .day.selected, .ion-datetime-picker .calendar .day.selected:hover, .ion-datetime-picker .calendar .day.selected.activated {
     background-color: #C32E27;
 }*/
+
+.text-justify {
+    text-align: justify;
+}

@@ -1,21 +1,24 @@
 <!------------------- main content ------------------------------>
 <div class="row">
-    <div class="col">
+    <div class="col col-33">
         <div class="item item-text-wrap no-padding text-center">
             <div class="item item-body">
                 <img class="full-image" ng-src="http://loremflickr.com/320/240?random=15" />
-                <p>
-                    Christophor Nolan
+                <div class="detail-title">
+                    <span class="text-19 text-black"> {{ bookItem.name}} </span>
+                    <span class="text-light"> - {{bookItem.author}} </span>
+                </div>
+                <p class="text-justify">
+                    {{ bookItem.description}}
                 </p>
 
-                <h2> Cinema </h2>
             </div>
         </div>
     </div>
     <div class="col">
-        <div class="item plans-top">
+        <!-- <div class="item plans-top">
             <span> Rented 123 times </span>
-        </div>
+        </div> -->
         <div class="item plans-header">
             <span>  Your Plans </span>
         </div>
@@ -37,7 +40,7 @@
                 <button class="button plans-footer-btn">
                 BOOK NOW
             </button>
-            <button class="button plans-footer-btn">
+                <button class="button plans-footer-btn">
                 ADD TO CART
             </button>
             </div>

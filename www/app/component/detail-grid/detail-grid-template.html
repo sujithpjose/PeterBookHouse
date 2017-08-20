@@ -17,7 +17,7 @@
         <p> No Results Found </p>
       </div>
     </div>
-    <div ng-repeat="book in books.categoryList track by $index" class="book-detail-grid" ng-click="toDetails(item)">
+    <div ng-repeat="book in books.categoryList track by $index" class="book-detail-grid" ng-click="toDetails(book)">
       <div class="item item-text-wrap no-padding text-center">
         <div class="item item-body">
           <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
@@ -29,20 +29,22 @@
         </div>
       </div>
     </div>
-    <div ng-show="gridModal.hasPagination" class="row">
-      <div class="col text-right">
-        <ul class="pagination">
-          <li class="page-item disabled" ng-click="doPagination('Previous')">
+    <!-- Pagination componenet -->
+    <div ng-show="gridModal.hasPagination" class="row pagination">
+      <div class="col text-right no-padding">
+        <ul >
+          <li class="page-item disabled page-item-previous" ng-click="doPagination('Previous')">
             <a tabindex="-1">Previous</a>
           </li>
-          <li ng-repeat="i in paginationList" class="page-item" ng-click="doPagination(i)"><a >{{i}}</a></li>
+          <li ng-repeat="i in paginationList" class="page-item" ng-click="doPagination(i)"><a>{{i}}</a></li>
 
-          <li class="page-item" ng-click="doPagination('Next')">
-            <a >Next</a>
+          <li class="page-item page-item-next" ng-click="doPagination('Next')">
+            <a>Next</a>
           </li>
         </ul>
       </div>
     </div>
+    <!-- Pagination componenet -->
 </div>
 </article>
 
