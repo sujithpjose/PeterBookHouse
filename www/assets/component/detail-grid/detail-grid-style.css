@@ -136,3 +136,8 @@ footer {background: #aaa;color:white;}
     color: #a2a2a2;
 }
 
+.page-item-activated, .page-item-activated a {
+    background: #3A95D6;
+    color: #ffffff;
+}
+

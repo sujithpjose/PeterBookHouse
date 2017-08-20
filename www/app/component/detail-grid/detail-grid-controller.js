@@ -2,8 +2,10 @@ gridModule.
   controller('GridController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'loginService', '$stateParams', 'bookService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, loginService, $stateParams, bookService) {
     var self = $scope;
     var pageSize = 8;
+    self.paginationList = [];
     self.gridModal = {
       hasPagination: true,
+      isPagination: false,
       currentPage: 1,
       category: '',
       lastPage: 2//for testing
@@ -21,6 +23,7 @@ gridModule.
     self.books.categoryList = [];
 
     self.$watch('gridModal.currentPage', function () {
+      toggleActivated();
       if (self.gridModal.currentPage === 1) {
         self.pagination.previousDisabled = 'Y';
       } else {
@@ -32,6 +35,17 @@ gridModule.
         self.pagination.nextDisabled = 'N';
       }
     });
+
+    function toggleActivated() {
+      for (var i = 0; i < self.paginationList.length; i++) {
+        if (self.paginationList[i].index == self.gridModal.currentPage) {
+          self.paginationList[i].class = 'page-item-activated';
+        } else {
+          self.paginationList[i].class = '';
+        }
+
+      }
+    };
 
     self.$on('search', function (event, args) {
       self.message = args.message;
@@ -95,6 +109,7 @@ gridModule.
     };
 
     self.fetchCategory = function (name) {
+      self.gridModal.isPagination = false;
       self.gridModal.category = name;
       self.pagination.previousDisabled = 'Y';
       self.pagination.nextDisabled = 'N';
@@ -108,7 +123,14 @@ gridModule.
       if (length > 1) {
         self.gridModal.hasPagination = true;
         for (var i = 0; i < length; i++) {
-          self.paginationList.push(i + 1);
+          var paginationObject = {
+            index: i + 1,
+            class: ''
+          }
+          if (i == 0) {
+            paginationObject.class = 'page-item-activated';
+          }
+          self.paginationList.push(paginationObject);
         }
       } else {
         //no need for pagination
@@ -118,6 +140,7 @@ gridModule.
     };
 
     self.doPagination = function (param) {
+      self.gridModal.isPagination = true;
       switch (param) {
         case 'Previous':
           if (self.gridModal.currentPage > 1) {
@@ -137,6 +160,8 @@ gridModule.
           }
           break;
         default:
+          self.gridModal.currentPage = param;
+          populateCategoriesList();
       }
 
     };
@@ -148,7 +173,9 @@ gridModule.
           var result = response.data;
           if (result.meta.status === 'success') {
             self.books.categoryList = result.data.data;
-            setupPagination(result.data);
+            if (!self.gridModal.isPagination) {
+              setupPagination(result.data);
+            }
           } else {
             //error
             self.books.categoryList = [];

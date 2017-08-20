@@ -32,11 +32,11 @@
     <!-- Pagination componenet -->
     <div ng-show="gridModal.hasPagination" class="row pagination">
       <div class="col text-right no-padding">
-        <ul >
+        <ul>
           <li class="page-item page-item-previous" ng-class="{'disabled': pagination.previousDisabled == 'Y'}" ng-click="doPagination('Previous')">
             <a tabindex="-1">Previous</a>
           </li>
-          <li ng-repeat="i in paginationList" class="page-item" ng-click="doPagination(i)"><a>{{i}}</a></li>
+          <li ng-repeat="item in paginationList" class="page-item {{item.class}}" ng-click="doPagination(item.index)"><a>{{item.index}}</a></li>
 
           <li class="page-item page-item-next" ng-class="{'disabled': pagination.nextDisabled == 'Y'}" ng-click="doPagination('Next')">
             <a>Next</a>
