@@ -4,49 +4,60 @@
         <div class="item item-text-wrap no-padding text-center">
             <div class="item item-body">
                 <img class="full-image" ng-src="http://loremflickr.com/320/240?random=15" />
-                <div class="detail-title">
-                    <span class="text-19 text-black"> {{ bookItem.name}} </span>
-                    <span class="text-light"> - {{bookItem.author}} </span>
-                </div>
-                <p class="text-justify">
-                    {{ bookItem.description}}
-                </p>
-
             </div>
         </div>
     </div>
     <div class="col">
-        <!-- <div class="item plans-top">
-            <span> Rented 123 times </span>
-        </div> -->
-        <div class="item plans-header">
-            <span>  Your Plans </span>
-        </div>
+        <div class="row">
+            <div class="col col-60">
+                <span class="text-24 text-black"> {{ bookItem.name}} </span>
+                <span class="text-blue"> - {{bookItem.author}} </span>
 
-        <ion-list class="plans-select-list">
-            <ion-radio ng-model="choice" ng-value="'A'">Plan 1 </ion-radio>
-            <ion-radio ng-model="choice" ng-value="'B'">Plan 2 </ion-radio>
-            <ion-radio ng-model="choice" ng-value="'C'">Plan 3 </ion-radio>
-            <ion-radio ng-model="choice" ng-value="'D'">Plan 4 </ion-radio>
-            <ion-radio ng-model="choice" ng-value="'E'">Plan 5 </ion-radio>
+                <p class="detail-summary">
+                    {{ bookItem.description}}
+                </p>
+            </div>
+
+            <div class="col">
+                <!-- <div class="item plans-top">
+                                <span> Rented 123 times </span>
+                            </div> -->
+                <div class="item plans-header">
+                    <span>  Your Plans </span>
+                </div>
+
+                <ion-list class="plans-select-list">
+                    <ion-radio ng-model="choice" ng-value="'A'">Plan 1 </ion-radio>
+                    <ion-radio ng-model="choice" ng-value="'B'">Plan 2 </ion-radio>
+                    <ion-radio ng-model="choice" ng-value="'C'">Plan 3 </ion-radio>
+                    <ion-radio ng-model="choice" ng-value="'D'">Plan 4 </ion-radio>
+                    <!-- <ion-radio ng-model="choice" ng-value="'E'">Plan 5 </ion-radio>
             <ion-radio ng-model="choice" ng-value="'F'">Plan 6 </ion-radio>
             <ion-radio ng-model="choice" ng-value="'G'">Plan 7 </ion-radio>
-            <ion-radio ng-model="choice" ng-value="'H'">Plan 8 </ion-radio>
+            <ion-radio ng-model="choice" ng-value="'H'">Plan 8 </ion-radio> -->
 
-        </ion-list>
-
-        <div class="plans-footer">
-            <div>
-                <button class="button plans-footer-btn">
-                BOOK NOW
-            </button>
-                <button class="button plans-footer-btn">
-                ADD TO CART
-            </button>
+                </ion-list>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-right">
+                <div class="plans-footer">
+                        <button class="button plans-footer-btn">
+                                            BOOK NOW
+                                        </button>
+                        <button class="button plans-footer-btn">
+                                            ADD TO CART
+                                        </button>
+                </div>
             </div>
         </div>
     </div>
+
+
+
 </div>
+
+
 
 
 

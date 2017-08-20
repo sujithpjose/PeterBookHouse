@@ -79,6 +79,11 @@ gridModule.
 
     function populateCategoriesList() {
       genericServices.showSpinner();
+      if (genericServices.isEmpty(self.gridModal.category)) {
+        self.gridModal.category = self.books.category[0].name;
+        self.gridModal.hasPagination = false;
+      }
+     
       toggleStyle();
 
       var config = angular.copy(sharedValues.apiConfig.getbooks);
@@ -110,6 +115,7 @@ gridModule.
 
     self.fetchCategory = function (name) {
       self.gridModal.isPagination = false;
+      self.gridModal.hasPagination = false;
       self.gridModal.category = name;
       self.pagination.previousDisabled = 'Y';
       self.pagination.nextDisabled = 'N';
@@ -151,6 +157,7 @@ gridModule.
             // self.pre_disabled = true;
           }
           break;
+
         case 'Next':
           if (self.gridModal.currentPage < self.gridModal.lastPage) {
             self.gridModal.currentPage = self.gridModal.currentPage + 1;
@@ -159,6 +166,7 @@ gridModule.
             // disable Next
           }
           break;
+
         default:
           self.gridModal.currentPage = param;
           populateCategoriesList();

@@ -1,5 +1,5 @@
 .plans-select-list .list {
-  height: 300px;
+  height: 220px;
   overflow-y: scroll;
 }
 
@@ -45,4 +45,18 @@ background: #2C3D52;
 
 .detail-title {
   margin: 10px 0;
+  width: 100%;
+}
+
+.detail-right-container {
+  background: white;
+}
+
+.detail-summary {
+  text-align: justify;
+  color: #8E8E93;
+  /* height: 350px; */
+  overflow-y: scroll;
+  margin: 10px 0;
+  /* background: white; */
 }

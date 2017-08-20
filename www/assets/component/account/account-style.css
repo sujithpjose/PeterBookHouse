@@ -1,0 +1,18 @@
+.order-table .header .col {
+    background-color:#ddd;
+}
+
+.order-table .col {
+    border: solid 1px #ccc;
+    border-bottom-style: none;
+    border-right-style: none;
+    background: white;
+}
+
+.order-table .col:last-child {
+    border-right: solid 1px #ccc;
+}
+
+.order-table .row:last-child .col {
+    border-bottom: solid 1px #ccc;
+}
