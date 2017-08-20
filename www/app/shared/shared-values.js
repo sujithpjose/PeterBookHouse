@@ -4,7 +4,7 @@ sharedModule.value('sharedValues', {
     'apiConfig': {
         'getbooks': {
             'method': 'GET',
-            'url': 'getbooks/?pagesize={?}&category={?}&search={?}',
+            'url': 'getbooks/?pagesize={?}&category={?}&page={?}&search={?}',
             'doSave': 'N',
             'key': 'getbooks',
             'methodName': 'getbooks'

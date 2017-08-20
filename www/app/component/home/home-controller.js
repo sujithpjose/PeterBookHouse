@@ -38,7 +38,7 @@ homeModule.
       genericServices.showSpinner();
 
       var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, '', '']);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, '',1, '']);
       //set generatedUrl to config variable
       config.url = generatedUrl;
 
@@ -49,7 +49,7 @@ homeModule.
       genericServices.showSpinner();
 
       var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.one, '']);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.one,1, '']);
       //set generatedUrl to config variable
       config.key = sharedConstants.homeList.one;
       config.url = generatedUrl;
@@ -61,7 +61,7 @@ homeModule.
       genericServices.showSpinner();
 
       var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.two, '']);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.two,1, '']);
       //set generatedUrl to config variable
       config.key = sharedConstants.homeList.two;
       config.url = generatedUrl;
@@ -73,7 +73,7 @@ homeModule.
       genericServices.showSpinner();
 
       var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.three, '']);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.three,1, '']);
       //set generatedUrl to config variable
       config.key = sharedConstants.homeList.three;
       config.url = generatedUrl;

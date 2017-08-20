@@ -4,14 +4,34 @@ gridModule.
     var pageSize = 8;
     self.gridModal = {
       hasPagination: true,
-      currentPage: 1
+      currentPage: 1,
+      category: '',
+      lastPage: 2//for testing
     };
+
+    self.pagination = {
+      previousDisabled: 'Y',
+      nextDisabled: 'N',
+    }
 
 
 
     self.books = {};
     self.books.category = [];
     self.books.categoryList = [];
+
+    self.$watch('gridModal.currentPage', function () {
+      if (self.gridModal.currentPage === 1) {
+        self.pagination.previousDisabled = 'Y';
+      } else {
+        self.pagination.previousDisabled = 'N';
+      }
+      if (self.gridModal.currentPage === self.gridModal.lastPage) {
+        self.pagination.nextDisabled = 'Y';
+      } else {
+        self.pagination.nextDisabled = 'N';
+      }
+    });
 
     self.$on('search', function (event, args) {
       self.message = args.message;
@@ -21,6 +41,7 @@ gridModule.
     var init = function () {
       self.profilePath = imgConstants.sharedPath;
       self.sharedPath = imgConstants.imgPath;
+      self.gridModal.category = $stateParams.id;
       populateCategories();
     };
 
@@ -42,23 +63,23 @@ gridModule.
       delegateFactory.fetchData(config, onSuccess, onError);
     };
 
-    function populateCategoriesList(name) {
+    function populateCategoriesList() {
       genericServices.showSpinner();
-      toggleStyle(name);
+      toggleStyle();
 
       var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, name, '']);
+      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, self.gridModal.category, self.gridModal.currentPage, '']);
       //set generatedUrl to config variable
       config.url = generatedUrl;
 
       delegateFactory.fetchData(config, onSuccess, onError);
     };
 
-    function toggleStyle(name) {
+    function toggleStyle() {
       var length = self.books.category.length;
 
       for (var i = 0; i < length; i++) {
-        if (name == self.books.category[i].name) {
+        if (self.gridModal.category == self.books.category[i].name) {
           self.books.category[i].activated = 'Y';
         } else {
           self.books.category[i].activated = 'N';
@@ -74,12 +95,16 @@ gridModule.
     };
 
     self.fetchCategory = function (name) {
-      populateCategoriesList(name);
+      self.gridModal.category = name;
+      self.pagination.previousDisabled = 'Y';
+      self.pagination.nextDisabled = 'N';
+      populateCategoriesList();
     };
 
     function setupPagination(param) {
       self.paginationList = [];
-      var length = param.last_page;
+      self.gridModal.lastPage = param.last_page;
+      var length = self.gridModal.lastPage;
       if (length > 1) {
         self.gridModal.hasPagination = true;
         for (var i = 0; i < length; i++) {
@@ -95,8 +120,21 @@ gridModule.
     self.doPagination = function (param) {
       switch (param) {
         case 'Previous':
+          if (self.gridModal.currentPage > 1) {
+            self.gridModal.currentPage = self.gridModal.currentPage - 1;
+            populateCategoriesList();
+          } else {
+            // disable Previous
+            // self.pre_disabled = true;
+          }
           break;
         case 'Next':
+          if (self.gridModal.currentPage < self.gridModal.lastPage) {
+            self.gridModal.currentPage = self.gridModal.currentPage + 1;
+            populateCategoriesList();
+          } else {
+            // disable Next
+          }
           break;
         default:
       }
@@ -120,7 +158,7 @@ gridModule.
           var result = response.data;
           if (result.meta.status === 'success') {
             self.books.category = result.data;
-            populateCategoriesList($stateParams.id);
+            populateCategoriesList();
           } else {
             //error
           }
