@@ -600,3 +600,10 @@ margin-bottom: 5px;
 .text-justify {
     text-align: justify;
 }
+
+.table-btn {
+    min-height: 25px;
+    line-height: 0;
+    width: 100%;
+    font-size: 12px;
+}
