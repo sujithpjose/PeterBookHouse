@@ -211,7 +211,7 @@ homeModule.
     };
 
     //init method to call while controller loading
-    // init();
+    init();
 
   }]);
 

@@ -1,0 +1,44 @@
+<!------------------- main content ------------------------------>
+
+<div class="flex-container match-parent">
+  <article class="article">
+    <div ng-show="books.categoryList.length == 0" class="row row-center match-parent">
+      <div class="col col-center text-center">
+        <p> No Results Found </p>
+      </div>
+    </div>
+    <div ng-repeat="book in books.categoryList track by $index" class="book-detail-grid" ng-click="toDetails(book)">
+      <div class="item item-text-wrap no-padding text-center">
+        <div class="item item-body">
+          <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" />
+          <h2 class="text-wrap"> {{ book.name}} </h2>
+          <p class="text-wrap">
+            {{ book.author}}
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <!-- Pagination componenet -->
+    <div ng-show="gridModal.hasPagination" class="row pagination">
+      <div class="col text-right no-padding">
+        <ul>
+          <li class="page-item page-item-previous" ng-class="{'disabled': pagination.previousDisabled == 'Y'}" ng-click="doPagination('Previous')">
+            <a tabindex="-1">Previous</a>
+          </li>
+          <li ng-repeat="item in paginationList" class="page-item {{item.class}}" ng-click="doPagination(item.index)"><a>{{item.index}}</a></li>
+
+          <li class="page-item page-item-next" ng-class="{'disabled': pagination.nextDisabled == 'Y'}" ng-click="doPagination('Next')">
+            <a>Next</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Pagination componenet -->
+</div>
+</article>
+
+</div>
+
+
+<!------------------- main content ------------------------------>

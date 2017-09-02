@@ -11,6 +11,7 @@ homeContainerModule.
     };
 
     self.doSearch = function () {
+      $state.go('home.search',{searchText: $rootScope.data.searchString});
       self.$broadcast('search', { message: 'doSearch' });
     };
 
