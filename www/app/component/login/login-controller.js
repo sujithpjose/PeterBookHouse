@@ -1,5 +1,5 @@
 loginModule.
-  controller('LoginController', ['$scope', '$state', 'imgConstants', 'genericServices', '$translate', '$ionicPlatform', '$ionicHistory', '$rootScope', 'sharedValues', 'authorizationFactory', 'loginService', 'delegateFactory', 'sharedConstants', '$http', function ($scope, $state, imgConstants, genericServices, $translate, $ionicPlatform, $ionicHistory, $rootScope, sharedValues, authorizationFactory, loginService, delegateFactory, sharedConstants, $http) {
+  controller('LoginController', ['$scope', '$state', 'imgConstants', 'genericServices', '$translate', '$ionicPlatform', '$ionicHistory', '$rootScope', 'sharedValues', 'authorizationFactory', 'loginService', 'delegateFactory', 'sharedConstants', '$http','$ionicModal', function ($scope, $state, imgConstants, genericServices, $translate, $ionicPlatform, $ionicHistory, $rootScope, sharedValues, authorizationFactory, loginService, delegateFactory, sharedConstants, $http,$ionicModal) {
     var self = $scope;
     self.user = {
       username: '',
@@ -11,6 +11,34 @@ loginModule.
       captchaText: '',
       token: ''
     };
+
+    // Signup modal
+    $ionicModal.fromTemplateUrl('app/component/modal/signup-modal-template.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.openSignupModal = function() {
+      $scope.modal.show();
+    };
+    $scope.closeSignupModal = function() {
+      $scope.modal.hide();
+    };
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+
+    // Signup modal
 
     self.sharedPath = imgConstants.imgPath;
     $ionicPlatform.registerBackButtonAction(function (event) {
@@ -69,13 +97,14 @@ loginModule.
     }
     
     function invokeLogin() {
-      $http
-        .post('http://localhost/peterbookhouse/repo/webportal/public/api/login', { email: 'jobinskumar91@gmail.com', password: '123456' })
-        .then(function (response) {
-          vm.token = response.data.api_token;
-        }, function () {
-          alert('Error');
-        });
+      $state.go('store.home');
+      // $http
+      //   .post('http://localhost/peterbookhouse/repo/webportal/public/api/login', { email: 'jobinskumar91@gmail.com', password: '123456' })
+      //   .then(function (response) {
+      //     vm.token = response.data.api_token;
+      //   }, function () {
+      //     alert('Error');
+      //   });
     }
 
     function getdetails() {

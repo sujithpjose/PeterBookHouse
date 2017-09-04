@@ -4,6 +4,13 @@ loginModule.config(['$stateProvider', function ($stateProvider) {
         .state('login', {
             url: '/login',
             templateUrl: 'app/component/login/login-template.html',
-            controller: 'LoginController'
+            controller: 'LoginController',
+            cache: false
+        })
+        .state('logout', {
+            url: '/logout',
+            controller: function ($scope, $route) {
+                $route.reload()
+            }
         });
 }]);

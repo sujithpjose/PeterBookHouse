@@ -5,7 +5,7 @@
             <div class="logo-wraper">
                 <!-- <img class="app-icon" ng-src="{{sharedPath}}login_logo@1x.png" /> -->
                 <!--<div class="login_logo_title">HRMS</div>-->
-                <h2>PETER BOOK HOUSE</h2>
+                <h1>PETER BOOK HOUSE</h1>
             </div>
 
             <label class="item-input-wrapper login-input">
@@ -18,8 +18,8 @@
             <input id="password" ng-model="user.password" type="password" placeholder="{{ 'PASSWORD' | translate}}"/>
       </label>
 
-            <button class="button-light signupButton" ng-click="doLogin()">
-       SignUp
+            <button class="button-light signupButton" ng-click="openSignupModal()">
+       SignUp ?
 </button>
 
             <button class="button-light loginButton" ng-click="doLogin()">

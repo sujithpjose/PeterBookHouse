@@ -1,7 +1,9 @@
 .login-container {
-    background: linear-gradient(to bottom, rgb(10,203,254), rgb(57,123,212));
-    /* background: url(images/login_bg@3x.png); */
+    /* background: linear-gradient(to bottom, rgb(10,203,254), rgb(57,123,212)); */
+    background: url(images/bookstore.jpg);
+    /* opacity: .4; */
     background-size: 100%;
+    
 }
 .login-container .login-input  input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color:  #494c51;
@@ -52,28 +54,26 @@
     width: 100%;
 }
 .loginButton, .loginButton:hover   {
-    border-radius: 4px;
     color: #fff;
     font-weight: bold;
     text-transform: none !important;
     border: white;
-    background: green;
+    background: #1694e4;
     margin: 20px 0px 30px 0;
     width: 200px;
-    height: 50px;
+    height: 35px;
     font-size: 16px;
 }
 
 .signupButton, .signupButton:hover   {
-    border-radius: 4px;
-    color: #fff;
+    color: #2C3D52;
     font-weight: bold;
     text-transform: none !important;
     border: white;
-    background: chocolate;
+    background: white;
     margin: 20px 0px 30px 0;
     width: 200px;
-    height: 50px;
+    height: 35px;
     font-size: 16px;
 }
 
@@ -164,9 +164,9 @@
     position: absolute;
     left: 0;
     right: 0;
-    margin: 0 6%;
+    margin: 0 10%;
     top: 15%;
     text-align: center;
     background: #fff;
-    border-radius:5px;
+    /* border-radius:5px; */
 }

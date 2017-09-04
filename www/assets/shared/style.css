@@ -94,11 +94,11 @@
 
 /*Custom bar styles*/
 .bar-custom {
-    background: #990000; /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left, #990000 , #C32E27); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, #990000,#C32E27); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, #990000, #C32E27); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right,#990000 , #C32E27); /* Standard syntax (must be last) */
+    background: #2C3D52; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left, #2C3D52 , #2C3D52); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #2C3D52,#2C3D52); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #2C3D52, #2C3D52); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right,#2C3D52 , #2C3D52); /* Standard syntax (must be last) */
 }
 .bar-no-border{
     border-bottom: none;
@@ -606,4 +606,18 @@ margin-bottom: 5px;
     line-height: 0;
     width: 100%;
     font-size: 12px;
+}
+
+.register-btn {
+    /* background: #28a54c; */
+    width: 60%;
+    margin: 0;
+    padding: 0;
+}
+
+.register-btn .button {
+    color: darkgreen;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
 }
