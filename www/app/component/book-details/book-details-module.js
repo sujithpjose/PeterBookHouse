@@ -1,7 +1,7 @@
 var bookDetailsModule = angular.module('bookDetails', []);
 bookDetailsModule.config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-        .state('home.details', {
+        .state('store.details', {
             url: '/details',
             views: {
                 // 'header': {

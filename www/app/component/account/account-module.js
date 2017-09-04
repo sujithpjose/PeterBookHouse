@@ -1,7 +1,7 @@
 var accountModule = angular.module('account', []);
 accountModule.config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-        .state('home.account', {
+        .state('store.account', {
             url: '/account',
             views: {
                 // 'header': {

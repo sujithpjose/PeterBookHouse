@@ -1,7 +1,7 @@
 var searchModule = angular.module('search', []);
 searchModule.config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-        .state('home.search', {
+        .state('store.search', {
             url: '/search',
             views: {
                 // 'header': {

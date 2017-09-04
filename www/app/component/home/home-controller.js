@@ -94,13 +94,13 @@ homeModule.
 
     self.goToGrid = function (name) {
       $rootScope.data.searchString = '';
-      $state.go('home.grid', { id: name });
+      $state.go('store.category', { id: name });
     };
 
     self.toDetails = function (item) {
       bookService.setItem(item);
       $rootScope.data.searchString = '';
-      $state.go('home.details');
+      $state.go('store.details');
     };
 
     var setScopeValuesOnSuccess = function (response) {

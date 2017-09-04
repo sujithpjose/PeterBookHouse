@@ -88,7 +88,7 @@ searchModule.
     self.toDetails = function (item) {
       bookService.setItem(item);
       $rootScope.data.searchString = '';
-      $state.go('home.details');
+      $state.go('store.details');
     };
 
 

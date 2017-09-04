@@ -1,6 +1,6 @@
 .login-container {
-    /*background: linear-gradient(to bottom, rgb(10,203,254), rgb(57,123,212));*/
-    background: url(images/login_bg@3x.png);
+    background: linear-gradient(to bottom, rgb(10,203,254), rgb(57,123,212));
+    /* background: url(images/login_bg@3x.png); */
     background-size: 100%;
 }
 .login-container .login-input  input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -11,7 +11,8 @@
 
 .login-input{
     height: 35px;
-    width: 280px;
+    min-width: 280px;
+    max-width: 400px;
     margin: 0 auto;
     background-color: transparent;
     border-bottom: 1px solid #c7d8e2;
@@ -25,6 +26,7 @@
     background: transparent;
     padding-left:10px;
     padding-bottom: 5px;
+    width: 100%;
 }
 .login-user-i {
     display: inline-block;
@@ -55,12 +57,26 @@
     font-weight: bold;
     text-transform: none !important;
     border: white;
-    background: #990000;
+    background: green;
     margin: 20px 0px 30px 0;
-    width: 250px;
+    width: 200px;
     height: 50px;
     font-size: 16px;
 }
+
+.signupButton, .signupButton:hover   {
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: none !important;
+    border: white;
+    background: chocolate;
+    margin: 20px 0px 30px 0;
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+}
+
 .lang-container {
     margin-top: 30px;
     color: #fff;

@@ -160,3 +160,7 @@ line-height: 35px;
     /* width: 150px; */
 }
 
+.button.button-stable.viewall-btn {
+    color: #1694e4;
+}
+

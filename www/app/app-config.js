@@ -62,7 +62,7 @@ app.config(['$urlRouterProvider', '$ionicConfigProvider', '$translateProvider', 
     setRequestHeader();
     //set up localforage driver
     setLocalForageDriver();
-    $state.go('home.list');
+    $state.go('login');
   };
 
   //initialize the setups for the app

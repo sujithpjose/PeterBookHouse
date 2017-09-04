@@ -1,10 +1,17 @@
 loginModule.
-  controller('LoginController', ['$scope', '$state', 'imgConstants', 'genericServices', '$translate', '$ionicPlatform', '$ionicHistory', '$rootScope', 'sharedValues', 'authorizationFactory', 'loginService', 'delegateFactory','sharedConstants', function ($scope, $state, imgConstants, genericServices, $translate, $ionicPlatform, $ionicHistory, $rootScope, sharedValues, authorizationFactory, loginService, delegateFactory,sharedConstants) {
+  controller('LoginController', ['$scope', '$state', 'imgConstants', 'genericServices', '$translate', '$ionicPlatform', '$ionicHistory', '$rootScope', 'sharedValues', 'authorizationFactory', 'loginService', 'delegateFactory', 'sharedConstants', '$http', function ($scope, $state, imgConstants, genericServices, $translate, $ionicPlatform, $ionicHistory, $rootScope, sharedValues, authorizationFactory, loginService, delegateFactory, sharedConstants, $http) {
     var self = $scope;
     self.user = {
       username: '',
       password: ''
     };
+
+    self.signup = {
+      captchaImageUrl: '',
+      captchaText: '',
+      token: ''
+    };
+
     self.sharedPath = imgConstants.imgPath;
     $ionicPlatform.registerBackButtonAction(function (event) {
       if ($ionicHistory.currentStateName() === 'login') {
@@ -15,9 +22,7 @@ loginModule.
     self.doLogin = function () {
       var params = {};
       if (validateLoginData(self.user)) {
-        // $rootScope.userName = self.user.username.toUpperCase();
         invokeLogin();
-        // $state.go('dashboard');
       } else {
         params.title = $translate.instant('LOGIN_ERROR_TITLE');
         params.template = $translate.instant('LOGIN_ERROR_DESC');
@@ -26,15 +31,15 @@ loginModule.
       }
     };
 
-    var invokeLogin = function () {
-      genericServices.showSpinner();
-      var config = angular.copy(sharedValues.apiConfig.loginDetails);
+    // var invokeLogin = function () {
+    //   genericServices.showSpinner();
+    //   var config = angular.copy(sharedValues.apiConfig.loginDetails);
 
-      config.data.userName = self.user.username;
-      config.data.password = self.user.password;
-    
-      delegateFactory.fetchData(config, onSuccess, onError);
-    };
+    //   config.data.userName = self.user.username;
+    //   config.data.password = self.user.password;
+
+    //   delegateFactory.fetchData(config, onSuccess, onError);
+    // };
 
     self.changeLanguage = function (langKey) {
       $translate.use(langKey);
@@ -46,6 +51,40 @@ loginModule.
         isValid = false;
       }
       return isValid;
+    }
+
+
+    // $http
+    //   .get('http://localhost/peterbookhouse/repo/webportal/public/signup')
+    //   .then(function (response) {
+    //     vm.captchaImageUrl = response.data.url;
+    //     vm.token = response.data.token;
+    //   });
+    function signup() {
+      $http
+        .post('http://localhost/peterbookhouse/repo/webportal/public/signup', { _token: vm.token, name: 'faf', email: 'bb@bbb.com', password: '123456', password_confirmation: '123456', captcha: vm.captchaText })
+        .then(function () {
+          alert('success');
+        });
+    }
+    
+    function invokeLogin() {
+      $http
+        .post('http://localhost/peterbookhouse/repo/webportal/public/api/login', { email: 'jobinskumar91@gmail.com', password: '123456' })
+        .then(function (response) {
+          vm.token = response.data.api_token;
+        }, function () {
+          alert('Error');
+        });
+    }
+
+    function getdetails() {
+      $http({ url: 'http://localhost/peterbookhouse/repo/webportal/public/api/user/details', method: 'GET', headers: { 'Authorization': 'Bearer ' + vm.token } })
+        .then(function (response) {
+          vm.details = response.data;
+        }, function () {
+          alert('Error');
+        });
     }
 
     var setScopeValuesOnSuccess = function (response) {

@@ -1,7 +1,7 @@
 var cartModule = angular.module('cart', []);
 cartModule.config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-        .state('home.cart', {
+        .state('store.cart', {
             url: '/cart',
             views: {
                 // 'header': {

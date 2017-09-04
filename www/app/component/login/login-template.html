@@ -1,32 +1,36 @@
 <ion-view hide-nav-bar="true">
-  <ion-content scroll="true" class="login-container">
-    <div class="container-div">
-        
-      <div class="logo-wraper">
-        <img class="app-icon" ng-src="{{sharedPath}}login_logo@1x.png" />
-        <!--<div class="login_logo_title">HRMS</div>-->
-      </div>
+    <ion-content scroll="true" class="login-container">
+        <div class="container-div">
 
-      <label class="item-input-wrapper login-input">
+            <div class="logo-wraper">
+                <!-- <img class="app-icon" ng-src="{{sharedPath}}login_logo@1x.png" /> -->
+                <!--<div class="login_logo_title">HRMS</div>-->
+                <h2>PETER BOOK HOUSE</h2>
+            </div>
+
+            <label class="item-input-wrapper login-input">
             <i class="login-user-i"></i>
             <input id="userame" ng-model="user.username" type="text" placeholder="{{ 'USERNAME' | translate}}"/>
       </label>
 
-      <label class="item-input-wrapper login-input">
+            <label class="item-input-wrapper login-input">
             <i class="login-password-i"></i>
             <input id="password" ng-model="user.password" type="password" placeholder="{{ 'PASSWORD' | translate}}"/>
       </label>
 
+            <button class="button-light signupButton" ng-click="doLogin()">
+       SignUp
+</button>
 
-      <button class="button-light loginButton" ng-click="doLogin()">
-                     {{'LOGIN' | translate}}
-      </button>
+            <button class="button-light loginButton" ng-click="doLogin()">
+    {{'LOGIN' | translate}}
+</button>
 
-      <div class="language-wraper" ng-hide="true">
-        {{ 'LANG_TITLE' | translate}}:
-        <span ng-click="changeLanguage('en_US')">{{ 'ENGLISH' | translate}}</span>
-        <span ng-click="changeLanguage('ar_AE')">{{ 'ARABIC' | translate}}</span>
-      </div>
-    </div>
-  </ion-content>
+            <div class="language-wraper" ng-hide="true">
+                {{ 'LANG_TITLE' | translate}}:
+                <span ng-click="changeLanguage('en_US')">{{ 'ENGLISH' | translate}}</span>
+                <span ng-click="changeLanguage('ar_AE')">{{ 'ARABIC' | translate}}</span>
+            </div>
+        </div>
+    </ion-content>
 </ion-view>

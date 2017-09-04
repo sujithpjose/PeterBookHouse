@@ -1,8 +1,8 @@
 var gridModule = angular.module('grid', []);
 homeModule.config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-        .state('home.grid', {
-            url: '/grid',
+        .state('store.category', {
+            url: '/category',
             views: {
                 // 'header': {
                 //     templateUrl: 'app/component/home/home-header-template.html',
