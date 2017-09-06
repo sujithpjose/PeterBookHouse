@@ -9,6 +9,10 @@ bookDetailsModule.
       self.bookItem = bookService.getItem();
     };
 
+    self.addToCart = function (item) {
+      bookService.addToCart(item);
+      $state.go('store.cart');
+    };
 
     init();
 

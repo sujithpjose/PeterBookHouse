@@ -12,30 +12,27 @@
         <div class="col"></div>
         <div class="col"></div>
       </div> -->
-      <div class="row">
-        <div class="col">Mia kulpa</div>
-        <div class="col">Fiction</div>
-        <div class="col">Mary</div>
+      <div class="row" ng-repeat="book in cartList track by $index">
+        <div class="col col-10">{{$index+1}}</div>
+        <div class="col">{{book.name}}</div>
+        <div class="col">{{book.author}}</div>
+        <div class="col">{{book.category}}</div>
         <div class="col text-center">
-          <button class="button button-balanced  table-btn" ng-click="ctrl.add($index)">Order Now</button>
+          <button class="button button-assertive table-btn" ng-click="removeItem($index)">Remove</button>
         </div>
         <div class="col text-center">
-          <button class="button button-assertive table-btn" ng-click="ctrl.add($index)">Remove</button>
+          <button class="button button-balanced  table-btn" ng-click="orderItem($index)">Order Now</button>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">Mia kulpa</div>
-        <div class="col">Fiction</div>
-        <div class="col">Mary</div>
-        <div class="col text-center">
-          <button class="button button-balanced table-btn" ng-click="ctrl.add($index)">Order Now</button>
-        </div>
-        <div class="col text-center">
-          <button class="button button-assertive table-btn" ng-click="ctrl.add($index)">Remove</button>
-        </div>
+
       </div>
     </div>
     <!-- table -->
+
+    <div class="row" ng-hide="cartList.length > 0">
+      <div class="col text-center">
+        Your cart is empty
+      </div>
+    </div>
 
   </div>
 </div>

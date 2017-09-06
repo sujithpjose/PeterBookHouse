@@ -3,11 +3,7 @@ cartModule.
     var self = $scope;
     var pageSize = 4;
 
-    self.books = {};
-    self.books.favouritesList = [];
-    self.books.homeList1 = [];
-    self.books.homeList2 = [];
-    self.books.homeList3 = [];
+    self.cartList = [];
 
     self.$on('search', function (event, args) {
       console.log('IN Home' + args.message);
@@ -16,80 +12,12 @@ cartModule.
 
     var init = function () {
       self.imgPath = sharedConstants.assetsBaseUrl;
-      
-      populateFavourites();
-      populateHomeList1();
-      populateHomeList2();
-      populateHomeList3();
+
+      self.cartList = bookService.getCart();
     };
 
-    function populateFictionList() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [8, 'Fiction', '']);
-      //set generatedUrl to config variable
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
-    };
-
-    function populateFavourites() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, '',1, '']);
-      //set generatedUrl to config variable
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
-    };
-
-    function populateHomeList1() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.one,1, '']);
-      //set generatedUrl to config variable
-      config.key = sharedConstants.homeList.one;
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
-    };
-
-    function populateHomeList2() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.two,1, '']);
-      //set generatedUrl to config variable
-      config.key = sharedConstants.homeList.two;
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
-    };
-
-    function populateHomeList3() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.three,1, '']);
-      //set generatedUrl to config variable
-      config.key = sharedConstants.homeList.three;
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
-    };
-
-    function populateSearchResults() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.books_search);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [$rootScope.data.searchString]);
-      //set generatedUrl to config variable
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
+    self.removeItem = function (index) {
+      self.cartList.splice(index, 1);
     };
 
     self.goToGrid = function (name) {
@@ -106,52 +34,6 @@ cartModule.
     var setScopeValuesOnSuccess = function (response) {
       var params = {};
       switch (response.config.key) {
-
-        case 'getbooks':
-          var result = response.data;
-          if (result.meta.status === 'success') {
-            self.books.favouritesList = result.data.data;
-          } else {
-            //error
-            self.books.favouritesList = [];
-          }
-          break;
-        case sharedConstants.homeList.one:
-          var result = response.data;
-          if (result.meta.status === 'success') {
-            self.books.homeList1 = result.data.data;
-          } else {
-            //error
-            self.books.homeList1 = [];
-          }
-          break;
-        case sharedConstants.homeList.two:
-          var result = response.data;
-          if (result.meta.status === 'success') {
-            self.books.homeList2 = result.data.data;
-          } else {
-            //error
-            self.books.homeList2 = [];
-          }
-          break;
-        case sharedConstants.homeList.three:
-          var result = response.data;
-          if (result.meta.status === 'success') {
-            self.books.homeList3 = result.data.data;
-          } else {
-            //error
-            self.books.homeList3 = [];
-          }
-          break;
-        case 'books_search':
-          var result = response.data;
-          if (result.meta.status === 'success') {
-            self.books.newReleasesList = result.data.data;
-          } else {
-            //error
-            self.books.newReleasesList = [];
-          }
-          break;
         default:
       }
     };
@@ -211,7 +93,7 @@ cartModule.
     };
 
     //init method to call while controller loading
-    // init();
+    init();
 
   }]);
 
