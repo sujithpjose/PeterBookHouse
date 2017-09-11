@@ -1,44 +1,57 @@
 loginModule.
-  controller('LoginController', ['$scope', '$state', 'imgConstants', 'genericServices', '$translate', '$ionicPlatform', '$ionicHistory', '$rootScope', 'sharedValues', 'authorizationFactory', 'loginService', 'delegateFactory', 'sharedConstants', '$http','$ionicModal', function ($scope, $state, imgConstants, genericServices, $translate, $ionicPlatform, $ionicHistory, $rootScope, sharedValues, authorizationFactory, loginService, delegateFactory, sharedConstants, $http,$ionicModal) {
+  controller('LoginController', ['$scope', '$state', 'imgConstants', 'genericServices', '$translate', '$ionicPlatform', '$ionicHistory', '$rootScope', 'sharedValues', 'authorizationFactory', 'loginService', 'delegateFactory', 'sharedConstants', '$http', '$ionicModal', function ($scope, $state, imgConstants, genericServices, $translate, $ionicPlatform, $ionicHistory, $rootScope, sharedValues, authorizationFactory, loginService, delegateFactory, sharedConstants, $http, $ionicModal) {
     var self = $scope;
     self.user = {
-      username: '',
+      _token: '',
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: '',
+      captcha: ''
+    };
+
+    self.signInUser = {
+      email: '',
       password: ''
     };
 
     self.signup = {
-      captchaImageUrl: '',
-      captchaText: '',
-      token: ''
+      captchaImageUrl: ''
     };
 
-    // Signup modal
+    //------------------------ Signup modal------------------------ //
     $ionicModal.fromTemplateUrl('app/component/modal/signup-modal-template.html', {
       scope: $scope,
       animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
       $scope.modal = modal;
     });
-    $scope.openSignupModal = function() {
+    $scope.openSignupModal = function () {
+      $http
+        .get('http://admin.peterbookhouse.com/signup')
+        .then(function (response) {
+          self.signup.captchaImageUrl = response.data.url;
+          self.user._token = response.data.token;
+        });
       $scope.modal.show();
     };
-    $scope.closeSignupModal = function() {
+    $scope.closeSignupModal = function () {
       $scope.modal.hide();
     };
     // Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
+    $scope.$on('$destroy', function () {
       $scope.modal.remove();
     });
     // Execute action on hide modal
-    $scope.$on('modal.hidden', function() {
+    $scope.$on('modal.hidden', function () {
       // Execute action
     });
     // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
+    $scope.$on('modal.removed', function () {
       // Execute action
     });
 
-    // Signup modal
+    //------------------------ Signup modal------------------------ //
 
     self.sharedPath = imgConstants.imgPath;
     $ionicPlatform.registerBackButtonAction(function (event) {
@@ -49,7 +62,7 @@ loginModule.
 
     self.doLogin = function () {
       var params = {};
-      if (validateLoginData(self.user)) {
+      if (validateLoginData(self.signInUser)) {
         invokeLogin();
       } else {
         params.title = $translate.instant('LOGIN_ERROR_TITLE');
@@ -59,15 +72,10 @@ loginModule.
       }
     };
 
-    // var invokeLogin = function () {
-    //   genericServices.showSpinner();
-    //   var config = angular.copy(sharedValues.apiConfig.loginDetails);
+    self.doSignUp = function () {
+      signup();
+    };
 
-    //   config.data.userName = self.user.username;
-    //   config.data.password = self.user.password;
-
-    //   delegateFactory.fetchData(config, onSuccess, onError);
-    // };
 
     self.changeLanguage = function (langKey) {
       $translate.use(langKey);
@@ -75,37 +83,33 @@ loginModule.
 
     var validateLoginData = function (data) {
       var isValid = true;
-      if (!data.username || !data.password) {
+      if (!data.email || !data.password) {
         isValid = false;
       }
       return isValid;
     }
 
 
-    // $http
-    //   .get('http://localhost/peterbookhouse/repo/webportal/public/signup')
-    //   .then(function (response) {
-    //     vm.captchaImageUrl = response.data.url;
-    //     vm.token = response.data.token;
-    //   });
+
     function signup() {
       $http
-        .post('http://localhost/peterbookhouse/repo/webportal/public/signup', { _token: vm.token, name: 'faf', email: 'bb@bbb.com', password: '123456', password_confirmation: '123456', captcha: vm.captchaText })
+        .post('http://admin.peterbookhouse.com/signup', self.user)
         .then(function () {
           alert('success');
+          $scope.modal.hide();
         });
     }
-    
+
     function invokeLogin() {
-      $state.go('store.home');
-      // $http
-      //   .post('http://localhost/peterbookhouse/repo/webportal/public/api/login', { email: 'jobinskumar91@gmail.com', password: '123456' })
-      //   .then(function (response) {
-      //     vm.token = response.data.api_token;
-      //   }, function () {
-      //     alert('Error');
-      //   });
-    }
+      $http
+        .post('http://admin.peterbookhouse.com/api/login', self.signInUser)
+        .then(function (response) {
+          $rootScope.token = response.data.api_token;
+          $state.go('store.home');
+        }, function () {
+          alert('Error');
+        });
+    };
 
     function getdetails() {
       $http({ url: 'http://localhost/peterbookhouse/repo/webportal/public/api/user/details', method: 'GET', headers: { 'Authorization': 'Bearer ' + vm.token } })

@@ -1,24 +1,24 @@
 <ion-modal-view>
     <ion-header-bar class="bar-custom ">
-        <h1 class="title">Sign Up</h1>
+        <h1 class="title">Register user</h1>
     </ion-header-bar>
     <ion-content>
         <div class="card cardview">
             <div class="form-container">
 
-                <!--First Name-->
+                <!-- Name-->
                 <div class="row row-center">
-                    <div class="col cardview-text-label">First Name
+                    <div class="col cardview-text-label">Name
                     </div>
                     <div class="item item-input-inset ">
                         <span class="item-input-wrapper bg-white">
-              <input  type="text" class="text-right" ng-model="" placeholder="First Name"  />
+              <input  type="text" class="text-right" ng-model="user.name" placeholder="Enter.."  />
                                 </span>
                     </div>
                 </div>
 
                 <!--Last Name-->
-                <div class="row row-center">
+                <!-- <div class="row row-center">
                     <div class="col cardview-text-label">Last Name
                     </div>
                     <div class="item item-input-inset ">
@@ -26,22 +26,44 @@
                   <input  type="text" class="text-right" ng-model="" placeholder="Last Name"  />
                                     </span>
                     </div>
-                </div>
+                </div> -->
 
-                <!--Phone-->
+                <!--Email-->
                 <div class="row row-center">
-                    <div class="col cardview-text-label">Phone
+                    <div class="col cardview-text-label">Email
                     </div>
                     <div class="item item-input-inset ">
                         <span class="item-input-wrapper bg-white">
-                  <input  type="tel" class="text-right" ng-model="" placeholder="Phone"  />
+                  <input  type="email" class="text-right" ng-model="user.email" placeholder="Enter.."  />
+                                    </span>
+                    </div>
+                </div>
+
+                <!--Password-->
+                <div class="row row-center">
+                    <div class="col cardview-text-label">Password
+                    </div>
+                    <div class="item item-input-inset ">
+                        <span class="item-input-wrapper bg-white">
+                  <input  type="password" class="text-right" ng-model="user.password" placeholder="Enter.."  />
+                                    </span>
+                    </div>
+                </div>
+
+                <!--Confirm Password-->
+                <div class="row row-center">
+                    <div class="col cardview-text-label">Confirm Password
+                    </div>
+                    <div class="item item-input-inset ">
+                        <span class="item-input-wrapper bg-white">
+                  <input  type="password" class="text-right" ng-model="user.password_confirmation" placeholder="Enter.."  />
                                     </span>
                     </div>
                 </div>
 
 
                 <!--Address-->
-                <div class="row row-center">
+                <!-- <div class="row row-center">
                     <div class="col col-30 cardview-text-label">Address
                     </div>
                     <div class="col align-right text-light ">
@@ -50,19 +72,31 @@
                                     </textarea>
                                  </label>
                     </div>
+                </div> -->
+
+                <!--Captcha-->
+                <div class="row row-center last-row">
+                    <div class="col cardview-text-label"><img ng-src="{{signup.captchaImageUrl}}" />
+                    </div>
+                    <div class="item item-input-inset ">
+                        <span class="item-input-wrapper bg-white">
+                            <input  type="text" class="text-right" ng-model="user.captcha" placeholder="Enter.."  />
+                                              </span>
+
+                    </div>
+
                 </div>
-
-
-
-
             </div>
         </div>
 
-        <div class="row row-center padding">
-            <div class="col col-center card register-btn" ng-click="">
-                <button class="button button-block button-clear">Register</button>
+        <div class="row row-center">
+            <div class="col col-center text-center">
+                <button class="button-light newUserButton" ng-click="doSignUp()">
+                    SignUp
+                </button>
             </div>
         </div>
+
 
     </ion-content>
 </ion-modal-view>

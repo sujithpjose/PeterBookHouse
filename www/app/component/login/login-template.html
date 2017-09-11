@@ -10,12 +10,12 @@
 
             <label class="item-input-wrapper login-input">
             <i class="login-user-i"></i>
-            <input id="userame" ng-model="user.username" type="text" placeholder="{{ 'USERNAME' | translate}}"/>
+            <input id="userame" ng-model="signInUser.email" type="email" placeholder="Email"/>
       </label>
 
             <label class="item-input-wrapper login-input">
             <i class="login-password-i"></i>
-            <input id="password" ng-model="user.password" type="password" placeholder="{{ 'PASSWORD' | translate}}"/>
+            <input id="password" ng-model="signInUser.password" type="password" placeholder="{{ 'PASSWORD' | translate}}"/>
       </label>
 
             <button class="button-light signupButton" ng-click="openSignupModal()">
