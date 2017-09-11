@@ -45,7 +45,7 @@ serviceModule.factory("genericServices", ['$ionicHistory', '$ionicLoading', '$st
       $ionicPopup.alert({
         title: params.title,
         template: params.template,
-        okType: 'btn-red'
+        // okType: 'btn-red'
       }).then(function (res) {
         onAlertSuccess(res, params);
       });
@@ -54,7 +54,7 @@ serviceModule.factory("genericServices", ['$ionicHistory', '$ionicLoading', '$st
       $ionicPopup.confirm({
         title: params.title,
         template: params.template,
-        okType: 'btn-red'
+        // okType: 'btn-red'
         //  params.okType
       }).then(function (res) {
         if (res) {

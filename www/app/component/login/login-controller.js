@@ -61,10 +61,12 @@ loginModule.
     }, 100);
 
     self.doLogin = function () {
+      genericServices.showSpinner();
       var params = {};
       if (validateLoginData(self.signInUser)) {
         invokeLogin();
       } else {
+        genericServices.hideSpinner();
         params.title = $translate.instant('LOGIN_ERROR_TITLE');
         params.template = $translate.instant('LOGIN_ERROR_DESC');
         params.action = 'login_error';
@@ -87,27 +89,39 @@ loginModule.
         isValid = false;
       }
       return isValid;
-    }
-
-
+    };
 
     function signup() {
       $http
         .post('http://admin.peterbookhouse.com/signup', self.user)
         .then(function () {
-          alert('success');
-          $scope.modal.hide();
+          var params = {};
+          params.title = sharedConstants.successTitle;
+          params.template = 'User Created';
+          params.action = 'newUser';
+          genericServices.showAlert(params, onAlertSuccess, onAlertError);
         });
-    }
+    };
 
     function invokeLogin() {
       $http
         .post('http://admin.peterbookhouse.com/api/login', self.signInUser)
         .then(function (response) {
+          genericServices.hideSpinner();
           $rootScope.token = response.data.api_token;
           $state.go('store.home');
-        }, function () {
-          alert('Error');
+        }, function (response) {
+          genericServices.hideSpinner();
+          var params = {};
+          params.template = 'Login Failed';
+          params.title = sharedConstants.errorTitle;
+          params.action = 'loginFailed';
+
+          if (response.data.status == 400) {
+            params.template = response.data.error;
+          }
+          genericServices.showAlert(params, onAlertSuccess, onAlertError);
+
         });
     };
 
@@ -120,70 +134,15 @@ loginModule.
         });
     }
 
-    var setScopeValuesOnSuccess = function (response) {
-      var params = {};
-      switch (response.config.key) {
-        case 'loginAuthorization':
-          $state.go('dashboard');
-          break;
-        case 'loginDetails':
-          self.user.returnCode = response.data.returnCode;
-          self.user.returnMsg = response.data.returnMsg;
-
-          var profileInfo = response.data.loginDetailsTab[0];
-          loginService.setBasicDetails(profileInfo);
-
-          if (response.data.returnCode !== sharedConstants.apiSuccess) {
-            params.title = sharedConstants.errorTitle;
-            params.template = response.data.returnMsg;
-            params.action = 'profileInfo';
-            genericServices.showAlert(params, onAlertSuccess, onAlertError);
-          } else {
-            $rootScope.personId = profileInfo.personId;
-            $rootScope.userName = self.user.username.toUpperCase();
-            $state.go('dashboard');
-          }
-          break;
-        default:
-      }
-    };
-
-    var setScopeValuesOnError = function (response) {
-      var params = {};
-      switch (response.config.key) {
-        case 'loginAuthorization':
-          params.title = $translate.instant('LOGIN_ERROR_TITLE');
-          params.template = $translate.instant('LOGIN_AUTHORIZATION_DESC');
-          params.action = 'login_error';
-          genericServices.showAlert(params, onAlertSuccess, onAlertError);
-          break;
-        case 'loginDetails':
-
-        default:
-          params.title = $translate.instant('LOGIN_ERROR_TITLE');
-          params.template = response.returnMsg;
-          params.action = 'login_error';
-          genericServices.showAlert(params, onAlertSuccess, onAlertError);
-      }
-    };
-    //--------------------------------- API Callback ---------------------------- 
-    function onSuccess(response) {
-      genericServices.hideSpinner();
-      setScopeValuesOnSuccess(response);
-      console.log('populateDashboard IN [DashBoardController] onSuccess promise:' +
-        response.data.returnMsg);
-    }
-
-    function onError(response) {
-      genericServices.hideSpinner();
-      // called asynchronously if an error occurs or server returns response with an error status.
-      setScopeValuesOnError(response);
-      console.log('populateDashboard IN [DashBoardController] onError promise:' + response.status);
-    }
     //--------------------------------- Alert Callback ---------------------------- 
     function onAlertSuccess(response, action) {
       switch (action) {
         case 'login_error':
+          break;
+        case 'newUser':
+          $scope.modal.hide();
+          break;
+        case 'loginFailed':
           break;
 
         default:

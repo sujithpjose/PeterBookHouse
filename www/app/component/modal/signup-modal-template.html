@@ -5,20 +5,23 @@
     <ion-content>
         <div class="card cardview">
             <div class="form-container">
+                <form name="signUp">
 
-                <!-- Name-->
-                <div class="row row-center">
-                    <div class="col cardview-text-label">Name
-                    </div>
-                    <div class="item item-input-inset ">
-                        <span class="item-input-wrapper bg-white">
-              <input  type="text" class="text-right" ng-model="user.name" placeholder="Enter.."  />
+                    <!-- Name-->
+                    <div class="row row-center">
+                        <div class="col cardview-text-label">Name
+                        </div>
+                        <div class="item item-input-inset ">
+                            <span class="item-input-wrapper bg-white">
+              <input name="name"  type="text" class="text-right" ng-model="user.name" placeholder="Enter.."  required/>
+             
                                 </span>
+                        </div>
                     </div>
-                </div>
+                    
 
-                <!--Last Name-->
-                <!-- <div class="row row-center">
+                    <!--Last Name-->
+                    <!-- <div class="row row-center">
                     <div class="col cardview-text-label">Last Name
                     </div>
                     <div class="item item-input-inset ">
@@ -28,42 +31,42 @@
                     </div>
                 </div> -->
 
-                <!--Email-->
-                <div class="row row-center">
-                    <div class="col cardview-text-label">Email
-                    </div>
-                    <div class="item item-input-inset ">
-                        <span class="item-input-wrapper bg-white">
-                  <input  type="email" class="text-right" ng-model="user.email" placeholder="Enter.."  />
+                    <!--Email-->
+                    <div class="row row-center">
+                        <div class="col cardview-text-label">Email
+                        </div>
+                        <div class="item item-input-inset ">
+                            <span class="item-input-wrapper bg-white">
+                  <input name="email" type="email" class="text-right" ng-model="user.email" placeholder="Enter.."  required/>
                                     </span>
+                        </div>
                     </div>
-                </div>
 
-                <!--Password-->
-                <div class="row row-center">
-                    <div class="col cardview-text-label">Password
-                    </div>
-                    <div class="item item-input-inset ">
-                        <span class="item-input-wrapper bg-white">
-                  <input  type="password" class="text-right" ng-model="user.password" placeholder="Enter.."  />
+                    <!--Password-->
+                    <div class="row row-center">
+                        <div class="col cardview-text-label">Password
+                        </div>
+                        <div class="item item-input-inset ">
+                            <span class="item-input-wrapper bg-white">
+                  <input name="password" type="password" class="text-right" ng-model="user.password" placeholder="Enter.."  required/>
                                     </span>
+                        </div>
                     </div>
-                </div>
 
-                <!--Confirm Password-->
-                <div class="row row-center">
-                    <div class="col cardview-text-label">Confirm Password
-                    </div>
-                    <div class="item item-input-inset ">
-                        <span class="item-input-wrapper bg-white">
-                  <input  type="password" class="text-right" ng-model="user.password_confirmation" placeholder="Enter.."  />
+                    <!--Confirm Password-->
+                    <div class="row row-center">
+                        <div class="col cardview-text-label">Confirm Password
+                        </div>
+                        <div class="item item-input-inset ">
+                            <span class="item-input-wrapper bg-white">
+                  <input name="password_confirmation"  type="password" class="text-right" ng-model="user.password_confirmation" placeholder="Enter.." required />
                                     </span>
+                        </div>
                     </div>
-                </div>
 
 
-                <!--Address-->
-                <!-- <div class="row row-center">
+                    <!--Address-->
+                    <!-- <div class="row row-center">
                     <div class="col col-30 cardview-text-label">Address
                     </div>
                     <div class="col align-right text-light ">
@@ -74,24 +77,26 @@
                     </div>
                 </div> -->
 
-                <!--Captcha-->
-                <div class="row row-center last-row">
-                    <div class="col cardview-text-label"><img ng-src="{{signup.captchaImageUrl}}" />
-                    </div>
-                    <div class="item item-input-inset ">
-                        <span class="item-input-wrapper bg-white">
-                            <input  type="text" class="text-right" ng-model="user.captcha" placeholder="Enter.."  />
+                    <!--Captcha-->
+                    <div class="row row-center last-row">
+                        <div class="col cardview-text-label"><img ng-src="{{signup.captchaImageUrl}}" />
+                        </div>
+                        <div class="item item-input-inset ">
+                            <span class="item-input-wrapper bg-white">
+                            <input name="captcha"  type="text" class="text-right" ng-model="user.captcha" placeholder="Enter.." required />
                                               </span>
 
-                    </div>
+                        </div>
 
-                </div>
+                    </div>
+                </form>
             </div>
+
         </div>
 
         <div class="row row-center">
             <div class="col col-center text-center">
-                <button class="button-light newUserButton" ng-click="doSignUp()">
+                <button ng-disabled="!signUp.$valid" class="button-light newUserButton" ng-click="doSignUp()">
                     SignUp
                 </button>
             </div>
