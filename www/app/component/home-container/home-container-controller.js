@@ -1,7 +1,6 @@
 homeContainerModule.
   controller('HomeContainerController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'loginService','bookService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, loginService,bookService) {
     var self = $scope;
-    $rootScope.data = {};
     $rootScope.data.searchString = '';
 
     var init = function () {

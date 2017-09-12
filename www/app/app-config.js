@@ -59,7 +59,7 @@ app.config(['$urlRouterProvider', '$ionicConfigProvider', '$translateProvider', 
   var init = function () {
     $ionicPickerI18n.okClass = "btn-red";
     //set up common http request header
-    setRequestHeader();
+    // setRequestHeader();
     //set up localforage driver
     setLocalForageDriver();
     $state.go('login');

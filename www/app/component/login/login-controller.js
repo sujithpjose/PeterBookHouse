@@ -1,6 +1,7 @@
 loginModule.
   controller('LoginController', ['$scope', '$state', 'imgConstants', 'genericServices', '$translate', '$ionicPlatform', '$ionicHistory', '$rootScope', 'sharedValues', 'authorizationFactory', 'loginService', 'delegateFactory', 'sharedConstants', '$http', '$ionicModal', function ($scope, $state, imgConstants, genericServices, $translate, $ionicPlatform, $ionicHistory, $rootScope, sharedValues, authorizationFactory, loginService, delegateFactory, sharedConstants, $http, $ionicModal) {
     var self = $scope;
+    $rootScope.data = {};
     self.user = {
       _token: '',
       name: '',
@@ -110,6 +111,8 @@ loginModule.
           genericServices.hideSpinner();
           $rootScope.data.searchString = '';
           $rootScope.token = response.data.api_token;
+          console.log('token:' + $rootScope.token);
+          $http.defaults.headers.common.Authorization = 'Bearer ' + $rootScope.token;
           $state.go('store.home');
         }, function (response) {
           genericServices.hideSpinner();
@@ -126,14 +129,17 @@ loginModule.
         });
     };
 
-    function getdetails() {
-      $http({ url: 'http://localhost/peterbookhouse/repo/webportal/public/api/user/details', method: 'GET', headers: { 'Authorization': 'Bearer ' + vm.token } })
+
+
+    self.getdetails = function () {
+      $http({ url: 'http://admin.peterbookhouse.com/api/user/details', method: 'GET' })
         .then(function (response) {
-          vm.details = response.data;
+          self.UserDetails = response.data;
+          console.log(":" + response.data);
         }, function () {
           alert('Error');
         });
-    }
+    };
 
     //--------------------------------- Alert Callback ---------------------------- 
     function onAlertSuccess(response, action) {
