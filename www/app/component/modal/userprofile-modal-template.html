@@ -1,0 +1,72 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-custom ">
+        <h1 class="title">Add Profile</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="card cardview">
+            <div class="form-container">
+                <form name="ProfileForm">
+
+                    <!-- Name-->
+                    <div class="row row-center">
+                        <div class="col cardview-text-label">First Name
+                        </div>
+                        <div class="item item-input-inset ">
+                            <span class="item-input-wrapper bg-white">
+              <input name="name"  type="text" class="text-right" ng-model="profile.first_name" placeholder="Enter.."  required/>
+             
+                                </span>
+                        </div>
+                    </div>
+
+
+                    <!--Last Name-->
+                    <div class="row row-center">
+                        <div class="col cardview-text-label">Last Name
+                        </div>
+                        <div class="item item-input-inset ">
+                            <span class="item-input-wrapper bg-white">
+                  <input  type="text" class="text-right" ng-model="profile.last_name" placeholder="Enter.."  required/>
+                                    </span>
+                        </div>
+                    </div>
+
+                    <!--Address-->
+                    <div class="row row-center">
+                        <div class="col col-30 cardview-text-label">Address
+                        </div>
+                        <div class="col align-right text-light ">
+                            <label class="item-input">
+                                    <textarea  class="input-col text-input-value text-right" type="text" placeholder="Address" ng-model="profile.address" required>
+                                    </textarea>
+                                 </label>
+                        </div>
+                    </div>
+
+                    <!--Phone-->
+                    <div class="row row-center">
+                        <div class="col cardview-text-label">Phone
+                        </div>
+                        <div class="item item-input-inset ">
+                            <span class="item-input-wrapper bg-white">
+                  <input  type="tel" class="text-right" ng-model="profile.phone" placeholder="Enter.."  required/>
+                                    </span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row row-center">
+            <div class="col col-center text-center">
+                <button ng-disabled="!ProfileForm.$valid" class="button-light newUserButton" ng-click="addProfile()">
+                    Add
+                </button>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-modal-view>

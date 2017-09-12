@@ -12,8 +12,8 @@ loginModule.
     };
 
     self.signInUser = {
-      email: '',
-      password: ''
+      email: 'pjosesujith@gmail.com',
+      password: 'sujith1234'
     };
 
     self.signup = {
@@ -113,6 +113,7 @@ loginModule.
           $rootScope.token = response.data.api_token;
           console.log('token:' + $rootScope.token);
           $http.defaults.headers.common.Authorization = 'Bearer ' + $rootScope.token;
+        
           $state.go('store.home');
         }, function (response) {
           genericServices.hideSpinner();

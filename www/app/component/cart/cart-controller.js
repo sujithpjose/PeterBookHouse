@@ -20,15 +20,29 @@ cartModule.
       self.cartList.splice(index, 1);
     };
 
-    self.goToGrid = function (name) {
-      $rootScope.data.searchString = '';
-      $state.go('home.grid', { id: name });
+    self.orderItem = function (item) {
+      addtocart(item.id);
     };
 
-    self.toDetails = function (item) {
-      bookService.setItem(item);
-      $rootScope.data.searchString = '';
-      $state.go('home.details');
+    function addtocart(id) {
+      $http
+        .post('http://admin.peterbookhouse.com/api/addtocart', { book_id: id })
+        .then(
+        function success(response) {
+          var params = {};
+          params.title = sharedConstants.successTitle;
+          params.template = 'Ordered Succesfully';
+          params.action = 'orderSuccess';
+          genericServices.showAlert(params, onAlertSuccess, onAlertError);
+        },
+        function error() {
+          var params = {};
+          params.title = sharedConstants.errorTitle;
+          params.template = 'Order failed';
+          params.action = 'orderError';
+          genericServices.showAlert(params, onAlertSuccess, onAlertError);
+        }
+        );
     };
 
     var setScopeValuesOnSuccess = function (response) {
@@ -65,7 +79,9 @@ cartModule.
     //--------------------------------- Alert Callback ---------------------------- 
     function onAlertSuccess(response, params) {
       switch (params.action) {
-        case 'getBooks':
+        case 'orderSuccess':
+          break;
+        case 'orderError':
           break;
 
         default:

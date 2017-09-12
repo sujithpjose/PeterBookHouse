@@ -1,157 +1,70 @@
 accountModule.
-  controller('AccountController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'bookService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, bookService) {
+  controller('AccountController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'bookService', '$ionicModal', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, bookService, $ionicModal) {
     var self = $scope;
-    var pageSize = 4;
+    self.profile = {
+      first_name: '',
+      last_name: '',
+      address: '',
+      phone: ''
+    };
 
-    self.books = {};
-    self.books.favouritesList = [];
-    self.books.homeList1 = [];
-    self.books.homeList2 = [];
-    self.books.homeList3 = [];
-
-    self.$on('search', function (event, args) {
-      console.log('IN Home' + args.message);
-      populateSearchResults();
+    //------------------------ Profile modal------------------------ //
+    $ionicModal.fromTemplateUrl('app/component/modal/userprofile-modal-template.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.modal = modal;
     });
+    $scope.openUserprofileModal = function () {
+      $scope.modal.show();
+    };
+    $scope.closeUserprofileModal = function () {
+      $scope.modal.hide();
+    };
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function () {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function () {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function () {
+      // Execute action
+    });
+
+    //------------------------ Profile modal------------------------ //
+
 
     var init = function () {
       self.imgPath = sharedConstants.assetsBaseUrl;
-      
-      populateFavourites();
-      populateHomeList1();
-      populateHomeList2();
-      populateHomeList3();
+
     };
 
-    function populateFictionList() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [8, 'Fiction', '']);
-      //set generatedUrl to config variable
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
+    self.addProfile = function () {
+      doAddProfile();
     };
 
-    function populateFavourites() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, '',1, '']);
-      //set generatedUrl to config variable
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
+    function doAddProfile() {
+      $http
+        .post('http://admin.peterbookhouse.com/api/user/addprofile', self.profile)
+        .then(function () {
+          var params = {};
+          params.title = sharedConstants.successTitle;
+          params.template = 'Profile Created';
+          params.action = 'newProfile';
+          genericServices.showAlert(params, onAlertSuccess, onAlertError);
+        });
     };
 
-    function populateHomeList1() {
-      genericServices.showSpinner();
 
-      var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.one,1, '']);
-      //set generatedUrl to config variable
-      config.key = sharedConstants.homeList.one;
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
-    };
-
-    function populateHomeList2() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.two,1, '']);
-      //set generatedUrl to config variable
-      config.key = sharedConstants.homeList.two;
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
-    };
-
-    function populateHomeList3() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.getbooks);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, sharedConstants.homeList.three,1, '']);
-      //set generatedUrl to config variable
-      config.key = sharedConstants.homeList.three;
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
-    };
-
-    function populateSearchResults() {
-      genericServices.showSpinner();
-
-      var config = angular.copy(sharedValues.apiConfig.books_search);
-      var generatedUrl = genericServices.beautifyUrl(config.url, [$rootScope.data.searchString]);
-      //set generatedUrl to config variable
-      config.url = generatedUrl;
-
-      delegateFactory.fetchData(config, onSuccess, onError);
-    };
-
-    self.goToGrid = function (name) {
-      $rootScope.data.searchString = '';
-      $state.go('home.grid', { id: name });
-    };
-
-    self.toDetails = function (item) {
-      bookService.setItem(item);
-      $rootScope.data.searchString = '';
-      $state.go('home.details');
-    };
 
     var setScopeValuesOnSuccess = function (response) {
       var params = {};
       switch (response.config.key) {
 
-        case 'getbooks':
-          var result = response.data;
-          if (result.meta.status === 'success') {
-            self.books.favouritesList = result.data.data;
-          } else {
-            //error
-            self.books.favouritesList = [];
-          }
-          break;
-        case sharedConstants.homeList.one:
-          var result = response.data;
-          if (result.meta.status === 'success') {
-            self.books.homeList1 = result.data.data;
-          } else {
-            //error
-            self.books.homeList1 = [];
-          }
-          break;
-        case sharedConstants.homeList.two:
-          var result = response.data;
-          if (result.meta.status === 'success') {
-            self.books.homeList2 = result.data.data;
-          } else {
-            //error
-            self.books.homeList2 = [];
-          }
-          break;
-        case sharedConstants.homeList.three:
-          var result = response.data;
-          if (result.meta.status === 'success') {
-            self.books.homeList3 = result.data.data;
-          } else {
-            //error
-            self.books.homeList3 = [];
-          }
-          break;
-        case 'books_search':
-          var result = response.data;
-          if (result.meta.status === 'success') {
-            self.books.newReleasesList = result.data.data;
-          } else {
-            //error
-            self.books.newReleasesList = [];
-          }
-          break;
+
         default:
       }
     };
@@ -183,7 +96,8 @@ accountModule.
     //--------------------------------- Alert Callback ---------------------------- 
     function onAlertSuccess(response, params) {
       switch (params.action) {
-        case 'getBooks':
+        case 'newProfile':
+          $scope.modal.hide();
           break;
 
         default:
