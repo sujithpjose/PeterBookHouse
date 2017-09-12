@@ -22,6 +22,11 @@ homeContainerModule.service('bookService', function () {
         cart = cartList;
     };
 
+    var clearCart = function () {
+        cart = [];
+    };
+
+
     var removeFromCart = function (bookItem) {
         var index = cart.indexOf(bookItem);
         if (index != -1) {
@@ -38,7 +43,8 @@ homeContainerModule.service('bookService', function () {
         addToCart: addToCart,
         getCart: getCart,
         removeFromCart: removeFromCart,
-        setCart : setCart
+        setCart : setCart,
+        clearCart : clearCart
     };
 
 });

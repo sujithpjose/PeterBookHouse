@@ -108,6 +108,7 @@ loginModule.
         .post('http://admin.peterbookhouse.com/api/login', self.signInUser)
         .then(function (response) {
           genericServices.hideSpinner();
+          $rootScope.data.searchString = '';
           $rootScope.token = response.data.api_token;
           $state.go('store.home');
         }, function (response) {

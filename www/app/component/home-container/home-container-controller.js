@@ -11,8 +11,19 @@ homeContainerModule.
     };
 
     self.doSearch = function () {
-      $state.go('store.search',{searchText: $rootScope.data.searchString});
+      $state.go('store.search', { searchText: $rootScope.data.searchString });
       self.$broadcast('search', { message: 'doSearch' });
+    };
+
+    self.performLogout = function () {
+      var params = {};
+      params.title = 'Confirmation';
+      params.template = $translate.instant('DASHBOARD_LOGOUT_PROMPT');
+      params.action = 'logout';
+      params.okLabel = $translate.instant('DASHBOARD_LOGOUT_OK');
+      params.cancelLabel = $translate.instant('DASHBOARD_LOGOUT_CANCEL');
+      params.okType = 'button-balanced';
+      genericServices.showConfirmAlert(params, onAlertSuccess, onAlertError);
     };
 
     var setScopeValuesOnSuccess = function (response) {
@@ -50,10 +61,14 @@ homeContainerModule.
     function onAlertSuccess(response, params) {
       switch (params.action) {
         case 'logout':
-          $ionicHistory.nextViewOptions({
-            disableBack: true,
-            historyRoot: true
-          });
+          // $ionicHistory.nextViewOptions({
+          //   disableBack: true,
+          //   historyRoot: true
+          // });
+          //clear cart
+          bookService.clearCart();
+          //clear session token
+          $rootScope.token = '';
           $state.go('login');
           break;
 

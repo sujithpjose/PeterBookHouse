@@ -17,7 +17,7 @@ app.config(['$urlRouterProvider', '$ionicConfigProvider', '$translateProvider', 
 
   $rootScope.$on('$ionicView.beforeEnter', function () {
 
-    if ($ionicHistory.currentView().stateName === 'dashboard') {
+    if ($ionicHistory.currentView().stateName === 'login') {
       $ionicHistory.clearHistory();
       $ionicHistory.clearCache();
     }
