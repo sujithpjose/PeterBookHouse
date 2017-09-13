@@ -11,6 +11,8 @@ loginModule.
       captcha: ''
     };
 
+    var defaultUser = angular.copy(self.user);
+
     self.signInUser = {
       email: 'pjosesujith@gmail.com',
       password: 'sujith1234'
@@ -28,6 +30,7 @@ loginModule.
       $scope.modal = modal;
     });
     $scope.openSignupModal = function () {
+      self.user = defaultUser;
       $http
         .get('http://admin.peterbookhouse.com/signup')
         .then(function (response) {
@@ -95,13 +98,47 @@ loginModule.
     function signup() {
       $http
         .post('http://admin.peterbookhouse.com/signup', self.user)
-        .then(function () {
+        .then(function success(response) {
           var params = {};
           params.title = sharedConstants.successTitle;
           params.template = 'User Created';
           params.action = 'newUser';
           genericServices.showAlert(params, onAlertSuccess, onAlertError);
-        });
+        },
+        function (response) {
+          genericServices.hideSpinner();
+          var params = {};
+
+          params.template = generateValidationMsg(response.data);
+
+          params.title = sharedConstants.errorTitle;
+          params.action = 'loginFailed';
+          genericServices.showAlert(params, onAlertSuccess, onAlertError);
+
+        }
+        );
+    };
+
+    function generateValidationMsg(result) {
+      var msg = '';
+
+      if (!genericServices.isEmpty(result.name)) {
+        msg += result.name;
+      }
+      if (!genericServices.isEmpty(result.email)) {
+        msg += result.email;
+      }
+      if (!genericServices.isEmpty(result.password)) {
+        msg += result.password;
+      }
+      if (!genericServices.isEmpty(result.password_confirmation)) {
+        msg += result.password_confirmation;
+      }
+      if (!genericServices.isEmpty(result.captcha)) {
+        msg += 'invalid captcha';
+      }
+
+      return msg;
     };
 
     function invokeLogin() {
@@ -113,7 +150,7 @@ loginModule.
           $rootScope.token = response.data.api_token;
           console.log('token:' + $rootScope.token);
           $http.defaults.headers.common.Authorization = 'Bearer ' + $rootScope.token;
-        
+
           $state.go('store.home');
         }, function (response) {
           genericServices.hideSpinner();
