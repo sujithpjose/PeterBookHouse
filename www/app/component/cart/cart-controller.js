@@ -94,7 +94,7 @@ cartModule.
     function onAlertSuccess(response, params) {
       switch (params.action) {
         case 'orderSuccess':
-          self.removeItem();
+          self.removeItem(selectedIndex);
           break;
         case 'orderError':
           break;
