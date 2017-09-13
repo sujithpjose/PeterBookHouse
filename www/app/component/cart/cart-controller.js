@@ -27,10 +27,12 @@ cartModule.
     };
 
     function addtocart(id) {
+      genericServices.showSpinner();
       $http
         .post('http://admin.peterbookhouse.com/api/addtocart', { book_id: id })
         .then(
         function success(response) {
+          genericServices.hideSpinner();
           var params = {};
           if (sharedConstants.apiStatusSuccess == response.data.meta.status) {
             params.title = sharedConstants.successTitle;
@@ -47,6 +49,7 @@ cartModule.
 
         },
         function error() {
+          genericServices.hideSpinner();
           var params = {};
           params.title = sharedConstants.errorTitle;
           params.template = 'Order failed';

@@ -11,7 +11,8 @@ accountModule.config(['$stateProvider', function ($stateProvider) {
                 'content': {
                     templateUrl: 'app/component/account/account-template.html',
                     controller: 'AccountController'
-                }
+                },
+                cache:false
             }
         });
 }]);

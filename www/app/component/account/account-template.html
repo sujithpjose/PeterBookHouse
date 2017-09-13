@@ -1,19 +1,19 @@
 <!------------------- main content ------------------------------>
 
 <div class="row">
-  <div class="col col-33">
+  <div ng-if="account.hasProfile" class="col col-33">
     <div class="col card cardview">
 
       <!-- Personal Details -->
       <div class="row row-center">
         <div class="col col-center">
           <!-- <img src="mcfly.jpg"> -->
-          <h3>Sujith P Jose</h3>
-          <p>9567661847</p>
+          <span class="text-black text-19">{{profile.first_name+' ' + profile.last_name}}</span>
+          <p>{{profile.phone}}</p>
         </div>
-        <div class="col col-center">
-          <button ng-click="openUserprofileModal()">
-            Add
+        <div class="col col-center text-right">
+          <button ng-click="openUserprofileModal()" class="button icon-right ion-edit button-clear button-positive">
+           
           </button>
         </div>
       </div>
@@ -21,13 +21,16 @@
       <div class="row">
         <div class="col">
           <p>
-            Pathilettu House <br/> Alpara Kannara P O </br> Thrissur
+            {{profile.address}}
           </p>
         </div>
       </div>
     </div>
 
   </div>
+  <button ng-hide="account.hasProfile" ng-click="openUserprofileModal()" class="button icon-right ion-edit button-clear button-positive">
+    Add profile
+   </button>
   <div class="col">
     <div class="row no-padding">
 
@@ -36,29 +39,23 @@
         <!-- table -->
         <div class="order-table">
           <div class="row header">
-            <div class="col">Id</div>
+            <div class="col col-10">Id</div>
+            <div class="col">Created</div>
             <div class="col">Issued</div>
             <div class="col">Returned</div>
             <div class="col">Status</div>
             <div class="col"></div>
           </div>
-          <div class="row">
-            <div class="col">123</div>
-            <div class="col">14-Nov-2017</div>
-            <div class="col">18-Nov-2017</div>
-            <div class="col">Delivered</div>
+          <!-- Order List -->
+          <div class="row" ng-repeat="order in account.orderList">
+            <div class="col col-10">{{order.id}}</div>
+            <div class="col">{{order.created_at}}</div>
+            <div class="col">{{order.issued_at}}</div>
+            <div class="col">{{order.returned_at}}</div>
+            <div class="col">{{order.status}}</div>
             <div class="col text-center">
-                <button class="button button-assertive table-btn" ng-click="ctrl.add($index)">Cancel</button>
-              </div>
-          </div>
-          <div class="row">
-            <div class="col">124</div>
-            <div class="col">14-Nov-2017</div>
-            <div class="col">24-Nov-2017</div>
-            <div class="col">Cancelled</div>
-            <div class="col text-center">
-                <button class="button button-assertive table-btn" ng-click="ctrl.add($index)">Cancel</button>
-              </div>
+              <button ng-disabled="order.status == 'CANCELLED'" class="button button-assertive table-btn" ng-click="cancelorder(order.id,$index)">Cancel</button>
+            </div>
           </div>
         </div>
         <!-- table -->
