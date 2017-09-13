@@ -56,6 +56,7 @@ gridModule.
       self.profilePath = imgConstants.sharedPath;
       self.sharedPath = imgConstants.imgPath;
       self.gridModal.category = $stateParams.id;
+      loginService.routeToLogin();
       populateCategories();
     };
 

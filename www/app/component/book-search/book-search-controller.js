@@ -56,6 +56,8 @@ searchModule.
       self.profilePath = imgConstants.sharedPath;
       self.sharedPath = imgConstants.imgPath;
       self.gridModal.searchText = $stateParams.searchText;
+
+      loginService.routeToLogin();
       populateSearchResults();
     };
 

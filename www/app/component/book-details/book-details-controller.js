@@ -6,6 +6,7 @@ bookDetailsModule.
     self.bookItem = {};
 
     var init = function () {
+      loginService.routeToLogin();
       self.bookItem = bookService.getItem();
     };
 

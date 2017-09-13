@@ -1,5 +1,5 @@
 accountModule.
-  controller('AccountController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'bookService', '$ionicModal', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, bookService, $ionicModal) {
+  controller('AccountController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'bookService', '$ionicModal','loginService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, bookService, $ionicModal,loginService) {
     var self = $scope;
     self.profile = {
       first_name: '',
@@ -39,6 +39,7 @@ accountModule.
 
     var init = function () {
       self.imgPath = sharedConstants.assetsBaseUrl;
+      loginService.routeToLogin();
 
     };
 
@@ -125,7 +126,7 @@ accountModule.
     };
 
     //init method to call while controller loading
-    // init();
+    init();
 
   }]);
 

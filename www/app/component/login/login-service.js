@@ -1,4 +1,4 @@
-loginModule.service('loginService', function () {
+loginModule.service('loginService', function ($state,genericServices,$rootScope) {
     var basicDetails = {};
 
     var setBasicDetails = function (newObj) {
@@ -9,9 +9,16 @@ loginModule.service('loginService', function () {
         return basicDetails;
     };
 
+    var routeToLogin = function () {
+        if (genericServices.isEmpty($rootScope.token)) {
+            $state.go('login');
+        }
+    };
+
     return {
         setBasicDetails: setBasicDetails,
-        getBasicDetails: getBasicDetails
+        getBasicDetails: getBasicDetails,
+        routeToLogin : routeToLogin
     };
 
 });
