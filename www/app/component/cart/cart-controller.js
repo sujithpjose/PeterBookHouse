@@ -1,7 +1,8 @@
 cartModule.
-  controller('CartController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'bookService','loginService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, bookService,loginService) {
+  controller('CartController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'bookService', 'loginService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, bookService, loginService) {
     var self = $scope;
     var pageSize = 4;
+    var selectedIndex;
 
     self.cartList = [];
 
@@ -20,7 +21,8 @@ cartModule.
       self.cartList.splice(index, 1);
     };
 
-    self.orderItem = function (item) {
+    self.orderItem = function (item, index) {
+      selectedIndex = index;
       addtocart(item.id);
     };
 
@@ -30,10 +32,19 @@ cartModule.
         .then(
         function success(response) {
           var params = {};
-          params.title = sharedConstants.successTitle;
-          params.template = 'Ordered Succesfully';
-          params.action = 'orderSuccess';
-          genericServices.showAlert(params, onAlertSuccess, onAlertError);
+          if (sharedConstants.apiStatusSuccess == response.data.meta.status) {
+            params.title = sharedConstants.successTitle;
+            params.template = 'Ordered Succesfully';
+            params.action = 'orderSuccess';
+            genericServices.showAlert(params, onAlertSuccess, onAlertError);
+          } else {
+            params.title = sharedConstants.errorTitle;
+            params.template = 'Order failed';
+            params.action = 'orderError';
+            genericServices.showAlert(params, onAlertSuccess, onAlertError);
+          }
+
+
         },
         function error() {
           var params = {};
@@ -80,6 +91,7 @@ cartModule.
     function onAlertSuccess(response, params) {
       switch (params.action) {
         case 'orderSuccess':
+          self.removeItem();
           break;
         case 'orderError':
           break;

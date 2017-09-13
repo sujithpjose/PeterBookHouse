@@ -10,6 +10,8 @@ sharedModule.constant('sharedConstants', {
     'apiSuccess': 0,
     'apiError': 1,
     'apiFailed': 9,
+    'apiStatusSuccess':'success',
+    'apiStatusFailure':'failure',
     'apiFailedMsg': 'Service Failed',
     'successTitle': 'Success',
     'errorTitle': 'Error',
