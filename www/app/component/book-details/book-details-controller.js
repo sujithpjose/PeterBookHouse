@@ -6,34 +6,39 @@ bookDetailsModule.
     self.bookItem = {};
 
     var init = function () {
-      loginService.routeToLogin();
+
       self.bookItem = bookService.getItem();
     };
 
     self.addToCart = function (item) {
-      var tempCart = bookService.getCart();
-      var length = tempCart.length;
-      var canAdditem = true;
+      if (loginService.isLoggedIn()) {
 
-      if (length > 0) {
-        for (var i = 0; i < tempCart.length; i++) {
-          if (tempCart[i].id === item.id) {
-            canAdditem = false;
-            break;
+        var tempCart = bookService.getCart();
+        var length = tempCart.length;
+        var canAdditem = true;
+
+        if (length > 0) {
+          for (var i = 0; i < tempCart.length; i++) {
+            if (tempCart[i].id === item.id) {
+              canAdditem = false;
+              break;
+            }
           }
         }
-      }
 
-      if (canAdditem) {
-        bookService.addToCart(item);
-        $state.go('store.cart');
+        if (canAdditem) {
+          bookService.addToCart(item);
+          $state.go('store.cart');
+        } else {
+          //already exists
+          var params = {};
+          params.title = sharedConstants.errorTitle;
+          params.template = 'Item already exists';
+          params.action = 'addToCartError';
+          genericServices.showAlert(params, onAlertSuccess, onAlertError);
+        }
       } else {
-        //already exists
-        var params = {};
-        params.title = sharedConstants.errorTitle;
-        params.template = 'Item already exists';
-        params.action = 'addToCartError';
-        genericServices.showAlert(params, onAlertSuccess, onAlertError);
+        $state.go('login');
       }
     };
 

@@ -16,7 +16,6 @@ homeModule.
 
     var init = function () {
       self.imgPath = sharedConstants.assetsBaseUrl;
-      loginService.routeToLogin();
       
       populateFavourites();
       populateHomeList1();

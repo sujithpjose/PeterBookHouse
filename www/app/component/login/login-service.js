@@ -15,10 +15,20 @@ loginModule.service('loginService', function ($state,genericServices,$rootScope)
         }
     };
 
+    var isLoggedIn = function () {
+        if (genericServices.isEmpty($rootScope.token)) {
+           return false;
+        } else {
+            return true;
+        }
+
+    };
+
     return {
         setBasicDetails: setBasicDetails,
         getBasicDetails: getBasicDetails,
-        routeToLogin : routeToLogin
+        routeToLogin : routeToLogin,
+        isLoggedIn: isLoggedIn
     };
 
 });

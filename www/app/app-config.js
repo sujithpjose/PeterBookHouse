@@ -36,7 +36,7 @@ app.config(['$urlRouterProvider', '$ionicConfigProvider', '$translateProvider', 
     //set up common http request header
     // setRequestHeader();
 
-    $state.go('login');
+    $state.go('store.home');
   };
 
   //initialize the setups for the app

@@ -13,7 +13,7 @@ cartModule.
 
     var init = function () {
       self.imgPath = sharedConstants.assetsBaseUrl;
-      loginService.routeToLogin();
+
       self.cartList = bookService.getCart();
     };
 
