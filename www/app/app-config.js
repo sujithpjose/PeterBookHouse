@@ -31,37 +31,11 @@ app.config(['$urlRouterProvider', '$ionicConfigProvider', '$translateProvider', 
     $http.defaults.headers.common[sharedConstants.httpHeader.X_API_VERSION] = sharedConstants.httpHeader.X_API_VERSION_VALUE;
   };
 
-  function setLocalForageDriver() {
-    localforage.defineDriver(window.cordovaSQLiteDriver).then(function () {
-      return localforage.setDriver([
-        // Try setting cordovaSQLiteDriver if available,
-        window.cordovaSQLiteDriver._driver,
-        // otherwise use one of the default localforage drivers as a fallback.
-        localforage.INDEXEDDB,
-        localforage.WEBSQL,
-        localforage.LOCALSTORAGE
-      ]);
-    }).then(function () {
-      // this should alert "cordovaSQLiteDriver" when in an emulator or a device
-      $log.debug(localforage.driver());
-      // set a value;
-      return localforage.setItem('testPromiseKey', 'testPromiseValue');
-    }).then(function () {
-      return localforage.getItem('testPromiseKey');
-    }).then(function (value) {
-      $log.debug(value);
-    }).catch(function (err) {
-      $log.error(err);
-    });
-
-  };
-
   var init = function () {
     $ionicPickerI18n.okClass = "btn-red";
     //set up common http request header
     // setRequestHeader();
-    //set up localforage driver
-    setLocalForageDriver();
+
     $state.go('login');
   };
 
