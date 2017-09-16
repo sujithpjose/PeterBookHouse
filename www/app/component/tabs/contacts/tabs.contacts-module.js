@@ -1,1 +1,0 @@
-var contactsModule = angular.module('contacts',[]);

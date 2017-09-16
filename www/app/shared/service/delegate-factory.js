@@ -1,4 +1,4 @@
-serviceModule.factory("delegateFactory", ['dataService', 'connectivityMonitor', 'localforageService', '$log','sharedConstants', function (dataService, connectivityMonitor, localforageService,$log,sharedConstants) {
+serviceModule.factory("delegateFactory", ['dataService', 'connectivityMonitor',  '$log','sharedConstants', function (dataService, connectivityMonitor,$log,sharedConstants) {
     return {
         fetchData: function (config, onSuccess, onError) {
             if (connectivityMonitor.isOffline()) {//should execute if offline

@@ -12,7 +12,7 @@ app.config(['$urlRouterProvider', '$ionicConfigProvider', '$translateProvider', 
   });
   $translateProvider.preferredLanguage('en_US');
 
-}]).run(['$http', 'sharedConstants', '$log', '$ionicHistory', '$rootScope', 'localforageService', '$ionicPickerI18n', '$state', function ($http, sharedConstants, $log, $ionicHistory, $rootScope, localforageService, $ionicPickerI18n,$state) {
+}]).run(['$http', 'sharedConstants', '$log', '$ionicHistory', '$rootScope', '$ionicPickerI18n', '$state', function ($http, sharedConstants, $log, $ionicHistory, $rootScope, $ionicPickerI18n,$state) {
   $log.debug('hrmsApp.config.run:');
 
   $rootScope.$on('$ionicView.beforeEnter', function () {
