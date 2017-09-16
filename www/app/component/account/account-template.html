@@ -1,7 +1,10 @@
 <!------------------- main content ------------------------------>
+<div class="row padding ">
+  <span class="text-black text-17">User details</span>
+</div>
 
-<div class="row responsive-sm books">
-  <div ng-if="account.hasProfile" class="col col-33">
+<div class="row ">
+  <div ng-if="account.hasProfile" class="col">
     <div class="col card cardview">
 
       <!-- Personal Details -->
@@ -28,10 +31,23 @@
     </div>
 
   </div>
+
+
+
   <button ng-hide="account.hasProfile" ng-click="openUserprofileModal()" class="button icon-right ion-edit button-clear button-positive">
     Add profile
    </button>
-  <div class="col col-order-table">
+
+</div>
+  
+
+
+<div class="row padding ">
+    <span class="text-black text-17">My Rental details</span>
+  </div>
+
+<div class="row">
+   <div class="col col-order-table">
     <div class="row no-padding">
 
       <!-- Order Details -->

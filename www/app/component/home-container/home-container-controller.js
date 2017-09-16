@@ -15,6 +15,11 @@ homeContainerModule.
       self.$broadcast('search', { message: 'doSearch' });
     };
 
+    self.toHome = function () {
+      $rootScope.data.searchString = '';
+      $state.go('store.home');
+    };
+
     self.performLogout = function () {
       var params = {};
       params.title = 'Confirmation';
