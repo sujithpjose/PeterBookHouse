@@ -2,8 +2,6 @@ sharedModule.constant('sharedConstants', {
     'title': 'Oracle HRMS',
     'httpHeader': {
         'AUTHORIZATION_VALUE': 'Basic bVB5VzlIbTRYUERqc0tGTGFRbE41ZE1UQlRFYTpfdTQ1TkR2YW1SZTlOZlJyWUZva3dsdUwwUTRh',
-        'ORACLE_MOBILE_BACKEND_ID': 'Oracle-Mobile-Backend-Id',
-        'ORACLE_MOBILE_BACKEND_ID_VALUE': '3322be24-8630-4e73-acb4-c8008908622c',
         'X_API_VERSION': 'X-API-Version',
         'X_API_VERSION_VALUE': 'v1'
     },
@@ -26,10 +24,6 @@ sharedModule.constant('sharedConstants', {
     'javaConnectorUrl': {
         'base': 'http://admin.peterbookhouse.com/',
         'path': 'api/'
-    },
-    'mcsUrl': {
-        'base': 'https://rapidvaluedev-rvsmcsdomain.mobileenv.us2.oraclecloud.com:443',
-        'path': '/mobile/custom/'
     },
     'dropdownDefault': 'select',
     'isoDateFormat': 'yyyy-MM-dd',
