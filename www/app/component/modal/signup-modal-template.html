@@ -1,7 +1,13 @@
 <ion-modal-view>
     <ion-header-bar class="bar-custom ">
         <h1 class="title">Register user</h1>
+        <div class="buttons">
+            <button class="button button-icon ion-android-close text-white" ng-click="closeSignupModal()">
+            </button>
+        </div>
     </ion-header-bar>
+
+    <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close">test</span></div>
     <ion-content>
         <div class="card cardview">
             <div class="form-container">
@@ -14,7 +20,7 @@
                         </div>
                         <div class="item item-input-inset ">
                             <span class="item-input-wrapper bg-white">
-              <input name="name"  type="text" class="text-right" ng-model="user.name" placeholder="Enter.."  required/>
+              <input name="name"  type="text" class="text-right" ng-model="user.name" placeholder="Enter name"  required/>
              
                                 </span>
                         </div>
@@ -35,11 +41,11 @@
                     <!--Email-->
                     <div class="row row-center">
                         <div class="col cardview-text-label">Email
-                                <span class="assertive"> * </span>
+                            <span class="assertive"> * </span>
                         </div>
                         <div class="item item-input-inset ">
                             <span class="item-input-wrapper bg-white">
-                  <input name="email" type="email" class="text-right" ng-model="user.email" placeholder="Enter.."  required/>
+                  <input name="email" type="email" class="text-right" ng-model="user.email" placeholder="Enter email"  required/>
                                     </span>
                         </div>
                     </div>
@@ -47,11 +53,11 @@
                     <!--Password-->
                     <div class="row row-center">
                         <div class="col cardview-text-label">Password
-                                <span class="assertive"> * </span>
+                            <span class="assertive"> * </span>
                         </div>
                         <div class="item item-input-inset ">
                             <span class="item-input-wrapper bg-white">
-                  <input name="password" type="password" class="text-right" ng-model="user.password" placeholder="Enter.."  required/>
+                  <input name="password" type="password" class="text-right" ng-model="user.password" placeholder="Enter passsword"  required/>
                                     </span>
                         </div>
                     </div>
@@ -59,11 +65,11 @@
                     <!--Confirm Password-->
                     <div class="row row-center">
                         <div class="col cardview-text-label">Confirm Password
-                                <span class="assertive"> * </span>
+                            <span class="assertive"> * </span>
                         </div>
                         <div class="item item-input-inset ">
                             <span class="item-input-wrapper bg-white">
-                  <input name="password_confirmation"  type="password" class="text-right" ng-model="user.password_confirmation" placeholder="Enter.." required />
+                  <input name="password_confirmation"  type="password" class="text-right" ng-model="user.password_confirmation" placeholder="Confirm password" required />
                                     </span>
                         </div>
                     </div>
@@ -84,12 +90,19 @@
                     <!--Captcha-->
                     <div class="row row-center last-row">
                         <div class="col cardview-text-label">
-                            <img ng-src="{{signup.captchaImageUrl}}" />
-                            <!-- <a class="button button-icon icon ion-refresh"></a> -->
+
+                            <div class="item item-input-inset ">
+                                <span class="item-input-wrapper bg-white">
+                                                <img ng-src="{{signup.captchaImageUrl}}" />
+                                                <a class="button button-icon icon ion-loop text-blue" ng-click="refreshCaptcha()"></a>
+                                                </span>
+                            </div>
+
+
                         </div>
                         <div class="item item-input-inset ">
                             <span class="item-input-wrapper bg-white">
-                            <input name="captcha"  type="text" class="text-right" ng-model="user.captcha" placeholder="Enter.." required />
+                            <input name="captcha"  type="text" class="text-right" ng-model="user.captcha" placeholder="Enter captcha" required />
                                               </span>
 
                         </div>

@@ -31,12 +31,9 @@ loginModule.
     });
     $scope.openSignupModal = function () {
       self.user = defaultUser;
-      $http
-        .get('http://admin.peterbookhouse.com/signup')
-        .then(function (response) {
-          self.signup.captchaImageUrl = response.data.url;
-          self.user._token = response.data.token;
-        });
+
+      invokeSignUp();
+
       $scope.modal.show();
     };
     $scope.closeSignupModal = function () {
@@ -56,6 +53,19 @@ loginModule.
     });
 
     //------------------------ Signup modal------------------------ //
+
+    function invokeSignUp() {
+      $http
+        .get('http://admin.peterbookhouse.com/signup')
+        .then(function (response) {
+          self.signup.captchaImageUrl = response.data.url;
+          self.user._token = response.data.token;
+        });
+    };
+
+    self.refreshCaptcha = function () {
+      invokeSignUp();
+    };
 
     self.sharedPath = imgConstants.imgPath;
     $ionicPlatform.registerBackButtonAction(function (event) {
@@ -186,6 +196,7 @@ loginModule.
           break;
         case 'newUser':
           $scope.modal.hide();
+          $state.go('store.home');
           break;
         case 'loginFailed':
           break;
