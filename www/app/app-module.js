@@ -1,7 +1,7 @@
 
-var app = angular.module('bookShop', ['ionic', 'component', 'shared', 'ngCordova', 'ion-datetime-picker', 'pascalprecht.translate', 'canSwipe', 'ui.bootstrap']);
+var app = angular.module('bookShop', ['ionic', 'component', 'shared', 'ion-datetime-picker', 'pascalprecht.translate', 'canSwipe', 'ui.bootstrap']);
 
-app.run(function ($rootScope,$ionicPlatform, $cordovaSQLite, dbService,connectivityMonitor,$log) {
+app.run(function ($rootScope,$ionicPlatform,$log) {
     $log.debug('app.run:');
     $ionicPlatform.ready(function () {
         $log.debug('$ionicPlatform.ready:');
@@ -20,6 +20,4 @@ app.run(function ($rootScope,$ionicPlatform, $cordovaSQLite, dbService,connectiv
             StatusBar.backgroundColorByHexString("#000000");
         }
     });
-    //attach event listner for networkstatus change
-    connectivityMonitor.startWatching();
 });

@@ -1,4 +1,4 @@
-serviceModule.factory('connectivityMonitor', function($rootScope, $cordovaNetwork){
+serviceModule.factory('connectivityMonitor', function($rootScope){
  
   return {
     isOnline: function(){

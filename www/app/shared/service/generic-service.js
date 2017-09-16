@@ -1,4 +1,4 @@
-serviceModule.factory("genericServices", ['$ionicHistory', '$ionicLoading', '$state', '$ionicPopup', '$filter', '$cordovaToast', function ($ionicHistory, $ionicLoading, $state, $ionicPopup, $filter, $cordovaToast) {
+serviceModule.factory("genericServices", ['$ionicHistory', '$ionicLoading', '$state', '$ionicPopup', '$filter', function ($ionicHistory, $ionicLoading, $state, $ionicPopup, $filter) {
   return {
     doSomething: function () {
       //Do something here

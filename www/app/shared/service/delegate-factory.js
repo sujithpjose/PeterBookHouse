@@ -1,4 +1,4 @@
-serviceModule.factory("delegateFactory", ['dataService', 'dbService', 'connectivityMonitor', 'localforageService', '$log','sharedConstants', function (dataService, dbService, connectivityMonitor, localforageService,$log,sharedConstants) {
+serviceModule.factory("delegateFactory", ['dataService', 'connectivityMonitor', 'localforageService', '$log','sharedConstants', function (dataService, connectivityMonitor, localforageService,$log,sharedConstants) {
     return {
         fetchData: function (config, onSuccess, onError) {
             if (connectivityMonitor.isOffline()) {//should execute if offline
@@ -26,7 +26,6 @@ $log.debug("Network offline");
                 }
                 dataService.getData(config).then(
                     function (response) {
-                        //dbService.performDbInsert(response);
                         if (response.config.doSave === 'Y') {
                             localforageService.setToLocalStorage(response);
                         }
