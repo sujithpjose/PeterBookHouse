@@ -20,6 +20,14 @@ homeContainerModule.
       $state.go('store.home');
     };
 
+    self.toAccount = function () {
+      if (loginService.isLoggedIn()) {
+        $state.go('store.account');
+      } else {
+        $state.go('login', { state: 'store.account' });
+      }
+    };
+
     self.performLogout = function () {
       var params = {};
       params.title = 'Confirmation';
