@@ -3,11 +3,11 @@
   <ion-content scroll="false">
     <!------------------- Header container  ------------------>
 
-    <div class="bar-container-top">
+    <div ng-show="false" class="bar-container-top">
       <div class="col text-right no-padding">
         <span ng-click="toAccount()">ACCOUNT</span>
         <!-- <span>CONTACT</span> -->
-        <span  ng-click="performLogout()">LOGOUT</span>
+        <span ng-click="performLogout()">LOGOUT</span>
       </div>
     </div>
 
@@ -17,7 +17,8 @@
       </div>
       <div class="col text-right">
         <div class="row  row-center header-search-container">
-          <input type="text" ng-model="data.searchString" placeholder="Search by Category/Author/Books." class="header-search-input" />
+          <input type="text" ng-model="data.searchString" placeholder="Search by Category/Author/Books." class="header-search-input"
+          />
           <!-- <a class="header-search-close icon ion-close-circled placeholder-icon icon-close-txt" ng-click="report.searchString = ''; searchClicked()"
             ng-show="report.searchString.length">
           </a> -->
@@ -25,10 +26,22 @@
           </button>
         </div>
       </div>
-      <div class="col col-20 col-center cart-col no-padding">
+      <div class="col col-25 col-center cart-col no-padding">
+
+
+        <button class="button ion-android-contact icon-right header-cart-btn" ng-click="toAccount()">
+          User
+          </button>
+
         <button class="button ion-ios-cart icon-right header-cart-btn" ui-sref="store.cart">
         Cart
         </button>
+
+
+
+        <button class="button button-assertive ion-log-out icon-right " ng-click="performLogout()">
+            <!-- Logout -->
+            </button>
       </div>
       <!-- <div class="col col-10 col-center text-center"> <button class="button ion-person header-cart-btn">
         Sign in
