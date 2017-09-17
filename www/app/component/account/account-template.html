@@ -1,11 +1,17 @@
 <!------------------- main content ------------------------------>
-<div class="row padding ">
-  <span class="text-black text-17">User details</span>
-</div>
 
+<!-- User Details Header-->
+<div class="row header-row top-10-margin">
+  <div class="col text-left">
+    <span class="header-text">User details</span>
+  </div>
+</div>
+<!-- User Details Header-->
+
+<!-- User Details Content-->
 <div class="row ">
   <div ng-if="account.hasProfile" class="col">
-    <div class="col card cardview">
+    <div class="col card cardview top-5-margin">
 
       <!-- Personal Details -->
       <div class="row row-center">
@@ -14,12 +20,15 @@
           <span class="text-black text-19">{{profile.first_name+' ' + profile.last_name}}</span>
           <p>{{profile.phone}}</p>
         </div>
+        <!-- Edit profile button-->
         <div class="col col-center text-right">
           <button ng-click="openUserprofileModal()" class="button icon-right ion-edit button-clear button-positive">
-           
           </button>
         </div>
+        <!-- Edit profile button-->
       </div>
+      <!-- Personal Details -->
+
       <!-- Address details -->
       <div class="row">
         <div class="col">
@@ -28,26 +37,30 @@
           </p>
         </div>
       </div>
-    </div>
+      <!-- Address details -->
 
+    </div>
   </div>
 
 
-
+  <!-- Add profile button-->
   <button ng-hide="account.hasProfile" ng-click="openUserprofileModal()" class="button icon-right ion-edit button-clear button-positive">
     Add profile
    </button>
+  <!-- Add profile button-->
 
 </div>
-  
+<!-- User Details Content-->
 
 
-<div class="row padding ">
-    <span class="text-black text-17">My Rental details</span>
+<div class="row header-row">
+  <div class="col text-left">
+    <span class="header-text">My Rental details</span>
   </div>
+</div>
 
 <div class="row">
-   <div class="col col-order-table">
+  <div class="col col-order-table">
     <div class="row no-padding">
 
       <!-- Order Details -->
