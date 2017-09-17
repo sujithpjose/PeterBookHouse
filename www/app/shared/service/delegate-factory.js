@@ -27,9 +27,6 @@ serviceModule.factory("delegateFactory", ['dataService', 'connectivityMonitor', 
 
                 dataService.getData(config).then(
                     function (response) {
-                        if (response.config.doSave === 'Y') {
-                            localforageService.setToLocalStorage(response);
-                        }
                         response.netWorkStatus = 'ONLINE';
                         onSuccess(response);
                     },

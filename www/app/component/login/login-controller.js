@@ -61,7 +61,7 @@ loginModule.
 
     function invokeSignUp() {
       $http
-        .get('http://admin.peterbookhouse.com/signup')
+        .get(sharedConstants.apiUrl.base+'signup')
         .then(function (response) {
           self.signup.captchaImageUrl = response.data.url;
           self.user._token = response.data.token;
@@ -112,7 +112,7 @@ loginModule.
 
     function signup() {
       $http
-        .post('http://admin.peterbookhouse.com/signup', self.user)
+        .post(sharedConstants.apiUrl.base+'signup', self.user)
         .then(function success(response) {
           //hide modal
           $scope.modal.hide();
@@ -167,7 +167,7 @@ loginModule.
 
     function invokeLogin() {
       $http
-        .post('http://admin.peterbookhouse.com/api/login', self.signInUser)
+        .post(sharedConstants.apiUrl.base+'api/login', self.signInUser)
         .then(function (response) {
           genericServices.hideSpinner();
           $rootScope.data.searchString = '';
@@ -194,7 +194,7 @@ loginModule.
 
 
     self.getdetails = function () {
-      $http({ url: 'http://admin.peterbookhouse.com/api/user/details', method: 'GET' })
+      $http({ url: sharedConstants.apiUrl.base+'api/user/details', method: 'GET' })
         .then(function (response) {
           self.UserDetails = response.data;
           console.log(":" + response.data);

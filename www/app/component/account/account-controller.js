@@ -52,7 +52,7 @@ accountModule.
     function getOrders() {
       genericServices.showSpinner();
       $http
-        .get('http://admin.peterbookhouse.com/api/getorders')
+        .get(sharedConstants.apiUrl.base+'api/getorders')
         .then(
         function success(response) {
           genericServices.hideSpinner();
@@ -78,7 +78,7 @@ accountModule.
     function cancelorder(id) {
       genericServices.showSpinner();
       $http
-        .post('http://admin.peterbookhouse.com/api/cancelorder', { id: id })
+        .post(sharedConstants.apiUrl.base+'api/cancelorder', { id: id })
         .then(
         function success(response) {
           genericServices.hideSpinner();
@@ -116,7 +116,7 @@ accountModule.
     function doAddProfile() {
       genericServices.showSpinner();
       $http
-        .post('http://admin.peterbookhouse.com/api/user/addprofile', self.profile)
+        .post(sharedConstants.apiUrl.base+'api/user/addprofile', self.profile)
         .then(function () {
           genericServices.hideSpinner();
           var params = {};
@@ -139,7 +139,7 @@ accountModule.
     function getProfile() {
       genericServices.showSpinner();
       $http
-        .get('http://admin.peterbookhouse.com/api/user/profile')
+        .get(sharedConstants.apiUrl.base+'api/user/profile')
         .then(
         function success(response) {
           genericServices.hideSpinner();

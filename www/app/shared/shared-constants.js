@@ -22,8 +22,8 @@ sharedModule.constant('sharedConstants', {
     'leaveBalanceDateFormat': 'dd MMM yy',
     'assetsBaseUrl': 'http://assets.peterbookhouse.com/images/',
     'apiUrl': {
-        'base': 'http://www.peterbookhouse.com/',
-        'path': 'portal/public/portal/public/api/'
+        'base': 'http://www.peterbookhouse.com/portal/public/',
+        'path': 'api/'
     },
     'dropdownDefault': 'select',
     'isoDateFormat': 'yyyy-MM-dd',

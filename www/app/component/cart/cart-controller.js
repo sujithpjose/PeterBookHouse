@@ -33,7 +33,7 @@ cartModule.
     function addtocart(id) {
       genericServices.showSpinner();
       $http
-        .post('http://admin.peterbookhouse.com/api/addtocart', { book_id: id })
+        .post(sharedConstants.apiUrl.base+'api/addtocart', { book_id: id })
         .then(
         function success(response) {
           genericServices.hideSpinner();
