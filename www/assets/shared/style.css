@@ -188,6 +188,9 @@
 .text-white{
     color:#FFFFFF;
 }
+.text-header { 
+    color: #b2b2b2;
+}
 
 .text-input-value {
      color: #000000;
