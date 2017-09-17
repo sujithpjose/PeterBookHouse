@@ -1,7 +1,7 @@
 homeModule.
   controller('HomeController', ['$scope', '$state', '$rootScope', '$http', 'dataService', 'sharedValues', 'genericServices', 'delegateFactory', 'sharedConstants', 'imgConstants', '$timeout', '$translate', '$ionicHistory', '$ionicPlatform', 'bookService','loginService', function ($scope, $state, $rootScope, $http, dataService, sharedValues, genericServices, delegateFactory, sharedConstants, imgConstants, $timeout, $translate, $ionicHistory, $ionicPlatform, bookService,loginService) {
     var self = $scope;
-    var pageSize = 4;
+    var pageSize = 10;
 
     self.books = {};
     self.books.favouritesList = [];
