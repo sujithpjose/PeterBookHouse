@@ -17,7 +17,7 @@ homeModule.
     var init = function () {
       self.imgPath = sharedConstants.assetsBaseUrl;
       
-      populateFavourites();
+      // populateFavourites();
       populateHomeList1();
       populateHomeList2();
       populateHomeList3();
