@@ -11,7 +11,6 @@ bookDetailsModule.
     };
 
     self.addToCart = function (item) {
-      if (loginService.isLoggedIn()) {
 
         var tempCart = bookService.getCart();
         var length = tempCart.length;
@@ -37,9 +36,6 @@ bookDetailsModule.
           params.action = 'addToCartError';
           genericServices.showAlert(params, onAlertSuccess, onAlertError);
         }
-      } else {
-        $state.go('login');
-      }
     };
 
     //--------------------------------- Alert Callback ---------------------------- 

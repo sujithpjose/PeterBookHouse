@@ -5,7 +5,10 @@ loginModule.config(['$stateProvider', function ($stateProvider) {
             url: '/login',
             templateUrl: 'app/component/login/login-template.html',
             controller: 'LoginController',
-            cache: false
+            cache: false,
+            params: {
+                state: 'store.home'
+            }
         })
         .state('logout', {
             url: '/logout',

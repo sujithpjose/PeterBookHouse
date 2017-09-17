@@ -22,8 +22,12 @@ cartModule.
     };
 
     self.orderItem = function (item, index) {
-      selectedIndex = index;
-      addtocart(item.id);
+      if (loginService.isLoggedIn()) {
+        selectedIndex = index;
+        addtocart(item.id);
+      } else {
+        $state.go('login',{state:'store.cart'});
+      }
     };
 
     function addtocart(id) {

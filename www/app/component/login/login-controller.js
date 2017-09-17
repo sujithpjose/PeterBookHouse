@@ -1,6 +1,7 @@
 loginModule.
-  controller('LoginController', ['$scope', '$state', 'imgConstants', 'genericServices', '$translate', '$ionicPlatform', '$ionicHistory', '$rootScope', 'sharedValues', 'authorizationFactory', 'loginService', 'delegateFactory', 'sharedConstants', '$http', '$ionicModal', function ($scope, $state, imgConstants, genericServices, $translate, $ionicPlatform, $ionicHistory, $rootScope, sharedValues, authorizationFactory, loginService, delegateFactory, sharedConstants, $http, $ionicModal) {
+  controller('LoginController', ['$scope', '$state', 'imgConstants', 'genericServices', '$translate', '$ionicPlatform', '$ionicHistory', '$rootScope', 'sharedValues', 'authorizationFactory', 'loginService', 'delegateFactory', 'sharedConstants', '$http', '$ionicModal', '$stateParams', function ($scope, $state, imgConstants, genericServices, $translate, $ionicPlatform, $ionicHistory, $rootScope, sharedValues, authorizationFactory, loginService, delegateFactory, sharedConstants, $http, $ionicModal, $stateParams) {
     var self = $scope;
+    var toState = $stateParams.state;
     $rootScope.data = {};
     self.user = {
       _token: '',
@@ -53,6 +54,10 @@ loginModule.
     });
 
     //------------------------ Signup modal------------------------ //
+
+    var init = function () {
+
+    };
 
     function invokeSignUp() {
       $http
@@ -109,11 +114,20 @@ loginModule.
       $http
         .post('http://admin.peterbookhouse.com/signup', self.user)
         .then(function success(response) {
-          var params = {};
-          params.title = sharedConstants.successTitle;
-          params.template = 'User Created';
-          params.action = 'newUser';
-          genericServices.showAlert(params, onAlertSuccess, onAlertError);
+          //hide modal
+          $scope.modal.hide();
+          //set signInUser object
+          self.signInUser = {
+            email: self.user.email,
+            password: self.user.password
+          };
+          //dologin
+          invokeLogin();
+          // var params = {};
+          // params.title = sharedConstants.successTitle;
+          // params.template = 'User Created';
+          // params.action = 'newUser';
+          // genericServices.showAlert(params, onAlertSuccess, onAlertError);
         },
         function (response) {
           genericServices.hideSpinner();
@@ -161,7 +175,7 @@ loginModule.
           console.log('token:' + $rootScope.token);
           $http.defaults.headers.common.Authorization = 'Bearer ' + $rootScope.token;
 
-          $state.go('store.home');
+          $state.go(toState);
         }, function (response) {
           genericServices.hideSpinner();
           var params = {};
@@ -195,8 +209,15 @@ loginModule.
         case 'login_error':
           break;
         case 'newUser':
+          //hide modal
           $scope.modal.hide();
-          $state.go('store.home');
+          //set signInUser object
+          self.signInUser = {
+            email: self.user.email,
+            password: self.user.password
+          };
+          //dologin
+          invokeLogin();
           break;
         case 'loginFailed':
           break;
@@ -213,5 +234,7 @@ loginModule.
         default:
       }
     }
+
+    init();
 
   }]);
