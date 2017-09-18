@@ -17,7 +17,7 @@
         <div class="col col-center">
           <!-- <img src="mcfly.jpg"> -->
           <span class="text-black text-19">{{profile.first_name+' ' + profile.last_name}}</span>
-          <p>{{profile.phone}}</p>
+          <p>{{profile.phone }}</p>
         </div>
         <!-- Edit profile button-->
         <div class="col col-center text-right">
@@ -42,11 +42,13 @@
   </div>
 
 
+  <div ng-hide="account.hasProfile" class="col left-15-padding">
   <!-- Add profile button-->
-  <button ng-hide="account.hasProfile" ng-click="openUserprofileModal()" class="button icon-right ion-edit button-clear button-positive">
-    Add profile
+  <button  ng-click="openUserprofileModal()" class="button icon-right ion-android-person-add button-clear button-positive">
+    Add
    </button>
   <!-- Add profile button-->
+  </div>
 
 </div>
 <!-- User Details Content-->
@@ -85,6 +87,14 @@
               <button ng-disabled="order.status == 'CANCELLED'" class="button button-assertive table-btn" ng-click="cancelorder(order.id,$index)">Cancel</button>
             </div>
           </div>
+
+           <!-- no data -->
+           <div ng-hide="account.hasProfile || account.orderList.length > 0" class="row row-center match-parent">
+              <div class="col col-center text-center">
+                <p> No Results Found</p>
+              </div>
+            </div>
+          <!-- no data -->
         </div>
         <!-- table -->
 

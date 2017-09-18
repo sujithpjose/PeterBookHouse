@@ -3,7 +3,7 @@ accountModule.
     var self = $scope;
     self.account = {};
     self.account.orderList = [];
-    self.account.hasProfile = false;
+    self.account.hasProfile = true;
     self.profile = {
       first_name: '',
       last_name: '',
@@ -43,6 +43,7 @@ accountModule.
 
 
     var init = function () {
+      self.isLoading = true;
       self.imgPath = sharedConstants.assetsBaseUrl;
       loginService.routeToLogin();
       getOrders();
@@ -52,7 +53,7 @@ accountModule.
     function getOrders() {
       genericServices.showSpinner();
       $http
-        .get(sharedConstants.apiUrl.base+'api/getorders')
+        .get(sharedConstants.apiUrl.base + 'api/getorders')
         .then(
         function success(response) {
           genericServices.hideSpinner();
@@ -78,7 +79,7 @@ accountModule.
     function cancelorder(id) {
       genericServices.showSpinner();
       $http
-        .post(sharedConstants.apiUrl.base+'api/cancelorder', { id: id })
+        .post(sharedConstants.apiUrl.base + 'api/cancelorder', { id: id })
         .then(
         function success(response) {
           genericServices.hideSpinner();
@@ -116,7 +117,7 @@ accountModule.
     function doAddProfile() {
       genericServices.showSpinner();
       $http
-        .post(sharedConstants.apiUrl.base+'api/user/addprofile', self.profile)
+        .post(sharedConstants.apiUrl.base + 'api/user/addprofile', self.profile)
         .then(function () {
           genericServices.hideSpinner();
           var params = {};
@@ -139,24 +140,26 @@ accountModule.
     function getProfile() {
       genericServices.showSpinner();
       $http
-        .get(sharedConstants.apiUrl.base+'api/user/profile')
+        .get(sharedConstants.apiUrl.base + 'api/user/profile')
         .then(
         function success(response) {
           genericServices.hideSpinner();
           var params = {};
-          if (sharedConstants.apiStatusSuccess == response.data.meta.status) {
+          if (sharedConstants.apiStatusSuccess == response.data.meta.status && !genericServices.isEmpty(response.data.data)) {
             self.account.hasProfile = true;
             self.profile = response.data.data;
           } else {
+            self.account.hasProfile = false;
             self.profile = {};
-            params.title = sharedConstants.errorTitle;
-            params.template = 'service failed';
-            params.action = 'error';
-            genericServices.showAlert(params, onAlertSuccess, onAlertError);
+            // params.title = sharedConstants.errorTitle;
+            // params.template = 'service failed';
+            // params.action = 'noProfile';
+            // genericServices.showAlert(params, onAlertSuccess, onAlertError);
           }
         },
         function error() {
           self.profile = {};
+          self.account.hasProfile = false;
           genericServices.hideSpinner();
           var params = {};
           params.title = sharedConstants.errorTitle;
@@ -212,6 +215,8 @@ accountModule.
           self.account.orderList.splice(selectedIndex, 1, params.item);
           break;
         case 'error':
+          break;
+        case 'noProfile':
           break;
 
         default:
