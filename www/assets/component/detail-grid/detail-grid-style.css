@@ -65,8 +65,8 @@ footer {background: #aaa;color:white;}
 }
 
 .book-detail-grid .full-image {
-    width: 150px;
-    height: 200px;
+    width: 100px;
+    height: 150px;
     background-size: 100% 100%;
 }
 
