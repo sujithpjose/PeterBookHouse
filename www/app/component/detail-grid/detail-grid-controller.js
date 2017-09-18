@@ -55,7 +55,8 @@ gridModule.
     var init = function () {
       self.imgPath = sharedConstants.assetsBaseUrl;
       self.gridModal.category = $stateParams.id;
-     
+      self.isLoading = true;
+
       populateCategories();
     };
 
@@ -83,7 +84,7 @@ gridModule.
         self.gridModal.category = self.books.category[0].name;
         self.gridModal.hasPagination = false;
       }
-     
+
       toggleStyle();
 
       var config = angular.copy(sharedValues.apiConfig.getbooks);
@@ -188,6 +189,7 @@ gridModule.
             //error
             self.books.categoryList = [];
           }
+          self.isLoading = false;
           break;
         case 'getcategories':
           var result = response.data;
@@ -205,6 +207,7 @@ gridModule.
     var setScopeValuesOnError = function (response) {
       switch (response.config.key) {
         case 'getBooks':
+          self.isLoading = false;
           break;
 
         default:

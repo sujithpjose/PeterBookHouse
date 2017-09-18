@@ -55,6 +55,7 @@ searchModule.
     var init = function () {
       self.imgPath = sharedConstants.assetsBaseUrl;
       self.gridModal.searchText = $stateParams.searchText;
+      self.isLoading = true;
 
       populateSearchResults();
     };
@@ -109,6 +110,7 @@ searchModule.
           self.paginationList.push(paginationObject);
         }
       } else {
+        console.log('no need for pagination');
         //no need for pagination
         self.gridModal.hasPagination = false;
       }
@@ -157,6 +159,7 @@ searchModule.
           } else {
             //error
             self.books.categoryList = [];
+            self.gridModal.hasPagination = false;
           }
           break;
         case 'getcategories':
@@ -185,6 +188,7 @@ searchModule.
     function onSuccess(response) {
       genericServices.hideSpinner();
       setScopeValuesOnSuccess(response);
+      self.isLoading = false;
       console.log('populateDashboard IN [DashBoardController] onSuccess promise:' +
         response.data.returnMsg);
     }
@@ -193,6 +197,7 @@ searchModule.
       genericServices.hideSpinner();
       // called asynchronously if an error occurs or server returns response with an error status.
       setScopeValuesOnError(response);
+      self.isLoading = false;
       console.log('populateDashboard IN [DashBoardController] onError promise:' + response.status);
     }
 

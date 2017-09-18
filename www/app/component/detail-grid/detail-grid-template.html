@@ -12,9 +12,9 @@
   </nav>
 
   <article class="article">
-    <div ng-show="books.categoryList.length == 0" class="row row-center match-parent">
+    <div ng-hide="isLoading || books.categoryList.length > 0" class="row row-center match-parent">
       <div class="col col-center text-center">
-        <p> No Results Found </p>
+        <p> No Results Found</p>
       </div>
     </div>
     <div ng-repeat="book in books.categoryList track by $index" class="book-detail-grid" ng-click="toDetails(book)">
@@ -31,7 +31,7 @@
       </div>
     </div>
     <!-- Pagination componenet -->
-    <div ng-show="gridModal.hasPagination" class="row pagination">
+    <div ng-hide="isLoading || !gridModal.hasPagination" class="row pagination">
       <div class="col text-right no-padding">
         <ul>
           <li class="page-item page-item-previous" ng-class="{'disabled': pagination.previousDisabled == 'Y'}" ng-click="doPagination('Previous')">
