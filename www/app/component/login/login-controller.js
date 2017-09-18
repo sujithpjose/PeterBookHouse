@@ -15,8 +15,8 @@ loginModule.
     var defaultUser = angular.copy(self.user);
 
     self.signInUser = {
-      email: 'pjosesujith@gmail.com',
-      password: 'sujith1234'
+      email: '',
+      password: ''
     };
 
     self.signup = {
