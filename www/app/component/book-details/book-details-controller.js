@@ -6,7 +6,7 @@ bookDetailsModule.
     self.bookItem = {};
 
     var init = function () {
-
+      self.imgPath = sharedConstants.assetsBaseUrl;
       self.bookItem = bookService.getItem();
     };
 

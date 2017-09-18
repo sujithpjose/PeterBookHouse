@@ -63,6 +63,12 @@ footer {background: #aaa;color:white;}
    margin: 5px 0 0 5px;
 }
 
+.book-detail-grid .full-image {
+    width: 150px;
+    height: 200px;
+    background-size: 100% 100%;
+}
+
 
 /* For mobile phones: */
 [class*="book-detail-grid"] {

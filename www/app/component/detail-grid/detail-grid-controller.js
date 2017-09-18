@@ -53,8 +53,7 @@ gridModule.
     });
 
     var init = function () {
-      self.profilePath = imgConstants.sharedPath;
-      self.sharedPath = imgConstants.imgPath;
+      self.imgPath = sharedConstants.assetsBaseUrl;
       self.gridModal.category = $stateParams.id;
      
       populateCategories();

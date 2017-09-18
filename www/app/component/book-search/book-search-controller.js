@@ -53,8 +53,7 @@ searchModule.
     });
 
     var init = function () {
-      self.profilePath = imgConstants.sharedPath;
-      self.sharedPath = imgConstants.imgPath;
+      self.imgPath = sharedConstants.assetsBaseUrl;
       self.gridModal.searchText = $stateParams.searchText;
 
       populateSearchResults();
@@ -62,7 +61,7 @@ searchModule.
 
     function populateSearchResults() {
       genericServices.showSpinner();
-    
+
       var config = angular.copy(sharedValues.apiConfig.getbooks);
       var generatedUrl = genericServices.beautifyUrl(config.url, [pageSize, '', self.gridModal.currentPage, self.gridModal.searchText]);
       //set generatedUrl to config variable
