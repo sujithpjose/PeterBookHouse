@@ -58,6 +58,7 @@ footer {background: #aaa;color:white;}
 }
 
 .book-detail-grid{ 
+    cursor: pointer;
    display: inline-block;
    width: 23.5%;
    margin: 5px 0 0 5px;

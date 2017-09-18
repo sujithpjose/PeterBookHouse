@@ -110,6 +110,7 @@ line-height: 35px;
 }
 
 .book-grid{ 
+    cursor: pointer;
    display: inline-block;
    width: 24%;
    margin: 5px 0 5px 5px;
