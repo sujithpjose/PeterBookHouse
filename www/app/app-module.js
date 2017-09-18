@@ -1,5 +1,5 @@
 
-var app = angular.module('bookShop', ['ionic', 'component', 'shared', 'ion-datetime-picker', 'pascalprecht.translate', 'canSwipe', 'ui.bootstrap']);
+var app = angular.module('bookShop', ['ionic', 'component', 'shared', 'ion-datetime-picker', 'pascalprecht.translate', 'canSwipe', 'ui.bootstrap','myEnter']);
 
 app.run(function ($rootScope,$ionicPlatform,$log) {
     $log.debug('app.run:');
