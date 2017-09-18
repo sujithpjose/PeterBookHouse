@@ -122,8 +122,8 @@
     <div ng-repeat="book in books.homeList2 track by $index" class="book-grid" ng-click="toDetails(book)">
       <div class="item item-text-wrap no-padding text-center">
         <div class="item item-body">
-         <img class="full-image" ng-src="{{imgPath+book.image_url}}" />
-         <!-- <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" /> -->
+          <img class="full-image" ng-src="{{imgPath+book.image_url}}" />
+          <!-- <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" /> -->
 
           <h2 class="text-wrap"> {{ book.name}} </h2>
           <p class="text-wrap">
@@ -162,7 +162,7 @@
     <div ng-repeat="book in books.homeList3 track by $index" class="book-grid" ng-click="toDetails(book)">
       <div class="item item-text-wrap no-padding text-center">
         <div class="item item-body">
-            <img class="full-image" ng-src="{{imgPath+book.image_url}}" />
+          <img class="full-image" ng-src="{{imgPath+book.image_url}}" />
           <!-- <img class="full-image" ng-src="http://loremflickr.com/320/240?random={{$index}}" /> -->
 
           <h2 class="text-wrap"> {{ book.name}} </h2>
@@ -176,6 +176,12 @@
 
 </div>
 <!-- HomeList3 -->
+
+<!-- Footer -->
+<ng-include src="'app/component/footer-template.html'" >
+</ng-include>
+<!-- Footer -->
+
 
 
 <!-- <ion-slides slider="swiper" options="swiperOptions">

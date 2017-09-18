@@ -3,7 +3,7 @@
   <span class="text-black text-17">Shopping Cart</span>
   <span class="padding-left-5 text-header text-14">  ({{cartList.length}} Item) </span>
 </div>
-<div class="row">
+<div class="row match-parent">
   <div class="col books">
 
     <!-- table -->
@@ -31,9 +31,9 @@
     </div>
     <!-- table -->
 
-    <div class="row" ng-hide="cartList.length > 0">
-      <div class="col text-center">
-        Your cart is empty
+    <div class="row match-parent" ng-hide="cartList.length > 0">
+      <div class="col col-center text-center text-17">
+        Your shopping cart is empty
       </div>
     </div>
 
@@ -48,3 +48,7 @@
 
 
 <!------------------- main content ------------------------------>
+<!-- Footer -->
+<ng-include src="'app/component/footer-template.html'" >
+</ng-include>
+<!-- Footer -->

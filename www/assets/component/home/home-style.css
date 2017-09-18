@@ -106,7 +106,7 @@ line-height: 35px;
 .grid-container {
    text-align: left;
    padding-left:15px; 
-   margin-bottom: 5px;
+   margin-bottom: 8px;
 }
 
 .book-grid{ 
@@ -117,6 +117,13 @@ line-height: 35px;
    /* height: 300px; */
 }
 
+.custom-content{
+    height: calc(100% - 234px);
+    overflow-y: scroll;
+    padding: 0px;
+    top: 0;
+}
+
 /* For mobile phones: */
 [class*="book-grid"] {
     width: 96%;
@@ -125,31 +132,22 @@ line-height: 35px;
     /* For tablets: */
     .book-grid {width: 48%;}
      .cart-col {text-align: right;} 
+     .custom-content {height: calc(100% - 125px);}
 }
 @media only screen and (min-width: 720px) {
     /* For desktop: */
     .book-grid {width: 32%;}
+    .custom-content {height: calc(100% - 125px);}
 }
 @media only screen and (min-width: 960px) {
     /* For desktop: */
     .book-grid {width: 24%;}
+    .custom-content {height: calc(100% - 80px);}
 }
 @media only screen and (min-width: 1140px) {
     /* For desktop: */
     .book-grid {width: 19%;}
-}
-
-.custom-content{
-    height: calc(100% - 202px);
-    overflow-y: scroll;
-    padding: 0px;
-    top: 0;
-}
-
-@media only screen and (min-width: 540px) {
-    /* For tablets: */
-    .custom-content {height: calc(100% - 82px);}
-
+    .custom-content {height: calc(100% - 80px);}
 }
 
 .grid-container h2, .grid-container p {
