@@ -171,3 +171,7 @@ line-height: 35px;
     border-top: 1px solid #2C3D52;
 }
 
+.bar-container.responsive-sm .col {
+    margin-bottom: 0;
+}
+

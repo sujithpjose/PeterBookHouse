@@ -1,6 +1,10 @@
 <ion-modal-view>
     <ion-header-bar class="bar-custom ">
         <h1 class="title">Add Profile</h1>
+        <div class="buttons">
+            <button class="button button-icon ion-android-close text-white" ng-click="closeUserprofileModal()">
+            </button>
+        </div>
     </ion-header-bar>
     <ion-content>
         <div class="card cardview">
@@ -14,7 +18,7 @@
                         </div>
                         <div class="item item-input-inset ">
                             <span class="item-input-wrapper bg-white">
-              <input name="name"  type="text" class="text-right" ng-model="profile.first_name" placeholder="Enter.."  required/>
+              <input name="name"  type="text" class="text-right" ng-model="profile.first_name" placeholder="Enter First Name"  required/>
              
                                 </span>
                         </div>
@@ -28,7 +32,7 @@
                         </div>
                         <div class="item item-input-inset ">
                             <span class="item-input-wrapper bg-white">
-                  <input  type="text" class="text-right" ng-model="profile.last_name" placeholder="Enter.."  required/>
+                  <input  type="text" class="text-right" ng-model="profile.last_name" placeholder="Enter Last Name"  required/>
                                     </span>
                         </div>
                     </div>
@@ -40,7 +44,7 @@
                         </div>
                         <div class="col align-right text-light ">
                             <label class="item-input">
-                                    <textarea  class="input-col text-input-value text-right" type="text" placeholder="Address" ng-model="profile.address" required>
+                                    <textarea  class="input-col text-input-value text-right" type="text" placeholder="Enter Address" ng-model="profile.address" required>
                                     </textarea>
                                  </label>
                         </div>
@@ -53,7 +57,7 @@
                         </div>
                         <div class="item item-input-inset ">
                             <span class="item-input-wrapper bg-white">
-                  <input  type="tel" class="text-right" ng-model="profile.phone" placeholder="Enter.."  required/>
+                  <input  type="tel" class="text-right" ng-model="profile.phone" placeholder="Enter Phone number"  required/>
                                     </span>
                         </div>
                     </div>
