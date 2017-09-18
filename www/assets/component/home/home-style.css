@@ -157,10 +157,16 @@ line-height: 35px;
 }
 
 .book-grid .full-image {
-    /* width: 150px; */
+    width: 200px;
+    height: 250px;
+    background-size: 100% 100%;
 }
 
 .button.button-stable.viewall-btn {
     color: #1694e4;
+}
+
+.section-border {
+    border-top: 1px solid #2C3D52;
 }
 
